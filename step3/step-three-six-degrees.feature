@@ -39,3 +39,28 @@ When  I provide two actors' names one known, and one not in the data as a parame
 Then I should see a message stating that name did not star in a movie
 
 # Buzz Lightyear did not star in a movie in the data provided.
+
+
+Scenario: I enter three actors' name
+Given I run the application
+And  "10_decade.json" exists from step one
+When  I provide  actors' name as a parameter
+Then I should see the name of the movie they played with each other 
+
+
+ #Elvis Presley was in Change of Habit (1969) with Ed Asner
+ #Ed Asner was in JFK (1991) with Kevin Bacon
+
+
+Scenario: I enter one actor's name
+Given I run the application
+And  "alphabetA.json" exists from step one
+When  I provide  one actor's name as a parameter
+Then I should see the name of the movie he played with letter  A or without the letter A
+
+
+#Hugh Jackman played in X-Men and VAn Helsing. One has the letter A and other doest
+
+
+
+
