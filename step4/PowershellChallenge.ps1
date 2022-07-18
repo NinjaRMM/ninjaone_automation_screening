@@ -3,8 +3,11 @@
 #Please review the below code and answer the following questions to the best of your ability: 
 
 #1.) What is this code doing?
+     It is trying to get the details of the NinjaRMM Software and giving back the details about the NinjaRMM installation.
 #2.) What does the program assume you need to have access to in order to execute? 
-#3.) What architectures can this script run on? 
+     The program assumes to have the exit code as ForegroundColor to be green. 
+#3.) What architectures can this script run on?
+     It can run on any database platform like SQL.
 
 $vm = Get-VM -Name WPM
 $IsNinjaInstalled = "Test-Path 'HKLM:\SOFTWARE\WOW6432Node\NinjaRMM LLC\NinjaWPM'"
