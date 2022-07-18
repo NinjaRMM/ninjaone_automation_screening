@@ -1,41 +1,75 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+   I used tools like Selenium, Cypress, Eclipse, Android SDK and used Automation frameworks to run the regressions suites that I find to be most helpful        surrounding development.
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
-
+   I used repositry like GitHub, Tortoise SVM and used branching techniques to maintain the code.
+   
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
 a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
+   Used Jenkins to deploy and excute my test suites.
+b. How did you target different devices?
+   I used to target different devices using different versions to check the compatability to the end users by defining the testing targe environmnet          approach and creating the testing matrix.
+   
 c. How did you handle scalability? 
+   Some ways that I handled scalabiity are;
+   a. Designing and organizing my tests
+   b. Structure of the process and how my team members cooperate
+   c. Automation tools and application I am testing is designed for testability and stability
+   
 d. How did you report test results?
+   Using Cucumber reports, extent reports and HTML reports.
 
-4. What testing frameworks are you familiar with for system level/desktop applications? 
+4. What testing frameworks are you familiar with for system level/desktop applications?
+   Dont have much experience in desktop applications framework but willing to learn and work on it.
 
 5. What testing frameworks are you familiar with for browser applications? 
+   Familiar with Cucumber methodolgies with ATTD/BDD framework, hybrid framework and keyword driven framework.
+
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
+   Apache Jmeter, Loadrunner are the tools I am familiar with.
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+   On my last project we changed our Automating tool to Playwright and most of us were not familiar with the tool so it was very interesting to change the    tool at the end of my contract and learn a completely new Automation tool was fun to work with.
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+   We use multithreading when we need to assign multiple code segments to a single process whereas we use multiprocessing when we need to run multiple process simultaneously.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
+   Unit testing considers checking a single component of the system whereas functionality testing considers checking the working of an application against    the intended functionality and integration testing considers checking integrated modules in the system.
 	i. Do you have a preference and why? 
-
+           No, all types of testing should be done equally depending on the situations.
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+    OOP pros consists, object and methods are very readable and understandable, OOP also utilize an imperative style.
+    OOP cons are it commonly depends upon shareable state.
+    
+    FP pros includes utilizing pure functions, leads to reliable functions with no side effects. FP also utilizes a more declarative style, whcih focuses       more on what to do and less about how its being done.
+    FP cons are FP is a newer paradigm. It can lack readablity at times.
 
-4. What security concerns have you come across in the past and how have you addressed them?
+4. What securtructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+	i. Aftity concerns have you come across in the past and how have you addressed them?
+   NONE
 
 Small Programming Challenges
 
 1. Using a known programming language write a small program to: 
 a. Query the OS for the OS Patches that are currently installed on the system. 
+Ǐ have used SQL to test some data base applications and will be writing a query in SQL to check all the patches in windows 10 machine.
+
+Select sys.Name0,adv.DisplayName0 FROM v_R_System sys , v_Add_Remove_Programs adv
+where sys.ResourceID=adv.ResourceID and sys.Name0 like ‘%Machine Name%’
+
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+	
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
 	i. What automation framework(s) you would consider utiltizing? 
+	
+	THe above query surely returns all the patches and from automation perspective it is useful to get all the request/response(like patches) bodies from API's
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+	Dont have much experience on cross platform testing just some exposure. But always ready to learn and work.
