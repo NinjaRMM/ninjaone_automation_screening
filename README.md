@@ -12,10 +12,10 @@ You are free to use any coding language you are comfortable with.
 The first step is to answer all of the questions in `CodingQuestions.txt` file in the `step1/` directory. Feel free to write any general answers within that document itself. We expect the small programming challenges to be delivered as an individual file(s). Use any reference materials that you need.
 
 ## Step 2
-Read the `step-two-filter-movies.feature` file in the `step2/` directory. Given a large data set (all movies made from 1900-2018) `data/movies.json`, follow the [Gherkin/BDD](https://www.guru99.com/gherkin-test-cucumber.html) style requirements and implement them.
+Read the `step-two-filter-movies.feature` file in the `step2/` directory. Given a large data set (all movies made from 1900-2018) `data/movies.json`, follow the [Gherkin/BDD](https://www.guru99.com/gherkin-test-cucumber.html) style requirements and implement them in the coding language of your choice. Please update the RUNME.md file with compile and/or instructions to execute your code.
 
 ## Step 3
-Read the `step-three-six-degrees.feature` file in the `step3/` directory. Here we would like you to implement a [Six Degrees of Kevin Bacon](https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon#:~:text=Six%20Degrees%20of%20Kevin%20Bacon%20or%20Bacon's%20Law%20is%20a,ultimately%20leads%20to%20prolific%20American) implementation from requirements in the feature file.
+Read the `step-three-six-degrees.feature` file in the `step3/` directory. Here we would like you to implement a [Six Degrees of Kevin Bacon](https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon#:~:text=Six%20Degrees%20of%20Kevin%20Bacon%20or%20Bacon's%20Law%20is%20a,ultimately%20leads%20to%20prolific%20American) implementation from requirements in the feature file. Please update the RUNME.md file with compile and/or instructions to execute your code.
 
 ## Step 4
 Read the instructions at the top of the `PowershellChallenge.ps1` file in the `step4/` directory and answer accordingly.
