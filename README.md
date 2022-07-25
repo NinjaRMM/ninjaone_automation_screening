@@ -1,5 +1,5 @@
 # Welcome!
-Thank you for considering NinjaRMM as your future home. In this repository you'll find some of our screening materials that we expect you to complete. The folder structure is explained below.
+Thank you for considering NinjaOne as your future home. In this repository you'll find some of our screening materials that we expect you to complete. The folder structure is explained below.
 
 Take your time when completing these test materials as accuracy is important. Feel free to use whatever reference materials you need in order to complete and answer all of the questions. Incomplete submissions will not be considered. You should begin by creating a branch that contains your name and start date as you'll need to submit this as a pull-request once you are done.
 
