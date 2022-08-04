@@ -30,10 +30,20 @@ Feature: Six Degrees of Separation
       | actor1     | actor2             | numberOfDegrees                                                             |
       | Tom Cruise | Sylvester Stallone | There are 2 degrees of separation between Tom Cruise and Sylvester Stallone |
 
-Scenario: I enter one actor's name that did not star in a movie
-  When  I provide a name not in the data as a parameter "Buzz Lightyear"
-  Then I should see a message stating that name did not star in a movie
+  Scenario: I enter one actor's name that did not star in a movie
+    When  I provide a name not in the data as a parameter "<actorNotInData>"
+    Then I should see a "<message>" stating that name did not star in a movie
 
-Scenario: I enter one actor's name that did not star in a movie
-  When  I provide two actors' names one known, and one not in the data as a parameters "Buzz Lightyear", "Sylvester Stallone"
-  Then I should see a message stating that name did not star in a movie
+    Examples:
+      | actorNotInData | message                                                      |
+      | Buzz Lightyear | Buzz Lightyear did not star in a movie in the data provided. |
+      | Julio Verne    | Julio Verne did not star in a movie in the data provided.    |
+
+  Scenario: I enter one actor's name that did not star in a movie
+    When  I provide two actors' names one known, and one not in the data as a parameters "<actor1>", "<actor2>"
+    Then I should see a "<message>" stating that name did not star in a movie
+
+    Examples:
+      | actor1         | actor2             | message                                              |
+      | Buzz Lightyear | Sylvester Stallone | Buzz Lightyear did not star in a movie in the data provided. |
+      | Julio Verne    | Oprah Winfrey      | Julio Verne did not star in a movie in the data provided.  |

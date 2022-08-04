@@ -44,10 +44,10 @@ When('I provide a name not in the data as a parameter {string}', function (actor
   this.setStartNode(actorName);
 });
 
-Then('I should see a message stating that name did not star in a movie', function () {
+Then('I should see a {string} stating that name did not star in a movie', function (message) {
   this.bfs()
   const numberOfDegreesText = this.getNumOfDegreesText()
-  expect(numberOfDegreesText).equal(`${this.startActor} did not star in a movie in the data provided.`)
+  expect(numberOfDegreesText).equal(message)
 });
 
 When('I provide two actors\' names one known, and one not in the data as a parameters {string}, {string}', function (startActor, endActor) {

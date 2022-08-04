@@ -1,5 +1,4 @@
 import { setWorldConstructor } from "@cucumber/cucumber";
-import fs from "fs";
 import { createRequire } from "module";
 
 const require = createRequire(import.meta.url);
@@ -48,18 +47,14 @@ const graph = new Graph()
 
 class DegreesOfSeparation {
   constructor() {
-    this.folderPath =
-      "/Users/williamestrada-ninjarmm/Documents/GitHub/ninjaone_automation_screening/data";
-    this.filePath = "";
     this.numOfDegreesText = ''
     this.listOfMoviesText = []
     this.startActor = null
     this.endActor = null
   }
 
-  existsFile(fileName) {
-    this.filePath = `${this.folderPath}/${fileName}`;
-    return fs.existsSync(this.filePath);
+  existsFile() {
+    return movies.length > 0
   }
 
   setupData() {
