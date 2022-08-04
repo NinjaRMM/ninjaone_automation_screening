@@ -1,7 +1,8 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
-
+		Tools can vary from programming languages, personally now I can think of Postman, good understanding of how to make api calls/tests,
+		Git is another tools. Also when working in Agile teams, good understating of Jira and JQL.
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
@@ -9,24 +10,51 @@ a. How did you deploy and execute your test suites?
 b. How did you target different devices? 
 c. How did you handle scalability? 
 d. How did you report test results?
+		We execute the test suit locally and also we have setup the CI to run the main features/components, most of the automation tests are executed against the required device for the tests,
+		some tests requires to use Windows devices, some other Mac and Linux. We handle scalability using the POM design patter as well as divide the suit by components/ features. We built a custom reporter
+		that uses the Zephyr API to report test results after each cycle execution.
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+		I have some basic familiarity with Selenium that can be used to test desktop applications
 
 5. What testing frameworks are you familiar with for browser applications? 
+		For browser apps I have experience with Testcafe, a javascript framework for end-to-end automation
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
-
+		None at the moment
 7. Tell us about a project your worked on that you found to be interesting or unusual.
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
+	Both can be used to increase the computing power of a system. I would use multiprocessing when the system requires a lot of computation or speed, like analyze large volumes of data quickly
+	Since multithreading makes efficient use of the CPU, it uses a single process with multiple code segments to increase computing power.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
+		A unit test tests small pieces of code or individual functions so the issues/errors found in these test cases are independent and don't impact the other test cases.
+		Unit tests are important because it is easier to resolve any issues at this stage before the code is pushed to production, they also save time and cost, and are reusable and easy to maintain.
+
+		Integration tests on the other hand tests the system components working together, they require interaction with external dependencies such as databases, hardware, etc.
+		They are also more complex than unit tests.
+		These tests are more usually conducted by the testers, and not the developers. Since they are more complex they require more maintenance
+
+		Functional testing tests the behavior of the application as per the requirement. They are more complex compared to unit and integration tests.
+		Test cases are written using different examples or scenarios.
+		They test the entire application functionality, not only the integration with other modules/components or single functions.
+		The bugs fund during FT are often issues that do not allow to function as expected
 	i. Do you have a preference and why? 
+			All three are important to make sure the product ships with the less issues possible. My experience as automation engineer is mainly with End-to-end testing therefore is my favorite.
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+		Pros in OOP objects and methods are very clear and understandable. Since it uses an imperative style, the code is read like a simple set of instructions, just like a computer would read it.
+		Some Cons in OPP, it may lead to unspecified and unexpected results in the sense that a parallel code that would have access to a common resource could do so in a way that produces unspecified results, also
+		its methods can have side effects and may put an impact on processors.
+		Pros in FP - using clean and transparent functions leads to reliable results without side effects that deliver and return exactly what you expect,
+		it uses a more declarative style that focuses more on what needs to be done and less on how to do it, with an emphasis on efficiency and optimization.
+		Cons - It is a relatively new paradigm and sometimes it is not so easy to find documentation or information compared to Object-oriented Programming.
+		Sometimes it may not become illegible due to a very large number of functions compared to Object-oriented Programming.
 
+		Some programmers argue, including myself that, far from seeing these two as opposite, FP should be seen as an addition to OOP, there are multiple language that supports this, with the exception of Java
 4. What security concerns have you come across in the past and how have you addressed them?
 
 Small Programming Challenges
@@ -36,6 +64,7 @@ a. Query the OS for the OS Patches that are currently installed on the system.
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
+		
 	i. What automation framework(s) you would consider utiltizing? 
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?

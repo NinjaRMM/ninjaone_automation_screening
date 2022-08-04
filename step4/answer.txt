@@ -1,0 +1,17 @@
+
+1.) What is this code doing?
+    In the first line it is declaring and assigning the vm variable to the VM by the name WPM returned when executing the Get-VM command,
+    then it is also saving the Test-Path command to be passed in the next line when calling the Invoke-VMScript command
+    Then it saves the result from executing the Invoke-VMScript command which sends a script to the VM using the required param -VM which comes from line 1.
+    Then the result from invoking the script is saved in the Result variable, after that a condition that evaluates if the result is not equals to '0' it will print in color RED a message 
+    indicating that an error occurred and will exit the program indicating a failure (1)
+
+    If the program continues, it will save the Invoke-VMScript result in the output variable using the property ScriptOutput
+    then it will evaluate the output if it returns true, it will print a successful message in color green 
+
+    The program then kind of repeat the same logic but this time will run a script in the VM testing a different path, if the result returns true it will exit the program successful with a 0 exit code.
+
+2.) What does the program assume you need to have access to in order to execute?
+    It assumes you are an admin and have read access to the folder containing the virtual machine and a Virtual Machine.Interaction.Console Interaction privilege.
+3.) What architectures can this script run on? 
+    It can run in Windows 64

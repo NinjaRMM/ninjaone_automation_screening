@@ -1,0 +1,17 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "keywords": [],
+  "author": "William Estrada <williamestrada.dev@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@cucumber/cucumber": "^8.5.0",
+    "chai": "^4.3.6"
+  },
+  "type": "module"
+}
