@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { Given, When, Then } from "@cucumber/cucumber";
-import { readFileSync, existsSync, readFile } from "fs";
+import { readFile } from "fs";
 
 Given('a json file of all movies between 1900-2018 {string}', function (string) {
   expect(this.existsFile(string)).is.true
