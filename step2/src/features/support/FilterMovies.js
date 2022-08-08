@@ -3,12 +3,20 @@ import fs from "fs";
 import { createRequire } from "module";
 
 const require = createRequire(import.meta.url);
+const path = require("path");
+const { fileURLToPath } = require("url");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const movies = require("../../../../data/movies.json");
 
 class FilterMovies {
   constructor() {
-    this.folderPath =
-      "/Users/williamestrada-ninjarmm/Documents/GitHub/ninjaone_automation_screening/data";
+    this.path = path.resolve(__dirname);
+    this.folderPath = `${this.path.substring(
+      0,
+      this.path.indexOf("step2") - 1
+    )}/data`;
     this.filePath = "";
     this.localFilePath = "";
     this.decadeParam = "";
@@ -26,12 +34,17 @@ class FilterMovies {
   createFile(fileName) {
     this.localFilePath = `${this.folderPath}/${fileName}`;
     if (fs.existsSync(this.localFilePath)) {
-      fs.unlinkSync(this.localFilePath)
+      fs.unlinkSync(this.localFilePath);
     }
-    fs.createWriteStream(this.localFilePath, );
+    try {
+      fs.createWriteStream(this.localFilePath);
+    } catch (error) {
+      console.error(`Error writing file ${this.localFilePath}.`);
+    }
   }
 
-  filterByDecade(startYear, endYear) { // TODO: Change to use the decadeParam
+  filterByDecade(startYear, endYear) {
+    // TODO: Change to use the decadeParam property instead
     const moviesForDecade = [];
     movies.filter((movie) => {
       if (movie.year >= startYear && movie.year <= endYear) {
@@ -45,7 +58,7 @@ class FilterMovies {
         if (error) console.log(error);
       }
     );
-    return { path: this.localFilePath, totalMovies: moviesForDecade.length}
+    return { path: this.localFilePath, totalMovies: moviesForDecade.length };
   }
 }
 

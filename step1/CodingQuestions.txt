@@ -2,9 +2,10 @@ General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
 		Tools can vary from programming languages, personally now I can think of Postman, good understanding of how to make api calls/tests,
-		Git is another tools. Also when working in Agile teams, good understating of Jira and JQL.
+		Git is another tools. Also when working in Agile teams, good understating of Jira and JQL. Keep a standard in the teams so that new and existing devs can understand
+		what the code.
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
-
+		Keep good documentation whenever possible, have unit and integration tests in place.
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
 a. How did you deploy and execute your test suites? 
 b. How did you target different devices? 
@@ -27,8 +28,8 @@ d. How did you report test results?
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
-	Both can be used to increase the computing power of a system. I would use multiprocessing when the system requires a lot of computation or speed, like analyze large volumes of data quickly
-	Since multithreading makes efficient use of the CPU, it uses a single process with multiple code segments to increase computing power.
+		Both can be used to increase the computing power of a system. I would use multiprocessing when the system requires a lot of computation or speed, like analyze large volumes of data quickly
+		Since multithreading makes efficient use of the CPU, it uses a single process with multiple code segments to increase computing power.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
 		A unit test tests small pieces of code or individual functions so the issues/errors found in these test cases are independent and don't impact the other test cases.
@@ -56,6 +57,8 @@ Technical Questions
 
 		Some programmers argue, including myself that, far from seeing these two as opposite, FP should be seen as an addition to OOP, there are multiple language that supports this, with the exception of Java
 4. What security concerns have you come across in the past and how have you addressed them?
+		I have not came across any major security issues since I'm very careful when using my work computer, I always follow the company rules and guidelines.
+		I use strong passwords and I change them quite often. I try to use a secure connection, never use public networks etc.
 
 Small Programming Challenges
 
@@ -64,7 +67,11 @@ a. Query the OS for the OS Patches that are currently installed on the system.
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-		
+		From an automation perspective we'd have to build a framework to be able to, using different devices with different states of patches and make sure the results are accurate in avery automation run.
+
 	i. What automation framework(s) you would consider utiltizing? 
+		I would probably consider Cucumber with Selenium since it provides system level support. 
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+		Create clear deployment plans, also having CI test coverage running in all three OS before the program is released to be able to detect any issues.
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+		We will have to add this type of validations as part of the automation coverage to be able to validate this type of scenario.
