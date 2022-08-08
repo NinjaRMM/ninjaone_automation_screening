@@ -24,6 +24,10 @@ d. How did you report test results?
 6. What tools are you familiar with for Performance, Load and Stress testing? 
 		None at the moment
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+	  I think working in the automation project at NinjaOne is the most interesting project I've worked on. When I started there were about 700 tests that were automated,
+		today we have over 3000, from those a little over 500 were automated by me. Also I was able to improve and enhance a custom reporter to report test executions to Jira.
+		I was also the first engineer to take the Ninja Backup product test cases and implement the infrastructure to build the automation framework for that feature. To this moment we have 163
+		test cases that covers not only the UI but also endpoint tests.
 
 Technical Questions
 
