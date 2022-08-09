@@ -27,6 +27,6 @@ Please make sure all of the following are checked:
 
 1. All of the questions in step 1 have been answered.
 2. The code for steps 2 and 3 compiles(if using a compiled language) and runs without errors.
-3. There should be meaningful feedback provided for the sample code in step 2.
+3. Given the instructions you provide in the `RUNME.md`, we should be able to execute your solutions from steps 2 and 3 from the command line and have the results printed to the console if required in the step feature definition.
 
 Happy coding!
