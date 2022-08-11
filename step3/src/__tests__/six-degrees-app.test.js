@@ -72,4 +72,38 @@ describe("Six degrees of Separation App", () => {
     const listOfMoviesText = degree.getListOfMoviesText();
     expect(listOfMoviesText).toHaveLength(0);
   });
+
+  it("Should return correct message when known actors' names are entered in lowercase\".", () => {
+    const actor = "tom cruise";
+    degree.setStartNode(actor);
+    degree.setEndNode("tom hanks");
+    degree.bfs();
+
+    const numberOfDegreesText = degree.getNumOfDegreesText();
+    expect(numberOfDegreesText).toEqual(
+      "There are 2 degrees of separation between Tom Cruise and Tom Hanks"
+    );
+
+    const listOfMoviesText = degree.getListOfMoviesText();
+    expect(listOfMoviesText).toEqual(
+      "Tom Cruise starred with Craig T. Nelson in All the Right Moves\nCraig T. Nelson starred with Tom Hanks in Turner & Hooch\n"
+    );
+  });
+
+  it("Should return correct message when known actors' names are entered in UPPERCASE\".", () => {
+    const actor = "TOM CRUISE";
+    degree.setStartNode(actor);
+    degree.setEndNode("TOM HANKS");
+    degree.bfs();
+
+    const numberOfDegreesText = degree.getNumOfDegreesText();
+    expect(numberOfDegreesText).toEqual(
+      "There are 2 degrees of separation between Tom Cruise and Tom Hanks"
+    );
+
+    const listOfMoviesText = degree.getListOfMoviesText();
+    expect(listOfMoviesText).toEqual(
+      "Tom Cruise starred with Craig T. Nelson in All the Right Moves\nCraig T. Nelson starred with Tom Hanks in Turner & Hooch\n"
+    );
+  });
 });

@@ -1,3 +1,5 @@
+import { capitalize } from "../utils/utils.js";
+
 export default class Graph {
   constructor() {
     this.nodes = [];
@@ -16,9 +18,9 @@ export default class Graph {
     return node;
   }
   setStart(actor) {
-    this.startNode = this.graph[actor];
+    this.startNode = this.graph[capitalize(actor)];
   }
   setEnd(actor) {
-    this.endNode = this.graph[actor];
+    this.endNode = this.graph[capitalize(actor)];
   }
 }

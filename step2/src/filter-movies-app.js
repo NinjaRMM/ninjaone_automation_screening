@@ -25,7 +25,7 @@ const startProgram = async (decade) => {
     startProgram(await getDecade());
   } else if (Number(decade) >= 2020) {
     console.log(
-      colors.red("Only decades 1900-2010 is valid, please try again")
+      colors.red("Only decades from 1900-2010 are valid, please try again")
     );
     startProgram(await getDecade());
   } else {
