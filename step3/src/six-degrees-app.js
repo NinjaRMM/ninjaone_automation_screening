@@ -14,7 +14,7 @@ const require = createRequire(import.meta.url);
 const degreesOfSeparation = new DegreesOfSeparation();
 
 const setupData = async () => {
-  glob("**/*.json", { cwd: "../../data/" }, async function (err, files) {
+  glob("*.json", { cwd: "./data" }, function (err, files) {
     if (err) throw new Error("Error Finding source file");
     const moviesFile =
       files.find((file) => file.includes("s-movies.json")) || "movies.json";

@@ -95,6 +95,9 @@ export default class DegreesOfSeparation {
         }
       }
     }
+    if (start && end && !moviesPath.length) {
+      message = `There is INFINITY degrees of separation between ${this.startActor} and ${this.endActor}.`;
+    }
     this.setText({ actorsPath, moviesPath, message });
   }
 
