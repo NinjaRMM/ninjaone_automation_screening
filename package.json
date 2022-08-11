@@ -1,0 +1,30 @@
+{
+  "name": "ninjaone_automation_screening_william_estrada",
+  "version": "1.0.0",
+  "description": "Ninjaone Automation Screening (William Estrada Submission)",
+  "main": "index.js",
+  "scripts": {
+    "step2": "node step2/src/filter-movies-app.js",
+    "step3": "node step3/src/six-degrees-app.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NinjaRMM/ninjaone_automation_screening.git"
+  },
+  "author": "William Estrada <williamestrada.dev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NinjaRMM/ninjaone_automation_screening/issues"
+  },
+  "homepage": "https://github.com/NinjaRMM/ninjaone_automation_screening#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "glob": "^8.0.3",
+    "inquirer": "^9.1.0"
+  },
+  "type": "module",
+  "devDependencies": {
+    "jest": "^28.1.3"
+  }
+}
