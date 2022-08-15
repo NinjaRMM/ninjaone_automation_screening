@@ -1,41 +1,87 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+	-Git
+	-VSCode
+	-Clean code
+	-Code Reviewing
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+	-Tests
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
 a. How did you deploy and execute your test suites? 
+	-Usually I run the tests on my machine before commiting.
+	-Implementing the pipelines on Jenkins.
+
 b. How did you target different devices? 
+	-With different compilation flags.
+
 c. How did you handle scalability? 
+	-Breaking down the systems into microservices, usually running into Docker instances.
+
 d. How did you report test results?
+	-When we get errors, openning bug on a issues platform, like Jira.
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+	-gtest
+	-JUint
 
 5. What testing frameworks are you familiar with for browser applications? 
+	-Selenium
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
+	-Apache JMeter
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+	-I worked on a game framework to create games for casinos on C. The games should run on an embedded hardware running Linux and are created based on XML files.
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
+	-I would use multithreading to make UI responsive and to create I/O-bound or network-bound applications.
+	-I would use multiprocessing to create computation-intensive programs and multiprocessing to develop programs that are CPU intensive.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
+	-Unit tests are used to test classes and specific parts of the software.
+	-Functional tests are used to test specific routines and functionalities that may include business logic.
+	-Integration tests are used to test programs running and interacting with others software and services.
+
 	i. Do you have a preference and why? 
+		-They have different objectives and should be used in combination.
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+	-Object-oriented:
+		*Pros:
+			>Objects and methods are very readable and understandable.
+			>OOP utilizes an imperative style, in which code reads like a straight-forward set of instructions as a computer would read it.
+		*Cons:
+			>OOP commonly depends upon shareable state. The unfortunate result of so many objects and methods existing within the same state and being accessed in an entirely undetermined order can lead the pre-discussed concept of “race conditions”.
+	-Functional:
+		*Pros:
+			>Utilizing pure functions, leads to reliable functions with no side effects that accomplish and return exactly what you expect them to.
+			>FP utilizes a more declarative style, which focuses more on what to do and less about how it’s being done. This places the emphasis on performance and optimization, leaving the door to refactor without completely reworking your code.
+		*Cons:
+			>Functional programming is a newer paradigm. It’s much easier to find documentation and information on the OOP approach.
+			>Similar to one of OOP’s strengths, functional programming can lack readability at times. Sometimes functions can become very verbose and become difficult to follow comparatively to the object-oriented style.
 
 4. What security concerns have you come across in the past and how have you addressed them?
+	-Sensitive data encryptation on network communications.
+	-Sensitive data encryptation on data storage.
+	-Encryptation of passwords on databases.
+	-Not using passwords as plain text on memory.
 
 Small Programming Challenges
 
 1. Using a known programming language write a small program to: 
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
+		-Code on the src folder with instructions on the RUNME.md file.
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+		-
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
 	i. What automation framework(s) you would consider utiltizing? 
+		-I would consider Azure Automation.
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+		-
