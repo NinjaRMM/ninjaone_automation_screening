@@ -1,33 +1,74 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+git, gitlab/github/bitbucket, IDE (vscode), stackoverflow.com, terminal, interpreter, debugger, man pages, language documentation
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+linter, code style enforcement, security/vulnerability scanner, and other static analysis tools configured within a build pipeline
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
+
+a. How did you deploy and execute your test suites?
+Tests are run in gitlab-ci pipelines via pytest. Nightly jobs run automatically on nightly builds. Manual jobs are available to be kicked off situationally.
+Tests live in the same repo as the codebase they are testing and new tests are merged once they have gone through code review.  
+
+b. How did you target different devices?
+Configuration files defined the devices the tests would be run against. pytest-xdist plugin used to spread tests out against all devices defined in the configuration file.
+
+c. How did you handle scalability?
+Adding more concurrency helps to a point until the infrastructure starts to get bogged down. Careful balance between concurrency and stability.
+Optimizing tests to not waste and re-use resources where possible is important. Scale up incrementally, not all at once.
+
 d. How did you report test results?
+Test results are reported to ReportPortal. This allows for clear visibility into results, categorization of failure types, test log aggregation, and jira issue linking.
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+I am aware of a tool from SmartBear called TestComplete that can automate testing of native applications, however, I have not used this software.
 
 5. What testing frameworks are you familiar with for browser applications? 
+I have used pure Selenium, Cypress, and Playwright. I am most familiar with Playwright.
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
+I was mainly focused on the functional testing aspect but I am aware of jMeter which is a very popular tool for this purpose.
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+I find it interesting that all test case management tools I have tried seem to lack a very essential feature.
+That is, the ability for the tool to automatically construct a test cycle with all relevant test executions for manual testing of a particular build.
+In order to automate this process, I built my own tool in the form of a web application / API. Front-end was built with vue.js. Backend was a simple jsonrpc API built with Flask.
+This tool leveraged the Jira and Zephyr Scale (test case management tool) APIs to gather all tickets tagged with a particular fix version (build).
+For each of those tickets, I gathered all test cases mapped to the ticket. Finally, I created a test cycle and added a test execution for each unique test case.
+I also added other features such as always adding all high risk test cases regardless of whether they were mapped to a ticket in the build.
+I also added medium risk test cases based on a sampling algorithm that pulled a certain subset of them in based on if they were run against any recent builds.
+This application has helped the manual test team quickly build out a plan for their testing while minimizing chance of missing tests due to human error.
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+Multithreading requires less overhead as IO sources such as code/data/files can be shared and do not have to be replicated. Therefore, this should be used for IO bound applications.
+Multiprocessing should be used when performing computational heavy tasks as we can make use of multiple processors.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
+	i. Do you have a preference and why?
+Unit and integration testing are test levels.
+Unit tests focus on individual components, such as, does a function produce the expected output given some input.
+Integration tests focus on testing interactions between multiple components, such as, does a factory produce an object of the required specification given known good input of various components.
+Unit tests and integration tests can be functional or non-functional. Functional testing refers to testing WHAT the component or system should do. In contrast, non-functional testing focuses on HOW WELL it does it (performance, security).
+Between unit and integration tests, I think integration tests will give you a better outlook on how the application will actually behave in the real world.
+I have seen many instances where all of the components were working according to spec and thus the unit tests pass, but when a user attempts to actually use the application, it doesn't work which would indicate a problem at the integration or system level.
+At the same time, integration tests can be more flaky, require more overhead/resources, and take longer to run, so it is a good idea to have unit tests as the first line of defense.
+You always need functional tests at any test level (unit, integration, system).
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
+Functional programming is a good choice when you don't need to worry about state.
+Functions take input and return a known output given a particular input. There are no side effects.
+Functional programming can get messy as a project increases in scope and functionality.
+
+OOP is a better choice when you need to organize data and manage the state of that data in a controlled fashion.
+OOP allows you to encapsulate to protect data from being accidentally manipulated and abstract logic in order to provide the consumer with a clean API.
+OOP can get out of hand and lead to over-engineering and complicated design patterns.
 
 4. What security concerns have you come across in the past and how have you addressed them?
+One of the most common mistakes I see are people accidentally attempting to commit secrets into a codebase. There are many ways this can be prevented. GitLab has a built in feature to check for this condition in a hook and block it.
 
 Small Programming Challenges
 
@@ -36,6 +77,16 @@ a. Query the OS for the OS Patches that are currently installed on the system.
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+	i. What automation framework(s) you would consider utiltizing?
+	You would need to run the test against a pre-configured Windows image that has a known set of patches installed and automatic Windows updates disabled.
+	This way, you can assert that the output from the Get-Hotfix command matches the known set of installed patches.
+	We could do this with pytest and python. Create a small HTTP service that runs on the windows system and allows us to execute arbitrary commands.
+	Install that onto our Windows Image along with the known updates. Assuming we have a service that we can call to boot up a virtualization from this Windows image,
+	we can then make a remote call to that HTTP service and ask it to execute our Get-HotFix command and then assert the output equals the expected.
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+	I would design a small HTTP service that could be run on Windows, Mac, and Linux. This service would allow us to execute arbitrary commands on that system.
+	We could then write automation scripts that formulates the proper command based on the OS we are planning on running it against.
+	Then we would send each of the commands to the proper system over the HTTP API and then assert that the output matches what we expect.
+	The reboot problem mentioned above would not be an issue. The systems we are running these tests against would be spun up from an image
+	that has automatic updates disabled, the expected patches already installed, as well as the small HTTP service that allows for remote execution already installed.
