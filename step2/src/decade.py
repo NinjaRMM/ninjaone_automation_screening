@@ -25,9 +25,9 @@ def main(decade):
     result_file = open(file_name, "w", encoding='utf-8')
     result_list = []
 
-    for i in movies:
-        if i['year'] in range(decades[decade][0], decades[decade][1] + 1):
-            result_list.append(i)
+    for movie in movies:
+        if movie['year'] in range(decades[decade][0], decades[decade][1] + 1):
+            result_list.append(movie)
 
     result_file.write(json.dumps(result_list, indent=4))
     result_file.close()
