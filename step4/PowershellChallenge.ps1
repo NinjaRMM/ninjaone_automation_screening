@@ -3,8 +3,11 @@
 #Please review the below code and answer the following questions to the best of your ability: 
 
 #1.) What is this code doing?
+install a VM if the ninja is installed with default non ecripted password ,
 #2.) What does the program assume you need to have access to in order to execute? 
+Always otherwise it will elevate
 #3.) What architectures can this script run on? 
+Windows
 
 $vm = Get-VM -Name WPM
 $IsNinjaInstalled = "Test-Path 'HKLM:\SOFTWARE\WOW6432Node\NinjaRMM LLC\NinjaWPM'"

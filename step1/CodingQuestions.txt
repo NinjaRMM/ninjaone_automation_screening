@@ -2,32 +2,61 @@ General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
 
+Personally I love to create a database of the requirements i need if it is a library that i will use a lot.
+Getting Curses and books are very usefull to get all the details.
+I prefer to work in a Linux environement ,  WSL (now is my favorite), no need to have a separate image , but that can be very usefull.
+For this project i did that untill i saw that it was more Windows related so I had to move my repository.
+
+
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
 
+One tools i love is beyong compare to find all the differences , I use too all the other ones , when i dont have the license.
+
+
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
+
+I used to create lots of scripts to automate things , this was before , azure and google cloud... in the linux/aix environement .
+Otherwise powershell is very powerfull tool now for windows.
+
 a. How did you deploy and execute your test suites? 
+I never execute test suites , but in Azure when you build you can edit the pipeline to enable unit test, etc.
 b. How did you target different devices? 
+Each build for different arquitecture can be in a separate build folder , each one can be run in a VM for test.
+
 c. How did you handle scalability? 
+Using cloud service is easier (Azure,Google Cloud)
+
 d. How did you report test results?
+I never worked with those tools before
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+I `m not familiar with many of the since i worked more in the development team .
 
 5. What testing frameworks are you familiar with for browser applications? 
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
+In my pass i used python scripts to do such thing and output in a CSV file and loaded it a EXCEL , but i`m sure today there is better ways to do.
+
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+LAst year i was the only developper maintaning a device that had a big backlog, i corrected memory leaks and cleared the backlog.
+I worked on  development specially for flight simulators. Sensors even crypotography a way to protect the executable to be run on PC with no licenses.
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
+I would use multhithread when i need various independent threads in parallel, multiprocessing is if i want to have more than one process runinng 
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
 	i. Do you have a preference and why? 
+The last prooves if the hole project works, the unit test is for programmer to test the code. Fuctional test is in the middle.
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+Object programing is more abstract , but is clearer, functional programing is like C , with functions being called.
+Some people say it is functional programing is faster but others disagree, Today top games and RTS are run on c++. 
 
 4. What security concerns have you come across in the past and how have you addressed them?
+In my past i had to follow many processes to adress security , one of them is never to use stadard username password as raspberry pi default username /passwd . Other issues can be adressed installing a VPN , to isolate network. 
 
 Small Programming Challenges
 
@@ -36,6 +65,15 @@ a. Query the OS for the OS Patches that are currently installed on the system.
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+	Testing on a few different machines, different Windows versions.
+	
+	i. What automation framework(s) you would consider utiltizing?
+	
+	This script step1.ps1 can be executed from windows scheduller .
+	
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+I would create a VM for each machine , and use scripts in python to distibute them .
+
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+	
+It could run the same script if the result is different then run again. My current sript does not do that.
