@@ -153,10 +153,11 @@ print(f"STEP 3 Find Degree of Separation of {actor1} and {actor2}")
 commonfriend = union(actor1titles, actor2titles)
 # If This is Right exit code
 if len(commonfriend) >= 1:
-    print(f'There is 0 level of union bettwen {actor1} and {actor2}')
+    print(f'There is no separation bettwen {actor1} and {actor2}')
     for movie in commonfriend:
         print(f'{actor1} starred with {actor2} in {movie}')
-        exit()   
+    exit()
+   
 #########################################################################################################
 #
 # 1 degree of separation 
@@ -172,20 +173,24 @@ actor2friends= uniquelist(actor2friends)
 commonfriend = union(actor1friends, actor2friends)
 # IF COMMON FRIEND IS LESS THAN 1 THAN it is not a 1 degree of Separation , skip ahead
 if len(commonfriend) >= 1:
-    #list of movies of common friend
-    commonmovie= (listoffilms(commonfriend))
-    #list of the movies the actor1 is in
-    movielist1= (union(commonmovie,actor1titles))
-    #list of the movies the actor2 is in 
-    movielist2=(union(commonmovie,actor2titles))
-    #For each actor that is common print the list of the movies 
-    for friends in commonfriend:
+    #print(len(commonfriend))
+    for friend in commonfriend:
+        #list of movies of common friend
+        #print(friend)
+        commonmovie= (listofmovies(friend))
+        #print(commonmovie)
+        #list of the movies the actor1 is in
+        movielist1= (union(commonmovie,actor1titles))
+        #list of the movies the actor2 is in 
+        movielist2=(union(commonmovie,actor2titles))
+        #For each actor that is common print the list of the movies 
         #go to the list of movies from actor 1
         for movie1 in movielist1:
             #go to the list of movies from actor 2
             for movie2 in movielist2:
                 #print results
-                printresult(1,friends,"","", movie1, movie2)
+                #print(friend)
+                printresult(1,friend,"","", movie1, movie2)
                     
 #if zero we will go to level 2 of union for each friend from actor1 we must find a common movie with actor2
 else:   

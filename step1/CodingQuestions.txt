@@ -76,4 +76,4 @@ I would create a VM for each machine , and use scripts in python to distibute th
 
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
 	
-It could run the same script if the result is different then run again. My current sript does not do that.
+It could run the same script if the result is different then run again. My current sript does not do that. It is very basic.
