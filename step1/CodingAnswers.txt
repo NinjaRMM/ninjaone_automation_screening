@@ -1,0 +1,103 @@
+
+General Questions:
+
+1.  A strong IDE can make development significantly easier.  I personally prefer the JetBrains
+products.  CLion, and Idea are the 2 I use most often.  I will occasionally use VSCode when doing
+work in things other than Java or C++.
+
+Having test environments is also a big plus.
+Having the ability to run containers locally is huge.  I'll use docker-desktop if I'm on a Mac to
+simulate platform environments.  Most of my experience is with Linux for development, so if possible
+I'll generally prefer that, or if I'm in windows I'll use WSL with a linux distro for development.
+
+
+2.  Code maintenance is mostly "clean as you go" in my opinion.  If you see something, either fix it,
+or write it up to be fixed if it's a non-trivial fix.  Document and fix documentation that you see
+is missing or out of date.
+
+Maintenance can also be an issue for software security, especially if you're using open source software.
+If you're using OSS, I would generally recommend that you use some sort of security scanning product
+to ensure that your dependencies are up-to-date and that you're not deploying potentially insecure
+products.  One product that I've liked was `snyk`.  You can set up a scan plan and have it report
+on your dependencies, even for deployed products that are in a maintenance mode with no active
+development.  That way, if there's a new vulnerability discovered in a piece of your software, you'll
+be notified and can take appropriate actions.
+
+3.  I would consider myself pretty familiar with automation, it was my primary responsibility at my current
+position.  I've used Jenkins, GitLab, and GitHub automated pipelines and am familiar with other automated
+systems such as TravisCI and Octopus Deploy.
+
+Most of our tests ran within the automated pipelines in the forms of unit tests or regression tests.  The
+pipelines would trigger builds and test executions as part of the build process and would fail the merge
+requests or the product release if the tests were not successful.  We would also create integration style
+tests that deployed our software to a development AWS cluster and ensure all the API endpoints behaved
+in ways that we intended.  These tests were used as quality gates to subsequent clusters and to production.
+
+Scalability mostly comes in the form of software architecture and design.  You must plan for scalability
+from the beginning in how you architect your application.  Modern microservice design is helpful in
+achieving scalability though stateless application design and following other 12-Factor design ideas.
+I've used reverse proxies in order to route requests to multiple downstream consumers for scalability,
+I've also handled scalability through techniques such as JMS queues with multiple consumers.
+
+4.  CUnit, CppUnit, JUnit (4 & 5) are my primary unit testing frameworks.  I've also used a framework
+called `Citrus` (https://citrusframework.org/) for integration style tests.
+
+5.  For front end development, I've primarily used VueJS.  For backend development I've primarily used
+Spring Boot.
+
+6.  I've used tools such as JVisualVM, JConsole for debug testing, and I've used more "production" style
+tools such as prometheus and grafana for application monitoring.
+
+7.  One of my favorite projects I worked on was an application that the customer wanted us to be able
+to ingest and reroute up to 200 audio streams to a downstream consumer.  I was able to write, test,
+and deliver the product and exceed the expected results to the point that the downstream consumers
+could not handle the volume of data that my application could potentially produce.  The customer was
+very pleased with the result.
+
+Technical Questions
+
+1.  It's mostly a question of horizontal verses vertical scaling and the requirements of the product.
+In situations that you need to scale to some unknown amount of volume, I would generally recommend using
+multiple processes instead of a single process utilizing multiple threads.
+
+Additionally, I generally prefer to not use multiple threads if I can keep from it.  I find that
+concurrency issues tend to be some of the most difficult to identify and solve, which is why I prefer
+design patterns such as the reactor pattern that attempts to solve message driven processes using a
+single thread (generally).
+
+That said, I find Java's asynchronous packages to be not robust as some of their other offerings, so
+when I'm dealing with java, I am generally expecting to be working in a multithreaded environment of
+some sort.
+
+2.
+- Unit tests should be limited to a specific class and test the functionality of that class.
+- Functional Tests are testing the behavior of multiple classes when combined to provide some
+sort of functionality.
+- Integration tests should be written to test the system when it starts to interact with components
+outside itself.
+
+2i.  I find that all 3 have a place.  I feel that generally Integration tests provide the most value
+since they generally can be defined at the interface between components which should be strongly
+controlled and not changing often.  While I like unit tests and think everyone should be writing them,
+the software could be changing frequently and could result in unit tests being inadequate to actually
+determine if the software is going to work.  Functional tests are a nice "in-between" that are particularly
+useful when writing strong integration tests is unreasonable due to factors such as difficulty in setting
+up a testing environment.
+
+3. Object-oriented design is nice because the solutions tend to look like the real world problems they
+are trying to solve.  You have objects that can represent different players or actions, and you
+construct your software in a way that makes sense from how you might think about the real world equivalents.
+However, this is also the bad part of object-oriented design.  As the real world problem becomes more
+complex, so does the software that's built to service it, this can make the software difficult to extend
+or maintain if not well designed.
+
+Functional programming is nice because it focuses on functions and immutable data.  It also avoids some
+of the complexities of object-oriented software by avoiding issues such as execution order by being
+declarative instead of imperative.  Its downside is that because it always returns the same values
+for the same inputs, it can be less useful depending on the intent behind the inputs.
+
+4.  Most of the security issues I've had to deal with is how you expose data to the outside world.
+For example, you don't want to have your database exposed to external agents or networks.  As such,
+they should behind a proxy application and users should interact with the application instead of the
+database directly.  This helps reduce the potentially attack footprint to the proxy or the application
+the proxy routes to.

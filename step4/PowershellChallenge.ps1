@@ -24,7 +24,7 @@ if ($output -eq 'True') {
 $isNinjaWPMDownloaded = "Test-Path 'c:\NinjaInstaller\NinjaWPM.exe'"
 $Result = Invoke-VMScript -VM $vm -ScriptText $isNinjaWPMDownloaded -GuestUser Ninja -GuestPassword helloworld
 $ExitCode = $Result.ExitCode
-if($Result.ExitCode -ne "0") 
+if($Result.ExitCode -ne "0")
 {
     Write-Host $vm Critical error on Test-Path: $ExitCode -ForegroundColor Red
     exit 1
