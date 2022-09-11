@@ -1,0 +1,11 @@
+FYI, I have never done windows development, so I'm not familiar with powershell.
+
+That said, my best bets are:
+
+1.  It looks like it's trying to run a script on the guest operating system named "WPM" from the host machine.
+It's checking to see if the scripts exist and reporting errors to the host machine when they don't.
+
+2.  It looks like it assumes that you have access to actually run the commands that can execute on the
+  guest machines.
+
+3.  The WOW6432Node indicates that you're running on a 64-bit version of windows.
