@@ -1,33 +1,54 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+Visual Code, PyCharm, Git, TDD, TeamCity/Jenkins, Unit, Performance and Acceptance Test, Static analysis, Postman, Jira, Confluence, Agile, Code Review
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+TeamCity/Jenkins, Unit, Performance, Acceptance and Regression Tests, Static analysis, 
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
 a. How did you deploy and execute your test suites? 
+Using the CI tool like TeamCity o Jenkins
 b. How did you target different devices? 
+Filtering the agent name and/or some other req like OS name in the Jeb setting
 c. How did you handle scalability? 
+Adding more agents
 d. How did you report test results?
+Using the same CI tool report and sending email when the build is failing
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+I developed one from scratch using C++ and Qt. Also, another with Python (unittest + Behave)
 
-5. What testing frameworks are you familiar with for browser applications? 
+5. What testing frameworks are you familiar with for browser applications?
+None
 
-6. What tools are you familiar with for Performance, Load and Stress testing? 
+6. What tools are you familiar with for Performance, Load and Stress testing?
+Coverity
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+My two last projects were interesting McAfee EDR and VivoQuant
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+Multithreading: when the threads need to share data
+Multiprocessing: Don't need share data. It's possible, but more complicated to coordinate and slow.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
+Unit Tests are made for developers to test at function or class level.
+Functional Tests are to test the functional requirements like a black box.
+Integration Tests are to test how the differents modules of a product interact between them
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+	i. Do you have a preference and why?
+	Unit Tests to detect issues quickly (is cheap in time so could be executed in every Pull Request)
+	Functional Tests to detect wroken features in a late fase (they are slow)
+
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
+OOP to develop more complex systems where the state of the data is important and Functional where for a stateless system.
+Functional is better processing large data.
 
 4. What security concerns have you come across in the past and how have you addressed them?
+Build Servers password sharing between the team, I recommend to use a Password Manager.
 
 Small Programming Challenges
 
@@ -35,7 +56,13 @@ Small Programming Challenges
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
-b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+b. How would you consider validating the above program returns all installed patches on the system from an automation perspective?
+Using an external tool like PowerShell.
+	i. What automation framework(s) you would consider utiltizing?
+	I always use my own automation framework. But, I know there is a very good options like Selenium
+
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+Using a CI tool like TeamCity or Jenkins
+
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+	If I use PowerShell to get a list of updates to compare so both are get the latest.
