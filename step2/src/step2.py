@@ -11,18 +11,10 @@ MOVIES_FILE_PATH = pathlib.Path(DATA_FOLDER, MOVIES_FILENAME)
 MOVIES = []
 
 parser = argparse.ArgumentParser(description='Create a new file containing the movies from a given decade')
-parser.add_argument('decade', metavar='d', type=str,
-                    help='a decade to create the new movie json file')
-
-args = parser.parse_args()
-print(args.decade)
-
-'''
-Mauro Note: I assume we only want ONE decade for file,
-for example if decade is 10 could be 1910 or 2010 so user need to pass the complete number.
-For this reason I decided to use the output filename as "1910s-movies.json" instead of "10s-movies.json"
-'''
-
+parser.add_argument('-d', '--decade', type=str, required=True,
+                    help='a decade to create the new movie json file. Example: "80" or "1910"')
+parser.add_argument('-o', '--output', type=str,
+                    help='the new movie json filename', )
 
 def load_all_movies():
     global MOVIES
@@ -60,13 +52,24 @@ def get_movies_by_year(decade: int):
 
 
 def create_movies_by_decade(movies: list, decade: int):
-    movies_decade_file = pathlib.Path(DATA_FOLDER, str(decade) + MOVIES_FILENAME_DECADE_SUFFIX)
+    out_filename = str(decade) + MOVIES_FILENAME_DECADE_SUFFIX
+    if args.output is not None:
+        out_filename = args.output
+
+    movies_decade_file = pathlib.Path(DATA_FOLDER, out_filename)
+
     json.dump(movies, movies_decade_file.open("w", encoding="UTF-8"))
+
+    if movies_decade_file.exists():
+        print(f"File '{movies_decade_file.resolve()}' created successfully")
+    else:
+        print(f"Error creating file {out_filename}", file=sys.stderr)
 
 
 if __name__ == "__main__":
+    args = parser.parse_args()
+
     if load_all_movies():
         decade_selected = parse_decade(args.decade)
         if decade_selected:
             create_movies_by_decade(get_movies_by_year(decade_selected), decade_selected)
-
