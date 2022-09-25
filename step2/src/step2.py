@@ -16,6 +16,7 @@ parser.add_argument('-d', '--decade', type=str, required=True,
 parser.add_argument('-o', '--output', type=str,
                     help='the new movie json filename', )
 
+
 def load_all_movies():
     global MOVIES
     if MOVIES_FILE_PATH.exists():

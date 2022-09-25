@@ -1,6 +1,6 @@
 ## Usage
 ```
-usage: step2.py [-h] -d DECADE [-o OUTPUT]
+usage: python step2.py [-h] -d DECADE [-o OUTPUT]
 
 Create a new file containing the movies from a given decade
 
@@ -13,14 +13,14 @@ optional arguments:
                         the new movie json filename
 ```
 ## Examples
-    step2.py -d 80
+    python step2.py -d 80
 
 Create a file named "1980s-movies.json" in the data folder containning only movies from 1980 to 1989
 
-    step2.py -d 1910
+    python step2.py -d 1910
 Create a file named "1980s-movies.json" in the data folder containning only movies from 1910 to 1919
 
-    step2.py -d 2010 -o my_file.json
+    python step2.py -d 2010 -o my_file.json
 Create a file named "my_file.json" in the data folder containning only movies from 2010 to 2019
 
 > Note:
