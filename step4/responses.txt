@@ -1,0 +1,18 @@
+Please review the below code and answer the following questions to the best of your ability:
+
+1.) What is this code doing?
+
+First, it is opening a Virtual machine and checking if NinjaWPM is installed on it,
+as it is checking if the registry exists, returning Success (True) if so and Failure otherwise (False 0).
+Second, as the previous statement is Success, it later checks in the same VM if there is a Windows installer executable
+for NinjaWPM on the path provided.
+If both registry and the .exe exist, the script ends without errors.
+
+2.) What does the program assume you need to have access to in order to execute?
+
+It assumes the user should have read access to the folder containing the virtual machine.
+VMware Tools should be installed. Credentials to authenticate with the host.
+
+3.) What architectures can this script run on?
+
+It can be run on Win-64 bits architecture, as the path 'WOW6432Node' means Ninja is 32bit app on 64-bit Windows.

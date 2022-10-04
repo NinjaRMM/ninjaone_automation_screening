@@ -1,41 +1,92 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+    I firstly would say any IDE.
+    There are some good ones that checks for code syntax, patterns like (PEP8) and even have auto-complete.
+    Besides that we can also install some extensions to help during development and testing.
+    Second, debugging tools. We can use them to find issues and even to check code statements during development.
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+   Debugging again, as it is very important when we need to understand state of variables and a code we did not write.
+   On the code side, I would resume it to design patterns, coding principals(SOLID, PEP8, KISS), unit testing (To avoid breaking code after maintaining it)...
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
+a. How did you deploy and execute your test suites?
+    We can use a versioning tool and a repository connected to a CA/CD pipeline.
+    Tests are isolated in a Docker container, and we simply need to pull the updated tests to run them when we have code changes on our app.
+b. How did you target different devices?
+    For configurations, we use env variables/parameters to add them for different envs or devices.
+    For different browsers we use different commands on the container to run for the ones we need.
+    For different OS, we can create containers to test each OS.
+    For mobile devices, we can use frameworks like Apium to test on all devices using simulators, and also device farms.
+c. How did you handle scalability?
+    The more volume, the complex and the more dependencies we have, time spent on running test automation tends to increase.
+    We can use parallelization, to run different tests on the same time.
+    Some test frameworks already come with test in cloud, what would be ideal as it is elastic on resources like CPU and RAM.
 d. How did you report test results?
+    There are some reporting tools that show an overview of the execution, where we can record screenshots, videos and logs.
+    We can also use some APIs to show the results on Slack, Jira...
 
-4. What testing frameworks are you familiar with for system level/desktop applications? 
-
+4. What testing frameworks are you familiar with for system level/desktop applications?
+    PyTest for System level, as we can use the OS and SYS lib to validate on any Operational System.
+    Never worked with desktop apps before, but I know we can use Robot Framework to validate them.
 5. What testing frameworks are you familiar with for browser applications? 
-
-6. What tools are you familiar with for Performance, Load and Stress testing? 
+    I am familiar with Selenium Webdriver, Protractor and Cypress.
+6. What tools are you familiar with for Performance, Load and Stress testing?
+    Google lighthouse to check performance of a webpage.
+    A bit with BlazeMeter/JMeter to test load and stress.
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+   Interesting projects for me are the ones we learn the most.
+   So, there was this project that did not have any testing process or any automated testing.
+   It was interesting to create testing patterns for newcomers, for developers and also on the automation.
+   I did some research on testing frameworks and after some POCs we defined the one to use,
+   we created a testing pipeline with Docker and started growing the project and the quality vision.
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
+   Multithreading when doing I/O operations data.
+   Multiprocessing while working with data science computations.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
+    Unit is to test the individual modules isolated, like testing function returns or object states.
+    Integration is to test if combined modules are working correctly wile communicating with each other.
+    Functional is to validate if the entire system functionalities are working as expected from behavior and business side.
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+	i. Do you have a preference and why? 
+        It is better to focus on having a good unit test coverage as they are easy to write,
+        and we can catch bugs very early in the process.
+        However, I prefer E2E test cases, even thought they are complex and expensive to have,
+        they can avoid complex bugs to happen, as we are validating important user/business flows.
+
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
+    OOP is good when we have complex and constant evolving programs, it can isolate behaviours, reuse code, apply design patters and creating some contracts that need to be followed.
+    On the other side, it takes more time to learn, occupies more space (was a bigger problem in the past), more execution time.
+    Functional programming is good when we have smaller tasks that only operations evolve, it is faster to implement, easier to test and execution takes less time.
+    On the other side, creating bigger, safe and easy to maintain applications only with FP is hard.
 
 4. What security concerns have you come across in the past and how have you addressed them?
+    Used OAuth2 with tokens to authenticate our users and also 2nd-factor authentication.
+    From coding perspective we used sonarQube to check coding vulnerabilities, sensitive data exposure, injection, misconfiguration...
+    Not least, we used to monitor our application servers, DBs and logs to check any suspicious behaviors.
 
 Small Programming Challenges
 
 1. Using a known programming language write a small program to: 
-a. Query the OS for the OS Patches that are currently installed on the system. 
+a. Query the OS for the OS Patches that are currently installed on the system.
+        Check src folder.
+
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
-b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+b. How would you consider validating the above program returns all installed patches on the system from an automation perspective?
+    I would have some static containers with fixed OSs and patches (Updates would be off), so I could do some static validations.
+
+	i. What automation framework(s) you would consider utiltizing?
+	    PyTest, as we can run the same code on all OS that have python installed.
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+    I would set up a container for MAC, another for Linux dists and another for Windows just to do some static checks.have some static containers with fixed OSs and patches, so I could do some static validations, as I explained before on item (b).
+    To validate if the update was applied I would get a fixed container always with the same previous updates, then I would do the updates, validate right away or after a reboot, then I would reset the image to repeat the process.
+
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+	    That would not be a problem on the way I was explaining before. We would use containers with fixed OSs and versions, so we could reboot, validate and reset the updates, using the fixed images.
