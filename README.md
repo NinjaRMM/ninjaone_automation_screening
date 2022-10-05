@@ -21,7 +21,7 @@ Example commandline application execution: ./my_movie_parser.sh -decade 80 --out
 Feel free to do the parameters as you see fit, the above is just an example.
 
 ## Step 3
-Read the `step-three-six-degrees.feature` file in the `step3/` directory. Here we would like you to implement a [Six Degrees of Kevin Bacon](https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon#:~:text=Six%20Degrees%20of%20Kevin%20Bacon%20or%20Bacon's%20Law%20is%20a,ultimately%20leads%20to%20prolific%20American) implementation from requirements in the feature file. The application can be written in any programming language, but we implore you to write it in a language you are most comfortable with so you can show off your skillsets. A commandline application and/or script is expected.
+Read the `step-three-six-degrees.feature` file in the `step3/` directory. Here we would like you to implement a [Six Degrees of Kevin Bacon](https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon#:~:text=Six%20Degrees%20of%20Kevin%20Bacon%20or%20Bacon's%20Law%20is%20a,ultimately%20leads%20to%20prolific%20American) implementation from requirements in the feature file. The application must be written in C#, C++, Java or Kotlin; we recommend you to write it in the language you are most comfortable with of our the four options so you can show off your skillsets. A commandline application is expected.
 
 Example execution set:
 
