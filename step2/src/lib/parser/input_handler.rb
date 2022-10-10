@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 require 'optparse'
-require 'pry'
 
 # Handles the CLI input
 class InputHandler
@@ -8,13 +9,10 @@ class InputHandler
     args = {}
     opt_parser = OptionParser.new do |opts|
       opts.banner = 'Usage:'
-      opts.on('-d','--decade DECADE', 'Target Movie Decade', String) do |decade|
-
-        puts decade
+      opts.on('-d', '--decade DECADE', 'Target Movie Decade', String) do |decade|
         args[:decade] = decade.to_i
       end
       opts.on('--output OUTPUT', 'The name of the output file to be created in the Data Folder', String) do |output_file_name|
-        puts output_file_name
         args[:output_file_name] = output_file_name
       end
       opts.on('-h', '--help', 'Prints the Helper') do
