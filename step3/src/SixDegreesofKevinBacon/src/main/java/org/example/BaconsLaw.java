@@ -14,11 +14,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+// It does not cover when there are no connection between the stars.
+// It does not cover when same stars are given as parameter
+// It does not cover when more than 2 stars are given as parameter.
+
+
 public class BaconsLaw {
     @Parameter(names = {"--star", "-s"}, description = "Movie Stars to be evaluated")
     List<String> stars_input = new ArrayList<>();
 
-    private static String inputFilePath = "C:\\Users\\lazar\\Projects\\ninjaone_automation_screening\\data\\test.json";
     List<Movie> movies;
     HashMap<String, Node> baconGraphNodes;
     Graph baconGraph;
@@ -154,6 +158,7 @@ public class BaconsLaw {
 
     private List<Movie> readMovies() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
+        String inputFilePath = "C:\\Users\\lazar\\Projects\\ninjaone_automation_screening\\data\\test.json";
         JSONArray parsedMoviesArray = (JSONArray) parser.parse(new FileReader(inputFilePath));
 
         List<Movie> movies = new ArrayList<>();
