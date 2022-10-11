@@ -84,7 +84,7 @@ public class BaconsLaw {
                 + shortestPath.get(0).getName() + " and " + targetStarName);
 
         Node actorA;
-        Node actorB = null;
+        Node actorB = shortestPath.get(0);
 
         for (int i = 0; i < shortestPath.size() - 1; i++) {
 
