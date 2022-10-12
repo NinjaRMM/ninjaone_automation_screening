@@ -13,9 +13,14 @@ Useful links:
 
 ## Usage
 
-Navigate to the folder which contains the step1.py file, then run:
+Navigate to the folder which contains the step1_history_i.py file, then run:
 ```bash
-python step1.py
+python step1_history_i.py
+```
+
+Navigate to the folder which contains the step1_enabled_iii.py file, then run:
+```bash
+python step1_enabled_iii.py
 ```
 
 ## Questions

@@ -8,13 +8,7 @@ def isWindowsUpdateEnable():
     else:
         print("Windows Update is not Running.")
 
-def getWindowsUpdateHistory():
-    print('Getting the Windows Update History:\n')
-    result = subprocess.check_output(['wmic', 'qfe', 'list']).decode('utf-8')
-    print(result)
-
 def main():
-    getWindowsUpdateHistory()
     isWindowsUpdateEnable()
 
 if __name__ == '__main__':
