@@ -55,7 +55,6 @@ maintenance and deployment completely overpays it (when the process/infrastructu
 - I'm familiar with Mobile testing: Appium and Rspec.
 - I'm familiar with API testing: HTTParty and Rspec.
 
-
 5. What testing frameworks are you familiar with for browser applications? 
 
 - Selenium with Java JBehave & JUnit, Python with Behave.
@@ -110,17 +109,48 @@ modification its behavior along with modules B and C needs to be validated.
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
 
+I would not say pros and cons, because both paradigms can be optimal solutions depending on the target application requirements.
+
+OOP encapsulates better the 'business' of the code. As you have Classes defining the Objects' scope and behavior. It usually leads the
+developer to structure better their ideas before starting programming, and this may result in more solid solutions. It is also frequently easy
+to read and then maintain.
+
+On the other hand, funcional programing relais on stateless funcioning. The functions should ideally not modify anything but their local 
+variables. It is usually a more natural way of coding. Still, is a recent paradigm, and there is not so much documentation available as
+OOP.
+
 4. What security concerns have you come across in the past and how have you addressed them?
+
+- Some of the tools I´ve worked with for test automation created vulnerabilities in the application. Then I should make sure the code of the 
+tool would never go to production, it only would be available in the staging environment. I did that by using conditional compiling directives.
+This way, the pipeline compiled the application differently according to the target env.
 
 Small Programming Challenges
 
 1. Using a known programming language write a small program to: 
+
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
 	i. What automation framework(s) you would consider utiltizing? 
+
+	I'm not a specialist in OS Updates verification but from a quality specialist perspective, I would validate the installation from different,
+levels. For example, using the Microsoft Native API, looking on the Registry, or even directly at the directory. The main point defining a reliable 
+way of validation that covers all the application requirements.
+	I'm not prone to any specific frameworks. I would look for a framework based on BDD/Gherkin methodology, that covers the project needs,
+and have good documentation available in the market. Being open/source is also a desired feature. 
+
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing
 the test case(s) across multiple Windows, Linux and Mac devices?
+
+- For this propose, a CI/CD application can be used, as for example Jenkins. It would enable having a pool of machines, covering the different OS,
+and automatically run the tests according to the target OS. This infrastructure can be inhouse or on cloud, depending on the project requirements.
+
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what
 	alternatives do you see available?
+
+	- Test Automation must run over controlled environment. So, some solutions can be adopted depending on the capabilities of the system under test.
+	For Windows, for example, it is possible to block specific updates. Then it is possible to allow only the ones under test. 
+	Some other general approaches are: Block specific updates by intercepting the network traffic. Create a custom server/stack (with the test 
+	restrictions), and point the application to this test stack. 
