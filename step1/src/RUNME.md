@@ -1,6 +1,6 @@
 # Step 1
 
-Implements an Python application to list the Windows Update History and to Check if the Windows Update is enabled.
+Implements a Python application to list the Windows Update History and to Check if the Windows Update is enabled.
 
 ## Requirements
 
