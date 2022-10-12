@@ -2,11 +2,11 @@
 
 Implements an Python application to list the Windows Update History and to Check if the Windows Update is enabled.
 
-## Installation
+## Requirements
 
-Install Python 3.1. 
+- Python 3.1 
 
-I recommend install it from Windows Store. It is an one click installation :]
+I recommend install it from Windows Store. It is a one click installation :]
 
 Useful links:
 - [Windows Store Python 3.10](https://www.microsoft.com/store/productId/9PJPW5LDXLZ5)

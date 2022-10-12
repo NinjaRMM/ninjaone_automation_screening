@@ -2,9 +2,9 @@
 
 Implements a parser in Ruby for the [dataset](../../data/movies.json), according to the [provided specification](../step-two-filter-movies.feature).
 
-## Installation
+## Requirements
 
-Install Ruby 2.6. 
+- Ruby 2.6 
 
 For Windows I recommend using the RubyInstaller Tool.
 
