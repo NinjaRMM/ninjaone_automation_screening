@@ -18,14 +18,18 @@ import java.util.*;
 // It does not cover when same stars are given as parameter
 // It does not cover when more than 2 stars are given as parameter.
 
+// It was really fun to find the Easter egg :]
 
 public class BaconsLaw {
-    @Parameter(names = {"--star", "-s"}, description = "Movie Stars to be evaluated")
-    List<String> stars_input = new ArrayList<>();
 
-    List<Movie> movies;
-    HashMap<String, Node> baconGraphNodes;
-    Graph baconGraph;
+    @Parameter(names = {"--star", "-s"}, description = "Movie Stars to be evaluated", required = true)
+    List<String> stars_input = new ArrayList<>();
+    @Parameter(names = {"--path", "-p"}, description = "Path to the source JSON file", required = true)
+    String jsonPath;
+
+    private List<Movie> movies = new ArrayList<>();
+    private Map<String, Node> baconGraphNodes = new HashMap<>();
+    private Graph baconGraph = new Graph();
 
     public static void main(String ... argv) throws IOException, ParseException {
 
@@ -34,13 +38,11 @@ public class BaconsLaw {
                 .addObject(baconsLaw)
                 .build()
                 .parse(argv);
-        baconsLaw.processInput();
-    }
 
-    public BaconsLaw() throws IOException, ParseException {
-        this.movies = readMovies();
-        this.baconGraphNodes = buildNodes(movies);
-        this.baconGraph = buildGraph(baconGraphNodes);
+        baconsLaw.readMovies();
+        baconsLaw.buildNodes();
+        baconsLaw.buildGraph();
+        baconsLaw.processInput();
     }
 
     private void processInput(){
@@ -104,20 +106,13 @@ public class BaconsLaw {
 
     }
 
-    private Graph buildGraph(HashMap<String, Node> nodes) {
-
-        Graph graph = new Graph();
-
-        for (Node node : nodes.values()){
-            graph.addNode(node);
+    private void buildGraph() {
+        for (Node node : baconGraphNodes.values()){
+            baconGraph.addNode(node);
         }
-
-        return graph;
     }
 
-    private HashMap<String, Node> buildNodes(List<Movie> movies) {
-
-        HashMap<String, Node> nodes = new HashMap<>();
+    private void buildNodes() {
 
         List<Pair<String,String>> actorsCombination;
         String actorA;
@@ -131,21 +126,19 @@ public class BaconsLaw {
                 actorA = actorPair.getValue0();
                 actorB = actorPair.getValue1();
 
-                nodes.putIfAbsent(actorA, new Node(actorA));
-                nodes.putIfAbsent(actorB, new Node(actorB));
+                baconGraphNodes.putIfAbsent(actorA, new Node(actorA));
+                baconGraphNodes.putIfAbsent(actorB, new Node(actorB));
 
-                nodes.get(actorA).addDestination(nodes.get(actorB), 1, movie.title);
-                nodes.get(actorB).addDestination(nodes.get(actorA), 1, movie.title);
+                baconGraphNodes.get(actorA).addDestination(baconGraphNodes.get(actorB), 1, movie.title);
+                baconGraphNodes.get(actorB).addDestination(baconGraphNodes.get(actorA), 1, movie.title);
             }
         }
-
-        return nodes;
     }
 
     private static List<Pair<String, String>> simpleActorsCombination(Movie movie){
         List<Pair<String,String>> combination = new ArrayList<>();
 
-        if (movie.cast.size() > 1){
+        if (movie.cast.size() > 1) {
             for (int i = 0; i < movie.cast.size(); i++) {
                 for (int j = i+1; j < movie.cast.size(); j++){
                     combination.add(new Pair<>(movie.cast.get(i), movie.cast.get(j)));
@@ -156,18 +149,17 @@ public class BaconsLaw {
         return combination;
     }
 
-    private List<Movie> readMovies() throws IOException, ParseException {
-        JSONParser parser = new JSONParser();
-        String inputFilePath = "C:\\Users\\lazar\\Projects\\ninjaone_automation_screening\\data\\test.json";
-        JSONArray parsedMoviesArray = (JSONArray) parser.parse(new FileReader(inputFilePath));
+    private void readMovies() throws IOException, ParseException {
 
-        List<Movie> movies = new ArrayList<>();
+        JSONParser parser = new JSONParser();
+        System.out.println(jsonPath);
+        JSONArray parsedMoviesArray = (JSONArray) parser.parse(new FileReader(jsonPath));
 
         for (Object parsedMovie : parsedMoviesArray)
         {
             JSONObject movieObject = (JSONObject) parsedMovie;
             String title = (String) movieObject.get("title");
-            Integer year = (int)(long) movieObject.get("year");
+            Long year = (Long) movieObject.get("year");
             ArrayList<String> cast = new ArrayList<>();
 
             JSONArray parsedCast = (JSONArray) movieObject.get("cast");
@@ -179,7 +171,5 @@ public class BaconsLaw {
 
             movies.add(new Movie(title,year, cast));
         }
-
-        return movies;
     }
 }

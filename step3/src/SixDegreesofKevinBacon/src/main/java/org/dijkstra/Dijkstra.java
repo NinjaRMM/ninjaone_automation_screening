@@ -41,7 +41,6 @@ public class Dijkstra {
         return null;
     }
 
-
     private static Node getLowestDistanceNode(Set < Node > unsettledNodes) {
         Node lowestDistanceNode = null;
         int lowestDistance = Integer.MAX_VALUE;
