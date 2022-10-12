@@ -1,0 +1,45 @@
+# Step 3
+
+Implements an application that solves the Six Degrees of Kevin Bacon problem in Java, according to the [provided specification](../step-three-six-degrees.feature).
+
+## Requirements
+
+- Java JDK 16
+
+Useful links:
+- [Java JDK Download](https://www.oracle.com/java/technologies/javase/jdk16-archive-downloads.html)
+
+## Usage
+
+The `SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar` file is available at the `ninjaone_automation_screening\step3\src\SixDegreesofKevinBacon\target` [path](../src/SixDegreesofKevinBacon/target).
+
+Navigate to the above path, then run:
+
+
+```bash
+java -jar SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar -s "Tom Cruise" -p "C:\Path\to\json\80s-movies.json"
+```
+
+or, for example: 
+
+```bash
+java -jar SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar -s "Tom Cruise" -s "Sylvester Stallone" -p "C:\Path\to\json\80s-movies.json"
+```
+
+Where: 
+- `-p` or `--path` is the parameter to pass the path to the source json file.
+- `s` or `--star` is the parameter to pass the Movie Stars.
+
+The `80s-movies.json` can be found [here](../../data/80s-movies.json), or generated with the [Step 2 application](../../step2).
+
+## Additional Comments
+- This implementation covers strictly the specified requirements of the Step 3.
+- A set of extra optimizations can be implemented, as well as tests.
+- Example of some uncovered cases:
+  - It does not cover when there are no connection between the stars.
+  - It does not cover when same stars are given as parameter
+  - It does not cover when more than 2 stars are given as parameter.
+- I had a lot of fun implementing this Step! Let's talk about it :]
+
+## Questions
+Feel free to [contact me](mailto:lualjsantos@gmail.com) if you have any questions.
