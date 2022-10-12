@@ -24,17 +24,30 @@ General Questions
 - Automated Testing
 - CI/CD
 
-3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
+3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel
+free to be as detailed as you please. 
+
 a. How did you deploy and execute your test suites? 
 b. How did you target different devices? 
 c. How did you handle scalability? 
 d. How did you report test results?
 
-I believe the quality/testing culture needs to be spread along the development process rather than be only emphasized after the core development. Following the BDD methodology, the specifications of the covered scenario need to be built once the PO brings the initiative, and needs to be done along with the development team. This avoids inconsistencies in the process and reworks since all the parts are aligned. Also, CI/CD is the base for a solid and automated process of software development. 
-Using tools such as Jenkins or GitLab CI, the team can deploy and execute the test suites efficiently under different platform requirements. For example, you can manage different machines, devices, and OS versions, and offer them on a friendly interface for easy usage. Also, the tests can be executed at different stages of the development and can cover different areas: Functional, Smoke, Sanity, Regression, and Performance.
-The scalability requirements depend a lot on the product under test. An on-prem solution may be enough, but for highly demanding jobs cloud solutions can be used. They usually are more easily scalable and reliable regarding availability.
-Finally, the reporting process needs to be highly aligned with the target audience. It can be, for example, reports generated through the CI pipeline, and delivered through Slack/Email. Or we can aggregate everything on dashboards. It also depends on the type of data you are trying to give visibility.
-The initial effort to build an automated development/testing pipeline is usually significant, but the time saved with maintenance and deployment completely overpays it (when the process/infrastructure is correctly implemented).
+	I believe the quality/testing culture needs to be spread along the development process rather than be only emphasized
+after the core development. Following the BDD methodology, the specifications of the covered scenario need to be built
+once the PO brings the initiative, and needs to be done along with the development team. This avoids inconsistencies in
+the process and reworks since all the parts are aligned. Also, CI/CD is the base for a solid and automated process of
+software development. 
+	Using tools such as Jenkins or GitLab CI, the team can deploy and execute the test suites efficiently under different
+platform requirements. For example, you can manage different machines, devices, and OS versions, and offer them on a 
+friendly interface for easy usage. Also, the tests can be executed at different stages of the development and can cover
+different areas: Functional, Smoke, Sanity, Regression, and Performance.
+	The scalability requirements depend a lot on the product under test. An on-prem solution may be enough, but for highly
+demanding jobs cloud solutions can be used. They usually are more easily scalable and reliable regarding availability.
+	Finally, the reporting process needs to be highly aligned with the target audience. It can be, for example, reports
+generated through the CI pipeline, and delivered through Slack/Email. Or we can aggregate everything on dashboards. It
+also depends on the type of data you are trying to give visibility.
+	The initial effort to build an automated development/testing pipeline is usually significant, but the time saved with
+maintenance and deployment completely overpays it (when the process/infrastructure is correctly implemented).
 
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
@@ -49,27 +62,51 @@ The initial effort to build an automated development/testing pipeline is usually
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
 
-- Regarding Performance and Load Stress tests I´ve developed/maintained inhouse tools to grab performance data (CPU,Mem, FPS) and also to stress the Ram Memory to test ANR. 
+- Regarding Performance and Load Stress tests I´ve developed/maintained inhouse tools to grab performance data (CPU,Mem,
+FPS) and also to stress the Ram Memory to test ANR. 
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
 
-Running test automation scripts in mobile devices, more specifically on Mobile Unity Games, requires a set of very strict environment capabilities. In this scenario, I had to propose, validate and implement an distributed On-prem Device Farm Service for the company. 
-I worked on the entire E2E development process: 1. Requirements gathering with the stakeholders, 2. Study the best technologies to solve the problem. 3. Prototyping  4. Write the Technical Design Document, with motivation, KPIs, roadmap, and proposed solution. 5. Development/Testing. 6. Writing of End User Documentation. 7. Release. 8. Support and Maintenance. 9. Evaluate Customer's Experience. 
-Talking about the service itself, I´ve implemented OS Monitoring Routines using LaunchD on MacOS along with bash automation scripts to grab the status of the core services. I´ve also developed an application that managed the life cycle of VM Ware Fusion machines through its CLI library. The system now can be easly monitored and can recover itself automatic from energy outage, or USB driver instabilities, for example. 
+	Running test automation scripts in mobile devices, more specifically on Mobile Unity Games, requires a set of very strict
+environment capabilities. In this scenario, I had to propose, validate and implement an distributed On-prem Device Farm Service
+for the company. 
+	I worked on the entire E2E development process: 1. Requirements gathering with the stakeholders, 2. Study the best
+technologies to solve the problem. 3. Prototyping  4. Write the Technical Design Document, with motivation, KPIs, roadmap, and
+proposed solution. 5. Development/Testing. 6. Writing of End User Documentation. 7. Release. 8. Support and Maintenance. 
+9. Evaluate Customer's Experience. 
+	Talking about the service itself, I´ve implemented OS Monitoring Routines using LaunchD on MacOS along with bash automation
+scripts to grab the status of the core services. I´ve also developed an application that managed the life cycle of VM Ware Fusion
+machines through its CLI library. The system now can be easly monitored and can recover itself automatic from energy outage, or
+USB driver instabilities, for example. 
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing?
 
-It significantly depends on the requirements of your application. Multithreading is usually easy to set up, it is easier regarding data sharing, and may be more performative if implemented correctly. On the other hand, the threads are all associated with one process, then, if one of the threads collapses, it may make your entire application collapse too. Moving to multiprocessing, the implementation is harder, as well as data sharing. They also demand more resources from the machine. Still, this architecture decision makes your application more reliable, since one process won’t necessarily affect other in case of critical failure. 
-An example of those approaches is the Chrome browser. In the first implementations, its tab system was multithreading. Each tab was a thread, and it consumed less memory. Still, when a tab collapsed, all the other tabs were affected. In the more recent versions, the Chrome tab system became multiprocessing. Each tab is a process, and if a tab collapse, it does not affect the others. You can see each tab as an independent process on your task manager. On the other hand, it consumes more RAM memory.
-So, as I mentioned at the beginning, it depends on your system requirements. If reliability/availability is critical, multiprocessing is more indicated. But if the application will run on constrained systems, a multithreading implementation may be more welcome.
+	It significantly depends on the requirements of your application. Multithreading is usually easy to set up, it is easier
+regarding data sharing, and may be more performative if implemented correctly. On the other hand, the threads are all associated
+with one process, then, if one of the threads collapses, it may make your entire application collapse too. Moving to multiprocessing,
+the implementation is harder, as well as data sharing. They also demand more resources from the machine. Still, this architecture
+decision makes your application more reliable, since one process won’t necessarily affect other in case of critical failure. 
+	An example of those approaches is the Chrome browser. In the first implementations, its tab system was multithreading. Each tab
+was a thread, and it consumed less memory. Still, when a tab collapsed, all the other tabs were affected. In the more recent versions,
+the Chrome tab system became multiprocessing. Each tab is a process, and if a tab collapse, it does not affect the others. You can
+see each tab as an independent process on your task manager. On the other hand, it consumes more RAM memory.
+	So, as I mentioned at the beginning, it depends on your system requirements. If reliability/availability is critical,
+multiprocessing is more indicated. But if the application will run on constrained systems, a multithreading implementation may be
+more welcome.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
 	i. Do you have a preference and why? 
 
-Each class of test has its scopes and objectives, so, it is not adequate to talk about preferences, but talk about which phase implements them. 
-The target test coverage should be ideally 100%. The Unit tests test more atomic codes, for example, methods and classes. They are usually the first to be implemented in the development process. The Functional tests' focus is to validate features. Imagine your application has a store and a language setting menu. You may want to validate if it is possible to buy an item or change a language. The objective is to ensure a feature is working as expected. Lastly, the integration tests validate the integration between different parts of your application. Imagine you have a module A that interacts with modules B and C. Once module A suffers any modification its behavior along with modules B and C needs to be validated.
+	Each class of test has its scopes and objectives, so, it is not adequate to talk about preferences, but talk about which phase
+implements them. 
+	The target test coverage should be ideally 100%. The Unit tests test more atomic codes, for example, methods and classes.
+They are usually the first to be implemented in the development process. The Functional tests' focus is to validate features.
+Imagine your application has a store and a language setting menu. You may want to validate if it is possible to buy an item or change
+a language. The objective is to ensure a feature is working as expected. Lastly, the integration tests validate the integration between
+different parts of your application. Imagine you have a module A that interacts with modules B and C. Once module A suffers any
+modification its behavior along with modules B and C needs to be validated.
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
 
@@ -83,5 +120,7 @@ a. Query the OS for the OS Patches that are currently installed on the system.
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
 	i. What automation framework(s) you would consider utiltizing? 
-c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
-	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing
+the test case(s) across multiple Windows, Linux and Mac devices?
+	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what
+	alternatives do you see available?
