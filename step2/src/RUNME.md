@@ -1,6 +1,6 @@
 # Step 2
 
-Implements a parser for the [dataset](../../data/movies.json), according to the [provided specification](../step-two-filter-movies.feature).
+Implements a parser in Ruby for the [dataset](../../data/movies.json), according to the [provided specification](../step-two-filter-movies.feature).
 
 ## Installation
 
