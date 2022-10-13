@@ -17,13 +17,13 @@ Navigate to the above path, then run:
 
 
 ```bash
-java -jar SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar -s "Tom Cruise" -p "C:\Path\to\json\80s-movies.json"
+java -jar SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar -p "C:\Path\to\json\80s-movies.json -s "Tom Cruise""
 ```
 
 or, for example: 
 
 ```bash
-java -jar SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar -s "Tom Cruise" -s "Sylvester Stallone" -p "C:\Path\to\json\80s-movies.json"
+java -jar SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar -p "C:\Path\to\json\80s-movies.json -s "Tom Cruise" -s "Sylvester Stallone""
 ```
 
 Where: 
