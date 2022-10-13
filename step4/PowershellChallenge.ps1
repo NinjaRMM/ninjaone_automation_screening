@@ -58,7 +58,7 @@ if($Result.ExitCode -ne "0")
 $output = ($Result.ScriptOutput).Trim();
 
 # Executed if the output is equal to 'True'
-# Note: The flow is not interrupeted in case of 'False'
+# Note: The flow is not interrupeted in case of something different from 'True'
 if ($output -eq 'True') {
 
     # I´m not sure if this command will execute because $vm is of type VirtualMachine object. But if so, 
@@ -80,7 +80,7 @@ $Result = Invoke-VMScript -VM $vm -ScriptText $isNinjaWPMDownloaded -GuestUser N
 # Gets the Exit Code from the VMScriptResult object (Int).
 $ExitCode = $Result.ExitCode
 
-# Verifies if the exit code is diffenrent from "0".
+# Verifies if the exit code is different from "0".
 # No metter what it the exit code this 'if' will be true because the exit ExitCode is a integer not a string.
 if($Result.ExitCode -ne "0") 
 {
