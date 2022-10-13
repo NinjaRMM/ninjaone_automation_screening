@@ -1,4 +1,4 @@
-package org.example;
+package org.step3;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
@@ -54,14 +54,14 @@ public class BaconsLaw {
                     printBaconPath(stars_input.get(0), baconGraph);
                 }
                 else{
-                    System.out.println(stars_input.get(0) + " did not star in a movie in the data provided.");
+                    printStarStatus(stars_input.get(0));
                 }
                 break;
             case 2:
                 if( !starExist(stars_input.get(0))) {
-                    System.out.println(stars_input.get(0) + " did not star in a movie in the data provided.");
+                    printStarStatus(stars_input.get(0));
                 } else if (!starExist(stars_input.get(1))) {
-                    System.out.println(stars_input.get(1) + " did not star in a movie in the data provided.");
+                    printStarStatus(stars_input.get(1));
                 } else {
                     baconGraph = Dijkstra.calculateShortestPathFromSource(baconGraph, baconGraphNodes.get(stars_input.get(0)));
                     printBaconPath(stars_input.get(1), baconGraph);
@@ -81,6 +81,14 @@ public class BaconsLaw {
         return starExist;
     }
 
+    private void printStarStatus(String starA, String StarB, String movie){
+        System.out.println(starA + " starred with " + StarB + " in " + movie);
+    }
+
+    private void printStarStatus(String starA){
+        System.out.println(starA + " did not star in a movie in the data provided.");
+    }
+
     private void printBaconPath(String targetStarName, Graph baconGraph){
         Node targetStar = Dijkstra.findNodeFromName(baconGraph, targetStarName);
         List<Node> shortestPath = targetStar.getShortestPath();
@@ -96,14 +104,10 @@ public class BaconsLaw {
 
             actorA = shortestPath.get(i);
             actorB = shortestPath.get(i+1);
-
-            System.out.println(actorA.getName() + " starred with " + actorB.getName() + " in "
-                    + actorA.getAdjacentMovies().get(actorB));
+            printStarStatus(actorA.getName(), actorB.getName(), actorA.getAdjacentMovies().get(actorB));
         }
 
-        System.out.println(actorB.getName() + " starred with " + targetStar.getName() + " in "
-                + actorB.getAdjacentMovies().get(targetStar) + ".");
-
+        printStarStatus(actorB.getName(), targetStar.getName(), actorB.getAdjacentMovies().get(targetStar));
     }
 
     private void buildGraph() {

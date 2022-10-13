@@ -48,7 +48,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.example.BaconsLaw</mainClass>
+                            <mainClass>org.step3.BaconsLaw</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
