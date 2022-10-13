@@ -7,11 +7,11 @@
 # The code is not working and I let a command for each line. Please that a look.
 # Still, what this code seems to be supossed to do is the following:
 
-# 1 . The code checks if the Ninja application is installed on a target host. 
+# 1 . The code checks if the Ninja application is installed on a target machine. 
 # 2 . If it is not installed, it trigers a script to download the installer.  
 # 3 . The code than checks if the download was successful.
 # 4 . If it wasn't, it displays an error message.
-# 5 . If it was successful, it installs the application in the host.
+# 5 . If it was successful, it installs the application in the machine.
 # 6 . If the installation was successful it exits with code 0.
 # 7 . If the installation failed, it displays an error message and exits with code 1.
 
@@ -24,15 +24,14 @@
 
 # 64bit Windows.
 
-# Command to get the virtual machines from one or more Hyper-V hosts. 
+# Command to get the virtual machine from one or more Hyper-V hosts. 
 $vm = Get-VM -Name WPM
 
 # Returns True if the path exist, and False otherwise. 
 $IsNinjaInstalled = "Test-Path 'HKLM:\SOFTWARE\WOW6432Node\NinjaRMM LLC\NinjaWPM'" 
 
 # Invokes a script to run in the guest of the target VM. The -ScriptText parameter will receive a boolean
-# value while it should receive a string to the script path or the script itself. Also, the -VM paramater 
-# will receive a String with the name of the VM while it should receive a VirtualMachine object array.
+# value while it should receive a string to the script path or the script itself.
 # Retuns a VMScriptResult object.
 $Result = Invoke-VMScript -VM $vm -ScriptText $IsNinjaInstalled -GuestUser Ninja -GuestPassword helloworld
 
@@ -43,7 +42,8 @@ $ExitCode = $Result.ExitCode
 # No metter what it the exit code this 'if' will be true because the exit ExitCode is a integer not a string.
 if($Result.ExitCode -ne "0") 
 {
-    # This command will display in red the message: "<vm-name> Critical error on Test-Path: <exit-code>"
+    # I´m not sure if this command will execute because $vm is of type VirtualMachine object. But if so, 
+    # this command will display in red something like: "<vm> Critical error on Test-Path: <exit-code>"
     Write-Host $vm Critical error on Test-Path: $ExitCode -ForegroundColor Red
 
     # Exits the scrip with exit code 1.
@@ -61,8 +61,9 @@ $output = ($Result.ScriptOutput).Trim();
 # Note: The flow is not interrupeted in case of 'False'
 if ($output -eq 'True') {
 
-    # This command will display in green the message: 
-    # "<vm-name> NinjaWPM was found to be installed! Returned: <ScriptOutput>"
+    # I´m not sure if this command will execute because $vm is of type VirtualMachine object. But if so, 
+    # this command will display in green something like: 
+    # "<vm> NinjaWPM was found to be installed! Returned: <ScriptOutput>"
     # Note: The content of $Result.ScriptOutput was trimmed and saved to the variable $output in line 37.
     # Why not reuse? The untrimmed content may break the Write-Host command?
     Write-Host $vm NinjaWPM was found to be installed! Returned: $Result.ScriptOutput -ForegroundColor Green
@@ -72,8 +73,7 @@ if ($output -eq 'True') {
 $isNinjaWPMDownloaded = "Test-Path 'c:\NinjaInstaller\NinjaWPM.exe'"
 
 # Invokes a script to run in the guest of the target VM. The -ScriptText parameter will receive a boolean
-# value while it should receive a string to the script path or the script itself. Also, the -VM paramater
-# will receive a String with the name of the VM while it should receive a VirtualMachine object array.
+# value while it should receive a string to the script path or the script itself.
 # Retuns a VMScriptResult object.
 $Result = Invoke-VMScript -VM $vm -ScriptText $isNinjaWPMDownloaded -GuestUser Ninja -GuestPassword helloworld
 
@@ -84,7 +84,8 @@ $ExitCode = $Result.ExitCode
 # No metter what it the exit code this 'if' will be true because the exit ExitCode is a integer not a string.
 if($Result.ExitCode -ne "0") 
 {
-    # This command will display in red the message: "<vm-name> Critical error on Test-Path: <exit-code>"
+    # I´m not sure if this command will execute because $vm is of type VirtualMachine object. But if so, 
+    # this command will display in red something like: "<vm> Critical error on Test-Path: <exit-code>"
     Write-Host $vm Critical error on Test-Path: $ExitCode -ForegroundColor Red
 
      # Exits the scrip with exit code 1.
