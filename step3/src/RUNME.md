@@ -17,18 +17,18 @@ Navigate to the above path, then run:
 
 
 ```bash
-java -jar SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar -s "Tom Cruise" -p "C:\Path\to\json\80s-movies.json"
+java -jar SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar -p "C:\Path\to\json\80s-movies.json -s "Tom Cruise"
 ```
 
 or, for example: 
 
 ```bash
-java -jar SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar -s "Tom Cruise" -s "Sylvester Stallone" -p "C:\Path\to\json\80s-movies.json"
+java -jar SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar -p "C:\Path\to\json\80s-movies.json -s "Tom Cruise" -s "Sylvester Stallone"
 ```
 
 Where: 
 - `-p` or `--path` is the parameter to pass the path to the source json file.
-- `s` or `--star` is the parameter to pass the Movie Stars.
+- `-s` or `--star` is the parameter to pass the Movie Stars.
 
 The `80s-movies.json` can be found [here](../../data/80s-movies.json), or generated with the [Step 2 application](../../step2).
 
@@ -44,7 +44,7 @@ Navigate to the [main project path](./SixDegreesofKevinBacon) (`ninjaone_automat
  mvn clean compile assembly:single
 ```
 
-The above command will compile the Java code and generate the .jar file inside the folder `target`:
+The above command will compile the Java code and generate the .jar file, with all dependences, inside the folder `target`:
 `ninjaone_automation_screening/step3/src/SixDegreesofKevinBacon/target`
 
 ## Additional Comments
@@ -54,7 +54,9 @@ The above command will compile the Java code and generate the .jar file inside t
   - It does not cover when there are no connection between the stars.
   - It does not cover when same stars are given as parameter
   - It does not cover when more than 2 stars are given as parameter.
+ 
 - I had a lot of fun implementing this Step! Let's talk about it :]
+- Nice Easter egg! :]
 
 ## Questions
 Feel free to [contact me](mailto:lualjsantos@gmail.com) if you have any questions.
