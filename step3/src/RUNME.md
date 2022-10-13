@@ -44,7 +44,7 @@ Navigate to the [main project path](./SixDegreesofKevinBacon) (`ninjaone_automat
  mvn clean compile assembly:single
 ```
 
-The above command will compile the Java code and generate the .jar file inside the folder `target`:
+The above command will compile the Java code and generate the .jar file, with all dependences, inside the folder `target`:
 `ninjaone_automation_screening/step3/src/SixDegreesofKevinBacon/target`
 
 ## Additional Comments
@@ -54,7 +54,9 @@ The above command will compile the Java code and generate the .jar file inside t
   - It does not cover when there are no connection between the stars.
   - It does not cover when same stars are given as parameter
   - It does not cover when more than 2 stars are given as parameter.
+ 
 - I had a lot of fun implementing this Step! Let's talk about it :]
+- Nice Easter egg! :]
 
 ## Questions
 Feel free to [contact me](mailto:lualjsantos@gmail.com) if you have any questions.
