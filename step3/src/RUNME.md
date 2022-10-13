@@ -28,7 +28,7 @@ java -jar SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar -s "Tom 
 
 Where: 
 - `-p` or `--path` is the parameter to pass the path to the source json file.
-- `s` or `--star` is the parameter to pass the Movie Stars.
+- `-s` or `--star` is the parameter to pass the Movie Stars.
 
 The `80s-movies.json` can be found [here](../../data/80s-movies.json), or generated with the [Step 2 application](../../step2).
 
