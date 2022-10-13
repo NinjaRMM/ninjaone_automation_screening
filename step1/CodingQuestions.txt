@@ -53,7 +53,7 @@ maintenance and deployment completely overpays it (when the process/infrastructu
 4. What testing frameworks are you familiar with for system level/desktop applications? 
 
 - I'm familiar with Mobile testing: Appium and Rspec.
-- I'm familiar with API testing: HTTParty and Rspec.
+- I'm familiar with API testing: HTTParty and Rspec / Postman.
 
 5. What testing frameworks are you familiar with for browser applications? 
 
@@ -62,7 +62,7 @@ maintenance and deployment completely overpays it (when the process/infrastructu
 6. What tools are you familiar with for Performance, Load and Stress testing? 
 
 - Regarding Performance and Load Stress tests I´ve developed/maintained inhouse tools to grab performance data (CPU,Mem,
-FPS) and also to stress the Ram Memory to test ANR. 
+FPS) and also to stress the Ram Memory to test ANRs occurrencies. 
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
 
@@ -74,9 +74,9 @@ technologies to solve the problem. 3. Prototyping  4. Write the Technical Design
 proposed solution. 5. Development/Testing. 6. Writing of End User Documentation. 7. Release. 8. Support and Maintenance. 
 9. Evaluate Customer's Experience. 
 	Talking about the service itself, I´ve implemented OS Monitoring Routines using LaunchD on MacOS along with bash automation
-scripts to grab the status of the core services. I´ve also developed an application that managed the life cycle of VM Ware Fusion
-machines through its CLI library. The system now can be easly monitored and can recover itself automatic from energy outage, or
-USB driver instabilities, for example. 
+scripts (Bash/Python/Ruby) to grab the status of the core services. I´ve also developed an application that managed the life cycle 
+of VM Ware Fusion machines through its CLI library and local network. The system now can be easly monitored and can recover itself 
+automatic from energy outage, or USB driver instabilities, for example. 
 
 Technical Questions
 
