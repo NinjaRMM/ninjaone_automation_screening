@@ -11,7 +11,7 @@ Useful links:
 
 ## Usage
 
-The `SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar` file is available at the `ninjaone_automation_screening\step3\src\SixDegreesofKevinBacon\target` [path](../src/SixDegreesofKevinBacon/target).
+The `SixDegreesofKevinBacon-1.0-SNAPSHOT-jar-with-dependencies.jar` file is available at the `ninjaone_automation_screening/step3/src/SixDegreesofKevinBacon/target` [path](../src/SixDegreesofKevinBacon/target).
 
 Navigate to the above path, then run:
 
@@ -31,6 +31,21 @@ Where:
 - `s` or `--star` is the parameter to pass the Movie Stars.
 
 The `80s-movies.json` can be found [here](../../data/80s-movies.json), or generated with the [Step 2 application](../../step2).
+
+## Compiling
+
+The .jar file of the implementation was provided to make the application execution easier. Still, if you want to compile the code by yourself, here follows the instructions:
+
+To compile the project you need the `Maven 3.8.6` installed.
+
+Navigate to the [main project path](./SixDegreesofKevinBacon) (`ninjaone_automation_screening/step3/src/SixDegreesofKevinBacon`), and then run:
+
+```bash
+ mvn clean compile assembly:single
+```
+
+The above command will compile the Java code and generate the .jar file inside the folder `target`:
+`ninjaone_automation_screening/step3/src/SixDegreesofKevinBacon/target`
 
 ## Additional Comments
 - This implementation covers strictly the specified requirements of the Step 3.
