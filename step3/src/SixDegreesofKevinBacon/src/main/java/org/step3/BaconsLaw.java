@@ -139,7 +139,7 @@ public class BaconsLaw {
         }
     }
 
-    private static List<Pair<String, String>> simpleActorsCombination(Movie movie){
+    private List<Pair<String, String>> simpleActorsCombination(Movie movie){
         List<Pair<String,String>> combination = new ArrayList<>();
 
         if (movie.cast.size() > 1) {
