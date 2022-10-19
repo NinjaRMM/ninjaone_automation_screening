@@ -2,32 +2,83 @@ General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
 
+R/ For coding, I recommend using IntelliJ, although if it's for web development, Visual Studio is better for it.
+With both tools you can easily install plugins and other tools to help your coding.
+
+To improve or review any technique, pattern, or architecture some books like "Software Engineering" by Ian Sommerville
+and "Software Engineering: A practitioner's Approach" are highly recommended.
+
+When it comes to frameworks or libraries, depending on the architecture or system to implement,
+some of them that I have used and are good are Spring Framework and Spring Boot, Angular (the last releases have a good improvements, the older versions are hard to work),
+and Bootstrap for web apps.
+
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
 
-3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
+a. How did you deploy and execute your test suites?
+b. How did you target different devices?
+c. How did you handle scalability?
 d. How did you report test results?
 
-4. What testing frameworks are you familiar with for system level/desktop applications? 
 
-5. What testing frameworks are you familiar with for browser applications? 
+R/ To analyze the quality of the code and do CI/CD, Sonarqube and Jenkins. Microsoft Azure has others for CI/CD
+that are very user-friendly, which are a good option for beginners.
+To set and environment, no matter the technology, I prefer to use Docker to avoid any direct installation.
+As a repository Git is the most know option, and the best.
+
+3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please.
+R/ I am familiar with automation infrastructure, although I am managing a few of the processes and other teams, like DevOps and architecture.
+I have been most of the time involved in migration projects, where the apps are on-premise with manual deployments, to be on any cloud platform using CI/CD,
+among other improvements for the code and deployment process.
+
+ To deploy and execute the test, currently, I am using Gradle for the unit test, and Sonarqube for quality, for deployments Jenkins.
+To target different devices, in other projects, I used frameworks compatible with most of the different devices, responsive and with API Rest
+to make it independent and scalable.
+To handle the scalability it depends also on the architecture and design patterns implemented, which is why to use Sonarqube for the daily
+code review helps, besides to design and reviewing the technical solution to implement for new features.
+
+To report the test results, for every delivered release I sent a report with all the user stories and the state of the test result,
+depending on how many critical and high bugs were found, it can be rejected or deployed, that is why in every sprint as a team we make sure to
+fix any bug found on the low environments (QA/UAT) and certify that the release was tested according to the deployment process.
+
+
+4. What testing frameworks are you familiar with for system level/desktop applications?
+R/ With Selenium and briefly with Cucumber.
+
+5. What testing frameworks are you familiar with for browser applications?
+R/Selenium.
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
+R/With Apache JMeter, SoapUI NG.
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+R/I worked on a project where I had to implement an integration between the business core made under COBOL and a Java Application.
+It was hard to implement from scratch since there is not much documentation about it, and the idea was also to try to make it easy
+to migrate later on cloud platforms. In that case, it was implemented a library that was compatible with both technologies and
+used a language that was the merging of Java and COBOL; other frameworks such as Spring Boot were implemented.
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
+R/Depending of what is the main goal and what are the resources I have, if I need a simple application with quicker responses, Multithreading is better.
+If I need more complex computing like process big amounts of data, scalability of the code, then Multiprocessing is better.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
+	i. Do you have a preference and why?
+R/ Unit testing is to test individual modules and the code is doing what should be at a very low level, like classes, and components, among others.
+The Integration Tests verify that different modules work together accordingly
+to the requirements, and Functional Tests are more focused on the business requirements, might contain interactions between modules, however,
+the result of the test is more focused on the value or data obtained.
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+Regarding to which one I prefer, I do not have one in specific, all of them are important to make sure that the application is doing what it should.
+
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
+R/ The pros of OOP are that is easy to maintain, and secure, the cost of maintenance is not high, and some cons are that it requires
+ more time to program and you need to have a very clear understanding of how to implement design solutions to use it, besides, OOP is not suitable for all languages.
+While Functional Programming is easy to understand and solves complex problems and the development is faster than OOP.
 
 4. What security concerns have you come across in the past and how have you addressed them?
+R/Some of the most common, like which protocol is used for login, console information, null information on apps, or vulnerabilities found during code analysis, and
+how I approach a solution has been always consulting with an expert in the team or researching the solutions that can suit it better.
 
 Small Programming Challenges
 
@@ -35,7 +86,15 @@ Small Programming Challenges
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+R/The code is in the folder step1/src/com/ninjaone/Main.java
+
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+	i. What automation framework(s) you would consider utiltizing?
+
+R/To validate I will use more option to check the OS and version, since the patches and commands can change, setting a pre-charged information
+and checking with patches are missing, with some job or rule that can analyze with determined time to see any vulnerability.
+
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+R/To manage the infrastructure I would Dynatrace, is highly recommended and the most familiar I am with, and can do monitoring of different types of platforms. Not quite sure which complications can have
+ with this tool, so in that case maybe consulting with another cloud system, independent of the current set of applications can help as an alternative.
