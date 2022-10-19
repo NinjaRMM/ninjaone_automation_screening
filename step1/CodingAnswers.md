@@ -72,10 +72,15 @@ There was a time when our device application was crashing on certain types of tr
 # Small Programming Challenges
 
 1. Using a known programming language write a small program to:
-a. Query the OS for the OS Patches that are currently installed on the system.
-	i. For example, on windows: Windows Update Settings -> View Update History
-	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
-b. How would you consider validating the above program returns all installed patches on the system from an automation perspective?
-	i. What automation framework(s) you would consider utiltizing?
-c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
-	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+ + a. Query the OS for the OS Patches that are currently installed on the system.
+    i. For example, on windows: Windows Update Settings -> View Update History
+    iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+    + Please see added file: ./src/get_updates_history.py
+ + b. How would you consider validating the above program returns all installed patches on the system from an automation perspective?
+    i. What automation framework(s) you would consider utilizing?
+    + pytest
+ + c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+    i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+    + Please see added file: ./src/test_os_updates.py
+    + It checks the **current** update history. If the particular node restarted, and as a result,
+   new packages were added, the test needs to be executed again.
