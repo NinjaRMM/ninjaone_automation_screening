@@ -1,33 +1,72 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+Like to use tools like Git, Postman to validate services, VSCode as text editor, etc. it helps me to maintenance my quality code, also I use to work on Jira in Scrum teams
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+Anything related to static code analysis, such as sonarqube or similar alternatives, and for techniques I always try to see what are the most recommend code standards of the language, framework, library I'm working on
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
+a. How did you deploy and execute your test suites?
+b. How did you target different devices?
+c. How did you handle scalability?
 d. How did you report test results?
+a) In my actual project I use tu run my test suites first locally after that when I start a deploy it runs test suites too
+b) I dont have to target different devices, my actual role just have to create new services as backend developer
+c) I used to work on build.gradle to handle scalability, can save dependencies and versions neccesaries to run the project
+d) Junit creates a HTML report that I can use to validate status of my tests
+
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+I have a litte experience working on Selenium
 
 5. What testing frameworks are you familiar with for browser applications? 
+I have strong knowledge on mockito, it helps me to do all kind of test for my developments
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
+Have knowledge on JMetter, just to do stress testing.
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+Most interesting thing that I found on an enterprise was my first job, in it I remember that we haved a legacy project, I remember that just for
+curiosity try to see the technical debt of this project and I found that it have 3.300 years of technical debt remember that I think this is amazing
+this project was in Java and have a lot of patches
+
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+Well both produce same effect, improve performance in algorithms but have to think that multi is better when have to read I/O streams and 
+multiprocessing is more efficient with CPU's jobs like calulate values.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+Unit test validates small pieces of code or funcitions, they are really helpful, because if one of then fails it easy to find with pieces of code
+have an error, but in other hand it doesn't impact other functionalities, so if it fail by a side effect it hard to know.
+
+Integration test are used to validate aspect likes hardware or databases, it doesn center just on a piece of codes, but validates if
+connection and uses of complex code works fine.
+
+Functional tests this are the most complex tests, it use some escenaries where the application should be work, this kind of test give a complete 
+status for the application
+
+	i. Do you have a preference and why?
+	Think that for a complete test suites should be there a complete balance for Unit test, Integration test and functional tests
+
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
+
+------ OOP ------
+PROS: OOP gives a structured code that is usual easily to read, also that have more control of instances that we are using in each execution if 
+we use an IoD
+CONS: Have a lot of side effects, could produce memories leaks
+
+------ Functional programing --------
+
+PROS: Have a lot of details in things like iterating, produce short codes and use to have intersting tools to fix complex jobs.
+CONS: algorithms use to think for OOP language it produce that in some case it hard to implement on Functional programings
 
 4. What security concerns have you come across in the past and how have you addressed them?
+I use to work on VM and always use enterprise VPN so I've never had a security issue in any job
+
 
 Small Programming Challenges
 
