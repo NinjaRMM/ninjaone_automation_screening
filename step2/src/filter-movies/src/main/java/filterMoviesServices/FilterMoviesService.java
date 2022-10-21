@@ -13,29 +13,35 @@ import java.util.stream.Collectors;
 
 public class FilterMoviesService {
 
+    private static final String INVALID_DECADE = "Invalid decade";
     private FileController fileController = new FileController();
 
+    /**
+     * Filter movies by decade
+     * @param decade to be analyzed
+     * @param isStrictMode if is true accept exact decade times, false accept more flexible times
+     */
     public void filterMovies(int decade, Boolean isStrictMode){
 
         int fixedDecade = validateDecade(decade, isStrictMode);
         Gson gson = new Gson();
 
         if(fixedDecade < 0){
-            System.out.println("Invalid decade");
+            System.out.println(INVALID_DECADE);
             return;
         }
 
         //Using a static path, but this could be parameterized
-        try(JsonReader reader = fileController.openFile("./src/main/resources/movies.json")) {
+        try(JsonReader reader = fileController.openFile("./movies.json")) {
             List<MovieDTO> movies = gson.fromJson(reader, new TypeToken<List<MovieDTO>>(){}.getType());
 
             List<MovieDTO> decadeMovies  = movies.stream().filter(movie -> movie.getYear() >= fixedDecade
                     && movie.getYear() < fixedDecade + 10).collect(Collectors.toList());
 
-            fileController.createDecadeFile(decadeMovies, "./src/main/resources/", fixedDecade);
+            fileController.createDecadeFile(decadeMovies, "./", fixedDecade);
 
         }catch (FileNotFoundException e){
-            System.out.println("Cant not fine movies file, should be in resources folder");
+            System.out.println("Cant not find movies file, should be in same folder");
         }catch (IOException e){
             System.out.println("Error reading or writing file");
         }
@@ -43,6 +49,12 @@ public class FilterMoviesService {
 
     }
 
+    /**
+     * Validate if decade input is correct
+     * @param decade to be analyzed
+     * @param isStrictMode if is true accept exact decade times, false accept more flexible times
+     * @return decade in 4 digits
+     */
     private int validateDecade(int decade, Boolean isStrictMode){
         int resultDecade = -1;
 
@@ -58,6 +70,12 @@ public class FilterMoviesService {
 
     }
 
+    /**
+     * Validate if strict mode is on, if is true accept exact decade times, false accept more flexible times
+     * @param decade to be analyzed
+     * @param isStrictMode
+     * @return
+     */
     private int validateStrictMode(int decade, Boolean isStrictMode){
         StringBuilder outputMessage = new StringBuilder();
         if(isStrictMode){

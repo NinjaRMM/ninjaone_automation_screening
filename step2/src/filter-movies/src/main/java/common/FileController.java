@@ -9,6 +9,7 @@ import java.util.List;
 
 public class FileController {
 
+    private static final String OUTPUT_FILENAME = "%ss-movies.json";
     private Gson gson = new Gson();
 
     public JsonReader openFile(String folder) throws FileNotFoundException {
@@ -17,18 +18,17 @@ public class FileController {
 
     public void createDecadeFile(List<MovieDTO> movieDTOList, String outputFolder, int decade) throws IOException {
         String filename = getOutputDecadeFileName(decade);
-        Writer writer = new FileWriter("./src/main/resources/" + filename);
+        Writer writer = new FileWriter(outputFolder + filename);
         gson.toJson(movieDTOList, writer);
         writer.close();
     }
 
     public String getOutputDecadeFileName(int decade){
         StringBuilder filenameOutput = new StringBuilder();
-        filenameOutput.append("output-from-")
-                .append(decade)
-                .append("-to-")
-                .append(decade+9)
-                .append(".json");
+        if(decade < 2000){
+            decade += -1900;
+        }
+        filenameOutput.append(String.format(OUTPUT_FILENAME, decade));
         return filenameOutput.toString();
     }
 
