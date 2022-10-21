@@ -123,7 +123,7 @@ public class MoviesService {
         return moviesDecade;
     }
 
-    public void generateMoviesFile(List<Movies> movies, int decade, String filename) {
+    public void generateMoviesFile(List<Movies> movies, String filename) {
         log.log(Level.INFO, "Writing file ", filename);
         ObjectMapper mapper = new ObjectMapper();
         try {

@@ -38,7 +38,7 @@ public class StepDefinitions {
 
     @Then("a file is created called {string} in the data folder")
     public void thenCreateFile(String filename) {
-        moviesService.generateMoviesFile(moviesService.getFilteredMovies(), moviesService.getDecade(), filename);
+        moviesService.generateMoviesFile(moviesService.getFilteredMovies(), filename);
     }
 
     @And("it contains a JSON array of movies from {string} from the years {int}-{int}")

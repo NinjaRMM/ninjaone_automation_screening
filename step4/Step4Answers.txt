@@ -1,0 +1,10 @@
+#Please review the below code and answer the following questions to the best of your ability:
+
+#1.) What is this code doing?
+R/The code verifies if there is a software installed and downloaded
+
+#2.) What does the program assume you need to have access to in order to execute?
+R/It assumes the application is at least downloaded.
+
+#3.) What architectures can this script run on?
+R/
