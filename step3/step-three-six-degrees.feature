@@ -20,7 +20,7 @@ Then I should see the number of degrees of separation between the two actors
 And I see a list of movies describing the degree steps
 
 # There are 2 degrees of separation between Tom Cruise and Sylvester Stallone
-# Tom Cruise starred with Tom Skerrit in Top Gun.
+# Tom Cruise starred with Tom Skerritt in Top Gun.
 # Tom Skerrit starred with Dolly Parton in Steel Magnolias
 # Dolly Parton starred with Sylvester Stallone in Rhinestone
 
