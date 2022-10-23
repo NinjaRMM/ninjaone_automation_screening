@@ -54,20 +54,29 @@ public class SixDegrees {
 
     public static void main(String[] args) throws IOException {
         SixDegrees solution = null;
-        // provide 1 or 2 as argument
-        int n = Integer.parseInt(args[0]);
-        if (n == 1) {
-            String actor = enterStarName();
-            solution = new SixDegrees(actor);
-        } else {
-            if (n == 2) {
-                String actor1 = enterStarName();
-                String actor2 = enterStarName();
-                solution = new SixDegrees(actor1, actor2);
+        if (args.length == 0) {
+            System.out.println("Usage:");
+            System.out.println("You need to provide the number 1 or 2 as an argument");
+            exit(1);
+        } else if (args.length == 1) {
+            int n = Integer.parseInt(args[0]);
+            if (n == 1) {
+                String actor = enterStarName();
+                solution = new SixDegrees(actor);
+            } else {
+                if (n == 2) {
+                    String actor1 = enterStarName();
+                    String actor2 = enterStarName();
+                    solution = new SixDegrees(actor1, actor2);
+                }
+                else{
+                    System.out.println("Incorrect argument. It must be '1' to provide 1 actor or '2' for 2 actors");
+                    exit(1);
+                }
+
             }
-            else
-                System.out.println("Incorrect argument. It must be '1' to provide 1 actor or '2' for 2 actors");
         }
+
         assert solution != null;
         // Calculate the degrees of distance
         solution.calculateDegrees();
@@ -199,6 +208,7 @@ public class SixDegrees {
      */
     void createStarMoviesMap(String person) throws IOException {
         String fileName = "../data/1980s-movies.json";
+//        System.out.println(System.getProperty("user.dir"));
         JSONArray jsonArray = new JSONArray(new String(Files.readAllBytes(Paths.get(fileName))));
 
         for (int i = 0; i < jsonArray.length(); i++) {
@@ -217,7 +227,7 @@ public class SixDegrees {
         }
         if (!moviesByStar.containsKey(person)){
             System.out.println(person + " did not star in a movie in the data provided.");
-            exit(0);
+            exit(1);
         }
     }
 }
