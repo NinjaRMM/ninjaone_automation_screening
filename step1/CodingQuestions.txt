@@ -1,33 +1,120 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+    - TDD
+    - BDD
+    - Jira tools
+    - Scrum / Kanban
+    - Versioning
+    - CI/CD
+    - Design Patterns
+    - Software Architectural Design
+    - IDE (JetBrains environment, VsCode)
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+    - Automation Environment ( Jenkins/Gitlab CI )
+    - Testing
+    - Git Hooks
+    - Versioning
+    - Static Code Analysis ( SonarQube, Snyk )
+    - Linters (EsLint, pylint, Checkstyle)
+    - IDE configured with code style
+    - Code Review
+    - Code Documentation (DocString, JavaDoc, swagger)
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
+a. How did you deploy and execute your test suites?
+    Using a cicd tool like Jenkins it is responsible to deploy the application and configure the environment. It can be
+    done using a container provider like docker + kubernetes or using virtual images to have a trustable environment.
+b. How did you target different devices?
+    Thankfully today due to the cloud providers it is much easier to have different devices to test against. So by integrating
+    a cicd tool or using the cloud environment ( AWS cloudformation, Cloud Build ) we can have access to the cloud instances
+    and we can configure theses instances the way we want. For mobile testing it is possible to use real devices on the cloud
+    or use emulators for a cheaper testing.
+c. How did you handle scalability?
+    We can handle test scalability by using an orchestrator like Kubernetes, Docker compose or a cloud option. So if we
+    are able to have an ephemeral environment for testing we can provide it on-demand without big efforts.
 d. How did you report test results?
+    Generate reports on industry formats like Junit, Cobertura, Html to make it easier to append on the ci/cd pipeline
+     or by creating a integration and sending the results TO a Dashboard/another company tool ( Testrail, Slack ).
 
-4. What testing frameworks are you familiar with for system level/desktop applications? 
+4. What testing frameworks are you familiar with for system level/desktop applications?
+    Appium and inhouse tools for mobile testing
 
-5. What testing frameworks are you familiar with for browser applications? 
+5. What testing frameworks are you familiar with for browser applications?
+    Selenium + Robot, Cypress
 
-6. What tools are you familiar with for Performance, Load and Stress testing? 
+6. What tools are you familiar with for Performance, Load and Stress testing?
+    Worked with some inhouse tools and Jmeter.
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+    Working on game industry automation. This is interesting and unusual because mostly of game companies work
+    with high usage of manual testing and Test Automation for this area is new and recently so we don't have a lot of
+    available tools and had to develop a lot of inhouse tools to enable automation. Also, due to the features validation
+    complexity we face a lot of complex situations that we need to analyze carefully to make a good and trustable test.
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+    MultiThread is much more light and faster to create than multiprocessing also they share the same memory context
+    making it easier to make them communicate although for code maintenance it generates a more complex logic with no
+    predefined api communication. So for short term live actions I would go with multithread also if we need to share
+    individual application context and need to treat it Multithread. If we are thinking on scalability and high performance
+    Multiprocessing because as it don't have dependency with the parent if one process dies the other one continue working
+    normally. Also, multiprocessing is much easier as the logic does not overlap between the processing responsibilities.
+
+    Some examples would be:
+    - A feature that does security validation and a login application. -> Multiprocessing and probably a microservice
+    in the future
+
+    - A client that needs to do multiple requests and provide a UI interface -> Multithreading, it can wait for the
+    requests and by multithreading it can provide a working UI while it does some processing and wait for the requests.
+
+    -  Terabytes of data for processing -> Multiprocessing on the high scope for working with the files and probably
+    multithreading for the Internal IO operations of each process.
+
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
+	i. Do you have a preference and why?
+	Unit tests are used to test individual logic for each component without considering any external dependency. So if
+	any dependency is required it is mocked to have a better control of the logic.
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+	Functional tests are used to test specific features if it is working correctly. It is a specific part of the system
+	to be tested.
+
+	Integration tests are used to validate if the communication between different parts/logics are working correctly
+
+	My main preference is the unit test because it is the cheaper one and if we catch a problem in a high level like
+	functional test, integration test or e2e test and it is a unit test problem we are throwing money out.
+
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
+    Overall they are different paradigms and have our own usages. But in a generic analysis:
+
+    The pros of using functional programming are:
+        - Much easier and faster to iterate
+        - The code is closer to a human-readable form
+        - Easier to test
+
+    The cons of using functional programming are:
+        - Due to the freedom that the paradigm give to us the code may become a mess and unreadable
+        - No established programming guidelines
+
+    The pros of using object-oriented programming:
+        - Established programming guidelines
+        - OOP have specific organization formats making it harder to have a messy code
+        - Well defined data
+
+    The cons of using object-oriented programming:
+        - Slower to iterate
+        - Less code freedom and flexibility
+
+
 
 4. What security concerns have you come across in the past and how have you addressed them?
+    Mostly of the companies that I worked had a specific security team so when we face a security concern we can
+    double-check with the security team on what to do. I already faced some security concern regarding the automation
+    environment and some potential flawless that static code analysis caught. In the first case we double-checked with security team
+    and in the second case we communicated the development team with a cc for security.
 
 Small Programming Challenges
 
@@ -36,6 +123,15 @@ a. Query the OS for the OS Patches that are currently installed on the system.
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+	i. What automation framework(s) you would consider utiltizing?
+	    To be able to validate this code I would go with a controlled environment and validate if the returned valued from
+    	the application is always the same. As the code generated returns everything on the stdout we can do a equal match
+    	by getting this return on a known state environment. In this particular case no framework is needed as a simple
+    	shell call would solve it. But we can consider automation environment setup like Chef or Ansible to make sure that
+    	everything needed is available.
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+	    We can use an orchestrator like Jenkins to execute the test on different oses. Also, we should have maintenance
+	    routines to make sure the state of every testing environment. So if we ensure the environment we would not face
+	    complications on the validation if we do not ensure the environment we need to have a restore routine for it and
+	    do a rollback on the system to allow revalidating.
