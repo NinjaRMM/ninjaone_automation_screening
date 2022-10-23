@@ -1,6 +1,7 @@
 import os
 import json
 from datetime import date
+import sys
 
 
 class MovieFilter:
@@ -73,4 +74,14 @@ class MovieFilter:
 
 if __name__ == '__main__':
     movie_filter = MovieFilter()
-    movie_filter.filter_json_movies_by(decade=80)
+    if len(sys.argv) > 1:
+        decade = int(sys.argv[1])
+        movie_filter.filter_json_movies_by(decade)
+    else:
+        print("""\tUsage:
+        $ python filter_movies_by_decade <decade>
+        
+        Please provide a decade as 2 digits. Example: 80
+        python filter_movies_by_decade 80
+        """)
+
