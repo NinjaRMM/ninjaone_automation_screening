@@ -3,8 +3,15 @@
 #Please review the below code and answer the following questions to the best of your ability: 
 
 #1.) What is this code doing?
-#2.) What does the program assume you need to have access to in order to execute? 
-#3.) What architectures can this script run on? 
+# It is getting an active VM called WPM and is executing scripts on the virtual machine to validate if NinjaWPM is
+# installed in the VM. At first it uses REGISTRY KEY to say if it is installed or not by writing into the host machine.
+# In the second step it is validating if the NinjaWPM.exe is present on the specificied path and it warns if not by
+# writing on the host machine.
+#2.) What does the program assume you need to have access to in order to execute?
+# It uses VM so it requires to have virtualization activated on the host machine also depending on how it is
+# configured root access is needed for this script.
+#3.) What architectures can this script run on?
+# This script is based on win32 architecture.
 
 $vm = Get-VM -Name WPM
 $IsNinjaInstalled = "Test-Path 'HKLM:\SOFTWARE\WOW6432Node\NinjaRMM LLC\NinjaWPM'"
