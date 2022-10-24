@@ -19,13 +19,10 @@ public class ActorNode {
             return true;
         }
 
-        /* Check if o is an instance of Complex or not
-          "null instanceof [type]" also returns false */
         if (!(obj instanceof ActorNode)) {
             return false;
         }
 
-        // typecast o to Complex so that we can compare data members
         ActorNode actorNode = (ActorNode) obj;
         return name == actorNode.name;
     }
