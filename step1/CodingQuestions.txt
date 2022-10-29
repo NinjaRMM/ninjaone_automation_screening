@@ -1,41 +1,78 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+IntelliJ IDEA, Postman, iTerm, git, VsCode, maven, gradle, Stack overflow, code repos, and google, Design patterns
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+- Code review
+- Pull requests
+- Debugging tools
+- Peer programming
+- Versioning
+- Static Code Analysis ( SonarQube, Snyk )
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
+a. How did you deploy and execute your test suites?
+I have used IntelliJ for running and debugging my tests, and also I can use shell commands using maven with: "mvn clean test"
+
+b. How did you target different devices?
+I have used Google Dev tools from Chrome and Browser Stack where I can emulate different devices and screen sizes
+
+c. How did you handle scalability?
+I can use java heap and stack properties also I could use Jmeter to simulate multiple threads
+
 d. How did you report test results?
+Working with maven and Jacoco I can generate and HTML report for testing
 
-4. What testing frameworks are you familiar with for system level/desktop applications? 
+4. What testing frameworks are you familiar with for system level/desktop applications?
+Junit/Mockito, Jest, Jasmine
 
-5. What testing frameworks are you familiar with for browser applications? 
+5. What testing frameworks are you familiar with for browser applications?
+Selenium
 
-6. What tools are you familiar with for Performance, Load and Stress testing? 
+6. What tools are you familiar with for Performance, Load and Stress testing?
+Jmeter, Postman
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+I worked in a project which uses AI for guidance prices, they used a lot automation in cloud using GoCD
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+Multithreading refers to the ability of a processor to execute multiple threads concurrently, where each thread runs a process.
+Besides multiprocessing refers to the ability of a system to run multiple processors concurrently, where each processor can run one or more threads.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
+	i. Do you have a preference and why? I have preferences in UNit and Integration tests because they provide the more useful benefit
+	Unit Tests: For methods and classes, It is technical focus.
+	Functional test: Based on a user side and focus on business language
+	Integration tests: It is a mixed between technical and business side tests. Using BDD for instance.
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
+OOP is very easy to understand at first sight, it has a fast learning curve. Cons: could produce memory leaks
+Functional programming defines what do you need to do instead of how can you do it, it is more complex to understand at
+first sight,, however it is very powerful like when you are using Lambda expressions in Java
 
 4. What security concerns have you come across in the past and how have you addressed them?
+It is recommendable to use a frameworks security for instance OWASP to cover some of the authentication and authorization aspects.
+Also it is need to take into account during the pipeline design within the CI/CD process. For instance Sonatype alerts.
 
 Small Programming Challenges
 
 1. Using a known programming language write a small program to: 
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
+	I can use a python script to validate or using a PowerShell script. Please see added file: ./get_updates_history.py
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+	i. What automation framework(s) you would consider utiltizing?
+	pytest
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+	I could build a shell script to validate the OS type and using a Docker image depends on the OS required. All tasks could be made using shell scripts.
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+	I will have to check after rebooting the current patches installed in our OS, and what are available to download in the repo.
+	Please see added file: ./test_os_updates.py
+    It checks the "current" update history. If the particular node restarted, and as a result,
+    new packages were added, the test needs to be executed again.
+
