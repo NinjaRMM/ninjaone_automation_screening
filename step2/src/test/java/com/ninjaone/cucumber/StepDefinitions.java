@@ -24,7 +24,7 @@ public class StepDefinitions {
     public void andRunApp() {
         System.out.println("Running the app...");
         try {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -32,7 +32,6 @@ public class StepDefinitions {
 
     @When("I provide a decade like {int} as a parameter")
     public void whenProvideDecade(Integer decade) {
-        //moviesService.setDecade(decade);
         moviesService.setFilteredMovies(moviesService.getMoviesByDecade(decade, moviesService.getMovies()));
     }
 
