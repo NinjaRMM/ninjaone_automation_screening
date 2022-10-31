@@ -106,7 +106,7 @@ public class SixDegrees {
                 shortestPath = tentative;
                 String result = "There are " + tentative.get(finish).size() + " degrees of separation between " +
                         start + " and " + finish + ".";
-                System.err.println(result);
+                System.out.println(result);
                 break;
             }
 

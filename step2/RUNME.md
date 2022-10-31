@@ -7,4 +7,4 @@ This solution was built using Java 11 and implement Gradle.
   `./step2.sh "80" "80s-movies.json" `
 
 ## About cucumber test
-- To run a cucumber test, add the file in /step2/src/test/resources/features/ and execute the command `./gradlew cucumber`.
+- To run a cucumber test, add the file in /step2/src/test/resources/features/ and execute the command `./gradlew cucumber` from /step2.

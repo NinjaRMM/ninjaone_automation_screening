@@ -17,7 +17,6 @@ import java.util.logging.Logger;
 public class MoviesService {
 
     private static final int MIN_CENTURY_20 = 1900;
-    private static final int MIN_CENTURY_21 = 2000;
     private static final int DECADE_YEARS = 10;
     private final Logger log = Logger.getLogger(MoviesService.class.getName());
     private List<Movies> movies;
@@ -88,10 +87,6 @@ public class MoviesService {
         return year + DECADE_YEARS;
     }
 
-    private static int getStartYearOfDecadeCentury21(int year){
-        return ((MIN_CENTURY_21+year) / DECADE_YEARS) * DECADE_YEARS;
-    }
-
     public List<Movies> getMoviesByFilename(String filename){
         ObjectMapper mapper = new ObjectMapper();
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
@@ -109,8 +104,6 @@ public class MoviesService {
         List<Movies> moviesDecade = new ArrayList<>();
         int minYear20 = getStartYearOfDecadeCentury20(decade);
         int maxYear20 = getLastYearOfDecadeCentury(minYear20);
-        //int minYear21 = getStartYearOfDecadeCentury21(decade);
-        //int maxYear21 = getLastYearOfDecadeCentury(minYear21);
 
         for(Movies movie: movies){
 
