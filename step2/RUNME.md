@@ -1,7 +1,7 @@
 
 ## Step 2 Answer Overview
 
-This solution was made with Java 11 and implement Gradle.
+This solution was built using Java 11 and implement Gradle.
 - To compile the project, execute the command `./gradlew clean build` in /step2/ .
 - The shell file is in `/step2/step2.sh` and provide decade, then the name of the output file, ex:
   `./step2.sh "80" "80s-movies.json" `
