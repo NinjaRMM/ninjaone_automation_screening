@@ -3,8 +3,11 @@
 #Please review the below code and answer the following questions to the best of your ability: 
 
 #1.) What is this code doing?
+The code verifies if there is a software installed and downloaded
 #2.) What does the program assume you need to have access to in order to execute? 
+It assumes I have access to Registry of Windows, with admin permissions.
 #3.) What architectures can this script run on? 
+Only Windows
 
 $vm = Get-VM -Name WPM
 $IsNinjaInstalled = "Test-Path 'HKLM:\SOFTWARE\WOW6432Node\NinjaRMM LLC\NinjaWPM'"
