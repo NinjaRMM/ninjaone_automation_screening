@@ -3,7 +3,7 @@ Feature: Six Degrees of Separation
   Scenario: I enter one actor's name
     Given I run the application
     And  "80s-movies.json" exists from step one
-    When  I provide one actor's name as a parameter
+    When  I provide one actor's name as a parameter "Tom Cruise"
     Then I should see the number of degrees of separation from Kevin Bacon
     And I see a list of movies describing the degree steps
 
@@ -15,7 +15,7 @@ Feature: Six Degrees of Separation
   Scenario: I enter two actors' name
     Given I run the application
     And  "80s-movies.json" exists from step one
-    When  I provide two actors' names as a parameters
+    When  I provide two actors' names as a parameters "Tom Cruise", "Sylvester Stallone"
     Then I should see the number of degrees of separation between the two actors
     And I see a list of movies describing the degree steps
 
@@ -27,7 +27,7 @@ Feature: Six Degrees of Separation
   Scenario: I enter one actor's name that did not star in a movie
     Given I run the application
     And  "80s-movies.json" exists from step one
-    When  I provide a name not in the data as a parameter
+    When  I provide a name not in the data as a parameter "Buzz Lightyear"
     Then I should see a message stating that name did not star in a movie
 
 # Buzz Lightyear did not star in a movie in the data provided.
@@ -35,7 +35,7 @@ Feature: Six Degrees of Separation
   Scenario: I enter one actor's name that did not star in a movie
     Given I run the application
     And  "80s-movies.json" exists from step one
-    When  I provide two actors' names one known, and one not in the data as a parameters
+    When  I provide two actors' names one known, and one not in the data as a parameters "Tom Cruise", "Buzz Lightyear"
     Then I should see a message stating that name did not star in a movie
 
 # Buzz Lightyear did not star in a movie in the data provided.
