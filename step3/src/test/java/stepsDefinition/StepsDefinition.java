@@ -15,8 +15,8 @@ import static com.testTask.ninja.MovieService.getMovies;
 import static com.testTask.ninja.MovieService.readFile;
 
 public class StepsDefinition {
-    private static final String RESULT_PATH = "../data/%s";
     private static final String DEFAULT_ACTOR = "Kevin Bacon";
+    private static final String RESULT_PATH = "../data/%s";
     private static final String DEGREES_MESSAGE = "Number of degrees of separation is: %s";
     private String fileContent;
     private TraverseResult result;
@@ -39,8 +39,6 @@ public class StepsDefinition {
 
     @When("I provide two actors' names as a parameters {string}, {string}")
     public void iProvideTwoActorsNamesAsAParameters(String actor1, String actor2) {
-        System.out.println("Actor1: "+actor1.toUpperCase());
-        System.out.println("Actor2: "+actor2.toUpperCase());
         List<Movie> movies = getMovies(fileContent);
         Graph graph = new Graph(movies);
         result = graph.traverse(actor1, actor2);
@@ -48,7 +46,7 @@ public class StepsDefinition {
 
     @Then("I should see the number of degrees of separation from Kevin Bacon")
     public void iShouldSeeTheNumberOfDegreesOfSeparationFromKevinBacon() {
-        System.out.printf((DEGREES_MESSAGE) + "%n", result.getDegree());
+        System.out.println(result.getDegree());
     }
 
     @And("I see a list of movies describing the degree steps")
@@ -68,7 +66,7 @@ public class StepsDefinition {
 
     @Then("I should see a message stating that name did not star in a movie")
     public void iShouldSeeAMessageStatingThatNameDidNotStarInAMovie() {
-        System.out.println(result.getMessage());
+        System.out.println(result.getDegree());
     }
 
     @When("I provide two actors' names one known, and one not in the data as a parameters {string}, {string}")

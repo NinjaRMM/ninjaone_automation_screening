@@ -24,8 +24,10 @@ public class Graph {
     }
 
     public TraverseResult traverse(String actor, String actor2) {
-        if (validate(actor) || validate(actor2))
+        if (validate(actor))
             return new TraverseResult(actor);
+        if (validate(actor2))
+            return new TraverseResult(actor2);
 
         Queue<Actor> queue = new LinkedList<>();
         queue.add(new Actor(actor));
