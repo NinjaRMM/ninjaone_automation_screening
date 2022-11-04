@@ -3,8 +3,16 @@
 #Please review the below code and answer the following questions to the best of your ability: 
 
 #1.) What is this code doing?
-#2.) What does the program assume you need to have access to in order to execute? 
-#3.) What architectures can this script run on? 
+# The code is checking if NinjaWPM is installed on the target machine.
+# If the app is installed: it exits.
+# If the app is not installed: the scripts installs the NinjaWPM.
+# If something goes wrong, the program throws  'Critical error'
+
+#2.) What does the program assume you need to have access to in order to execute?
+# The program assumes to have a VM access.
+
+#3.) What architectures can this script run on?
+# 64 bit Windows
 
 $vm = Get-VM -Name WPM
 $IsNinjaInstalled = "Test-Path 'HKLM:\SOFTWARE\WOW6432Node\NinjaRMM LLC\NinjaWPM'"

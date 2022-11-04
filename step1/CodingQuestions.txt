@@ -1,41 +1,69 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+- There are numerous tools that can increase developer's productivity. IDEs are most helpful because they increase speed of writting the code.
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+- Version control systems are the most helpful to maintain the code, perform code reviews, branching the code, etc.
 
-3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
+3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please.
+a. How did you deploy and execute your test suites?
+- I use different CI/CD tools (ex. Jenkins) to run my automation on schedule on different environments.
+b. How did you target different devices?
+- Usually I work with PM to get the analytics to get the information which devices users run our product the most to cover them with testing and/or automation.
+c. How did you handle scalability?
+- Setting up grid of nodes for parallelization of tests.
 d. How did you report test results?
+- I prefer Allure report given it supports most modern frameworks.
 
-4. What testing frameworks are you familiar with for system level/desktop applications? 
+4. What testing frameworks are you familiar with for system level/desktop applications?
+- Python / Pytest framework
 
-5. What testing frameworks are you familiar with for browser applications? 
+5. What testing frameworks are you familiar with for browser applications?
+- I mostly worked with Selenium frameworks
 
-6. What tools are you familiar with for Performance, Load and Stress testing? 
+6. What tools are you familiar with for Performance, Load and Stress testing?
+- JMeter
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+- I worked on different projects such as Video on Demand and Live streaming services, Point-Of-Sale and Casino solutions,
+Computer Vision and Augmented Reality application. Each of those projects is unique and have different approach from the testing perspective.
+I was excited to work on each of those projects and will be happy to provide more information to you during the interviews.
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+- Multiprocessing is more powerful since you can run multiple processors which can do multiple threads.
+Multithreading is a ability to execute multiple threads on the processor.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
+	i. Do you have a preference and why?
+	- Unit Tests: Written by developers to test that functions return expected result.
+	- Functional Tests: Tests performed by QA team on the UI level to ensure the functionality works as expected.
+	- Integration Tests: Testing different independently developed features work together correctly.
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
+- OOP is the best for the application that require different data structures and inheritance. Functional programming gives more performance.
 
 4. What security concerns have you come across in the past and how have you addressed them?
+- I found major security threats in one of my projects that were addressed on the high level.
 
 Small Programming Challenges
 
 1. Using a known programming language write a small program to: 
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
+	$ python3 step1/src/win_updates.py
+
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
-b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+b. How would you consider validating the above program returns all installed patches on the system from an automation perspective?
+    -  I would use the assertions to check the returned values against the list of expected updates.
+
+	i. What automation framework(s) you would consider utiltizing?
+	- Python - Pytest Framework.
+
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+- I would define the logic to make sure the program runs correctly on different OSs (mostly Linux and Windows given Mac having same core as Linux)
+
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+- I can store previous test results and make the validation againt them as well. And I will raise an error is those mismatch.
