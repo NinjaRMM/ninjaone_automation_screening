@@ -1,33 +1,53 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+ - Data structures
+ - Algorithms
+ - Time, and spase complexity
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+ - Code review
+ - Dynamic and static code analise (Sonar)
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
+a. How did you deploy and execute your test suites?
+ - Jenkins, Git, Gradle
+b. How did you target different devices?
+- BrowserStack
+c. How did you handle scalability?
+- Several threads
 d. How did you report test results?
+- Allure report
 
-4. What testing frameworks are you familiar with for system level/desktop applications? 
+4. What testing frameworks are you familiar with for system level/desktop applications?
+- Junit, TestNG, Selenium(Selenide)
 
-5. What testing frameworks are you familiar with for browser applications? 
+5. What testing frameworks are you familiar with for browser applications?
+- Selenium(Selenide)
 
-6. What tools are you familiar with for Performance, Load and Stress testing? 
+6. What tools are you familiar with for Performance, Load and Stress testing?
+- JMetter
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+- I was working in big project related to collecting data from different stock markets data.
+Main task to get data from provider, create common JSON format, fix data issues and send clean data to customer.
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+When it is possible to use. Not always it is possible.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
+	i. Do you have a preference and why?
+	Unit - small local tests of code (small)
+	Functional - tests of functional some feature (bigger)
+	Integration - tests with checking integration between different instances (End to end tests) (bigger)
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
 
 4. What security concerns have you come across in the past and how have you addressed them?
+- getting tokens before requests
+- save passwords
 
 Small Programming Challenges
 
@@ -39,3 +59,10 @@ b. How would you consider validating the above program returns all installed pat
 	i. What automation framework(s) you would consider utiltizing? 
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+
+
+Done. I use MacBook so only case for MACOS was implemented.
+a) Can be run using Main.class or using .jar file (artifact) picture attached (step1Jar.png).
+b) It will return data from file with updates on test day.
+c) Before run we need to get info about current OS and then run prepared logic for current OS.
+    i. I was not working with it before, but I see that we just need to get updates from file, it wil not be a problem after restart.
