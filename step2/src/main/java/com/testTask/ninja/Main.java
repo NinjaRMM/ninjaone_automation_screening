@@ -10,9 +10,9 @@ public class Main {
 
     public static void main(String[] args) {
         validateParams(args);
-        List<Movie> movies = ReadWriteHelper.readFileToList();
-        List<Movie> moviesByDecade = ReadWriteHelper.getMoviesByDecade(movies, decadeValue);
-        ReadWriteHelper.saveToFile(moviesByDecade, outputFileName);
+        List<Movie> movies = MovieService.readFileToList();
+        List<Movie> moviesByDecade = MovieService.getMoviesByDecade(movies, decadeValue);
+        MovieService.saveToFile(moviesByDecade, outputFileName);
     }
 
     private static void validateParams(String[] args){

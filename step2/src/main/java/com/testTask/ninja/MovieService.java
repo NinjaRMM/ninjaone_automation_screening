@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ReadWriteHelper {
+public class MovieService {
     private static final String VALIDATION_MESSAGE = "Invalid input value. Decade should be one of '20, 30, 40, 50, 60, 70, 80, 90'";
     private static final String RESULT_PATH = "data/%s";
     private static final String SOURCE_FILE_NAME = "movies.json";
@@ -83,8 +83,8 @@ public class ReadWriteHelper {
     }
 
     public static void checkFilter(String path, int yearFrom, int yearTo) {
-        List<Movie> moviesFromSource = ReadWriteHelper.readFileToList(String.format(path, RESULT_FILE_NAME));
-        List<Movie> moviesFromResult = ReadWriteHelper.readFileToList(String.format(path, SOURCE_FILE_NAME));
+        List<Movie> moviesFromSource = readFileToList(String.format(path, RESULT_FILE_NAME));
+        List<Movie> moviesFromResult = readFileToList(String.format(path, SOURCE_FILE_NAME));
 
         for (int i = yearFrom; i <= yearTo; i++) {
             int year = i;

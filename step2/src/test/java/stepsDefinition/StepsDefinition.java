@@ -1,16 +1,14 @@
 package stepsDefinition;
 
 import com.testTask.ninja.Movie;
-import com.testTask.ninja.ReadWriteHelper;
+import com.testTask.ninja.MovieService;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class StepsDefinition {
     private static List<Movie> result = new ArrayList<>();
@@ -20,7 +18,7 @@ public class StepsDefinition {
 
     @Given("a json file of all movies between 1900-2018 \"movies.json\"")
     public void givenFile() {
-        movies = ReadWriteHelper.readFileToList(SOURCE_PATH);
+        movies = MovieService.readFileToList(SOURCE_PATH);
     }
 
     @And("I run the application")
@@ -30,16 +28,16 @@ public class StepsDefinition {
 
     @When("I provide a decade like {int} as a parameter")
     public void whenSetParam(int decade) {
-        result = ReadWriteHelper.getMoviesByDecade(movies, decade);
+        result = MovieService.getMoviesByDecade(movies, decade);
     }
 
     @Then("a file is created called {string} in the data folder")
     public void thenCheckFileWasCreated(String fileName) {
-        ReadWriteHelper.saveToFile(result, RESULT_PATH, fileName);
+        MovieService.saveToFile(result, RESULT_PATH, fileName);
     }
 
     @And("it contains a JSON array of movies from \"movies.json\" from the years {int}-{int}")
     public void andCheckFileContent(int from, int to) {
-        ReadWriteHelper.checkFilter(RESULT_PATH, from, to);
+        MovieService.checkFilter(RESULT_PATH, from, to);
     }
 }
