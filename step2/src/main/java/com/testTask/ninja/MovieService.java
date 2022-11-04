@@ -85,12 +85,13 @@ public class MovieService {
     public static void checkFilter(String path, int yearFrom, int yearTo) {
         List<Movie> moviesFromSource = readFileToList(String.format(path, RESULT_FILE_NAME));
         List<Movie> moviesFromResult = readFileToList(String.format(path, SOURCE_FILE_NAME));
-        Assertions.assertEquals(moviesFromSource.size(), moviesFromResult.size());
 
         for (int i = yearFrom; i <= yearTo; i++) {
             int year = i;
             List<Movie> fromSource = moviesFromSource.stream().filter(movie -> movie.getYear() == year).collect(Collectors.toList());
             List<Movie> fromResult = moviesFromResult.stream().filter(movie -> movie.getYear() == year).collect(Collectors.toList());
+
+            Assertions.assertEquals(fromSource.size(), fromResult.size());
             Assertions.assertEquals(fromSource, fromResult);
         }
     }
