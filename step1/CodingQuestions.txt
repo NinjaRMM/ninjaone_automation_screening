@@ -1,33 +1,58 @@
-General Questions
+﻿General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+For me, when I develop in the frontend, I like to use React JS or Angular JS. On the other hand, for the backend develop I prefer work with Spring Boot, when I need to work for mobile I have experience with Android Java or Kotlin but nowdays I like the most Dark with Flutter.
+
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+I have been worked with Subversion and Github. I like the most github.
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
 a. How did you deploy and execute your test suites? 
+   Usually I test my code using junit and for automation the best tool is 
+   jenkins.
 b. How did you target different devices? 
+   For mobile apps I usually test with real devices, from different brands,   
+   sizes and operative systems.
 c. How did you handle scalability? 
+   Deploying my application in multiple instances and using a load balancing 
+   server.
 d. How did you report test results?
+   We have a template (xlsx) with the unit tests, integration test or load test, 
+   defined for the project manager.
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+Winium.
 
 5. What testing frameworks are you familiar with for browser applications? 
+Junit.
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
+Jmeter.
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+I had to implement a geolocation map for loan collector. I found it interesting because it helped them to make more efficient the process.
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
+I have used multithreading for read or write operations, and multiprocessing for example in arithmetical operations.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
 	i. Do you have a preference and why? 
+Unit test is used to single responsibility methods, the integration test are used to test this single responsibility methods together and functional test is used to test the business functionality. 
+My favorite are the unit tests because this allows me to correct my exceptions faster.
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+Pros OOP: Being the objects an abstraction of the real world, it allows the language to be more understandable by the human being.
+Cons OPP: The deveopment is slower.
+
+Pros Fun: More precise and shorter code.
+Cons Fun: Not suitable for all tasks.
+
 
 4. What security concerns have you come across in the past and how have you addressed them?
+SQL injection, the solution was use prebuilt statements for the queries. 
 
 Small Programming Challenges
 

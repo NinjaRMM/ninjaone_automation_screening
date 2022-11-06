@@ -3,8 +3,11 @@
 #Please review the below code and answer the following questions to the best of your ability: 
 
 #1.) What is this code doing?
+     Searching for a VM installed into the system, if is installed find the installer on the path.  
 #2.) What does the program assume you need to have access to in order to execute? 
+     Access to the system properties
 #3.) What architectures can this script run on? 
+     On powercli 
 
 $vm = Get-VM -Name WPM
 $IsNinjaInstalled = "Test-Path 'HKLM:\SOFTWARE\WOW6432Node\NinjaRMM LLC\NinjaWPM'"
