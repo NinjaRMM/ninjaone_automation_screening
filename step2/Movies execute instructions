@@ -1,0 +1,7 @@
+Example:
+java -jar Movies.jar /home/will/NINJA/ninjaone_automation_screening/data/ movies.json 80s-movies.json 1980 1989
+
+Parameters:
+java -jar nameOfJar filesPath inputFile outputFile initYear finalYear
+
+

@@ -60,13 +60,6 @@ Small Programming Challenges
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
-    public class Exercise01 {
-    public static void main(String[] args) {
-        String os = System.getProperty("os.name");
-        String version = System.getProperty("os.version");
-        System.out.println("Operative System: " + os + " " + version);
-    }
-   }
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
 	i. What automation framework(s) you would consider utiltizing? 
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
