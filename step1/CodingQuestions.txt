@@ -1,41 +1,74 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+> Intellij, unix/shell, junit and docker.
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+> Intellij with remote debug. And good logs.
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
 a. How did you deploy and execute your test suites? 
+> If I do heavy changes (like database structure), I execute locally before commit. If it's normal changes, I trust in development pipeline (i.e. automation tools like Bamboo).
+
 b. How did you target different devices? 
+> I'm a java backend developer. There is no differences to me.
+
 c. How did you handle scalability? 
+> I split my services with reasonable sizes. Most of the cases, I just need more instances of the service most demanded and review the lack of database indexes.
+
 d. How did you report test results?
+> In the Jira issue.
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+> Just Junit and testNG in the development cycle. A long time ago I used Selenium.
 
 5. What testing frameworks are you familiar with for browser applications? 
+> Sometime I use postman to validate REST APIs.
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
+> Apache JMeter, JProfiler and VisualJVM.
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+> I worked on a project that the user can create pages, forms and can configure a form inside a page to his clients, that generates a task inside project management system with kanban style.
+> I worked in a system that was selled just in on-premises model, then we create new modules to delivery new features continuing and this news modules were used to create new products in saas model. Was a success case because we had changed to saas model without stop delivering features to our clients.
+> A lot of times our small business management was blocked by government when we generate the invoice (SOAP integration). Then I create a pool of proxy IPs to suppress our IP and that was very valuable until high staff people were explaining that a lot of companies uses our system with the same ip to generate their invoices.
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
+> Multithreading for most IO demanding applications, like web services applications that need read data from database simultaneously. Multiprocessing in most cpu demanding applications, like forecasting.
+
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
 	i. Do you have a preference and why? 
+> Unit test has focus in minus part of software. Functional Tests has a perspective of user, testing application funcionality. Integration Tests has focus on combinations and environment variables, like integration with other systems and test with different databases.
+> i. I prefer I very high coverage with Unit Test, than a good coverage of all main business routines with Functional Tests and a pragmatic small coverage of key routines with Integration Tests. This combination is important because too many test can not be appropriated maintened and not executed, which is bad. Or slow down the development cycle, which is bad too.
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+> OO programming is most demanding for computing resources, but more natural for development and represating system entities.
+Functional programming is simpler, less demanding for resources, but may be difficult to develop entire business systems due not have abstract representations.
 
 4. What security concerns have you come across in the past and how have you addressed them?
+> Some web application authentication and security information issues relative a multi-tenant environment. I implemented OAuth2 in some applications and advocate to always using tenant identification in database queries.
 
 Small Programming Challenges
 
 1. Using a known programming language write a small program to: 
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
+> challenge folder.
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+> I didn't implemented this.
+
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
+> The first approach would be create unit tests, isolating core logic. After this, I would study and tests some virtualization automation, like vagrant and pupppet to create different versions of Windows and execute the program to validate the results.
 	i. What automation framework(s) you would consider utiltizing? 
+> Vagrant, VirtualBox, puppet and bash.
+
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+> Code should be modular to cover all systems and have core business logic with unit tests coverage.
+> Using some automation tools, like bamboo and jenkins, different plans using appropriated virtualization images to test the program in each specific platform.
+
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+> No. The tests should always validate the mapped situations. I a situation may occur, this should be validated by one of the tests.
+
