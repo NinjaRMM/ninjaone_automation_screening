@@ -2,32 +2,72 @@ General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
 
+   Some JetBrains tools like IntelliJ IDEA, PyCharm, GoLang, Resharper, also Postman, VS Community, VSCode, Gradle. Tox
+   Devops, unit testing , test plan, patterns design
+
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
 
+   - Git , Git branching strategy, commit strategy
+   - Linters, static code analyzers
+   - Precommit rules analyzers e.g. Husky
+   - Automation testing
+   - CI/CD pipelines
+   - Clean Code
+   - Code Review
+
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
+a. How did you deploy and execute your test suites?
+   Running the CI/CD pipeline
+b. How did you target different devices?
+   Services e.g. Browser Stack, also by setting custom CLI arguments on the Automation framework e.g. --device –-browser -–os.
+c. How did you handle scalability?
+   Usually by using on-premises solutions
 d. How did you report test results?
+   Using external product e.g. Report https://reportportal.io/
+   or custom stage to send reports through delivery method (email, instant message)
 
-4. What testing frameworks are you familiar with for system level/desktop applications? 
+4. What testing frameworks are you familiar with for system level/desktop applications?
 
-5. What testing frameworks are you familiar with for browser applications? 
+   WinAppDriver, SpecFlow, Junit, Xunit, Pytest
 
-6. What tools are you familiar with for Performance, Load and Stress testing? 
+5. What testing frameworks are you familiar with for browser applications?
+
+   Selenium, Cucumber, TestNG, Junit, Pytest, Cypress, Playwright.
+
+6. What tools are you familiar with for Performance, Load and Stress testing?
+
+   Jmeter, Gatling
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
 
+   We tried to use AI with Python to create test cases.
+
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+
+   When I need to share data between some processes
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+	Unit tests are used to test blocks of code.
+    Functional tests validate the acceptance criteria.
+	Integration tests validate the integration between some parts of the application.
+	i. Do you have a preference and why?
+	The ideal is to use it in combination.
+    Personally I like unit tests because they are cheap in time and help to detect issues (mainly in code refactoring).
+
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
+
+    Object-oriented programming allows to create large, modular programs that can be easily extended over time.
+    Also hide the implementation from the end user.
+    Functional programming is stateless, totally input-dependent, so it is easier to understand.
 
 4. What security concerns have you come across in the past and how have you addressed them?
+
+   Moving sensitive data, can be solved with encryption.
+   Manage credentials, a credential manager helps in this case, also use env vars.
+   Security issues in external libraries, keep them up to date.
 
 Small Programming Challenges
 
@@ -36,6 +76,9 @@ a. Query the OS for the OS Patches that are currently installed on the system.
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+	i. What automation framework(s) you would consider utiltizing?
+	Custom Framework using the Microsoft Native API, may be with help with WinAppDriver.
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+	Using Infrastructure as code like Terraform and Jenkins or another tool CI/CD tool
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+	It can be, but if we expected that behavior we can deal with that pausing automatic updates, or resync expected result.
