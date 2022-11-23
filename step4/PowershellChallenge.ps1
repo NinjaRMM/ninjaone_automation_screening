@@ -3,8 +3,8 @@
 #Please review the below code and answer the following questions to the best of your ability: 
 
 #1.) What is this code doing?
-    It checks if NinjaWPM is installed on the VM with WPM, if not it terminates the execution by returning -1.
-    It then checks if the NinjaWPM installer is available on the same VM, if not it terminates execution by returning -1.
+    It checks if NinjaWPM is installed on the VM with WPM, if not it terminates the execution by returning 1.
+    It then checks if the NinjaWPM installer is available on the same VM, if not it terminates execution by returning 1.
     It terminates by returning 0.
 #2.) What does the program assume you need to have access to in order to execute?
     VM User exist and should have privilege to run scripts.
