@@ -1,41 +1,86 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+IntelliJ IDEA
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+Programing Oriented to Interface
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
 a. How did you deploy and execute your test suites? 
+First I deploy and test locally, if it works I commit and create the PR to merge. The CI/CD pipeline is responsable to test again the code and if it works the merge and deploy to the environment happens.
+
 b. How did you target different devices? 
+Java applications is cross Operation System and can be executed in any device.
+
 c. How did you handle scalability? 
+In Kubernates I can manage to publish one or more pods.
+
 d. How did you report test results?
+SonarQube
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+JUnit
 
 5. What testing frameworks are you familiar with for browser applications? 
+Postman and I've already used TestCafé (https://testcafe.io/) a long time ago.
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
+Apache JMeter
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+Eletronic Signature - A big project to allow the clients to sign the document online. We used DocUSign as a partner and had to create a lot of microservice to integrate the legacy backend and the DocUSign.
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
+Most of the time we use multithreading when we don't need a response and the instruction can be running simultaneously, for example, sending emails. Multiprocessing is a way to use more than one core of CPU to run an intruction, we used it when we want to have a faster response. The parallelStream() function that I used in the degree-of-separations project is an example of Multiprocessing.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
+Unit Tests is used to test part of the application a method for example. Functional Tests is used to test application funcionality. Integration Tests is used to test the application in the environment and its connections with other applications, database connections, etc.
+
 	i. Do you have a preference and why? 
+	I prefer Unit Tests with high coverage and Functional Tests. Like it or not the true is, all applications need changes and a good Unit Tests + Functional Tests are a better way to keep the integrity of business logic in the code.
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+OOP Pros:
+- objects and methods are very readable and understandable to develops. 
+- organizing code in terms of interfaces helps with maintainability.
+
+OOP Cons:
+- as there are many ways to model something, OOP is not always intuitive and can be very complex.
+- OOP needs a lot of boilerplate code.
+
+FP Pros:
+- functions are not complicated and can be reusable, they can usually be seamlessly transferred to a completely different program.
+- functions is focused on what to do and less about how it's being done.
+- the emphasis is on performance and optimization, leaving the door to refactor without completely reworking your code.
+
+FP Cons:
+- as Functional Programming is a newer paradigm, it’s not easy to find documentation and information if compare to OOP.
+- sometimes functions can become very verbose and difficult to follow comparatively to the object-oriented style.
 
 4. What security concerns have you come across in the past and how have you addressed them?
+I've worked in a company that all the microservice didn't have any kind of autentication, the security was based into intranet. Only the internal applications could access the services but one day we need to change it because we had to allow a partner to access a specific REST API. The first solution was to implement oAuth in the application by KeyCloak.
 
 Small Programming Challenges
 
 1. Using a known programming language write a small program to: 
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
+		look at OSPatches.java
+
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+		not implemented
+
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
+First of all it's important to test manually in differents version of OS and check if the response is right. Using some automation framework could be create a double check routine, the first one running the program and other stuff and compare the results.
+
 	i. What automation framework(s) you would consider utiltizing? 
+		Selenium
+
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+A Cloud Infrastructure could help to test accross multiple devices. I could start Windows, Linux and Mac VMs on the cloud before the test and stop them after the test.
+
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+		Of course not, because we are testing a known situation patches don't change the OS architecture.

@@ -3,8 +3,13 @@
 #Please review the below code and answer the following questions to the best of your ability: 
 
 #1.) What is this code doing?
-#2.) What does the program assume you need to have access to in order to execute? 
-#3.) What architectures can this script run on? 
+#This script is trying to update or install the NinjaWPM in the guest OS running on a VM.
+
+#2.) What does the program assume you need to have access to in order to execute?
+#The user Ninja needs to have Admin role.
+
+#3.) What architectures can this script run on?
+#Microsoft Windows.
 
 $vm = Get-VM -Name WPM
 $IsNinjaInstalled = "Test-Path 'HKLM:\SOFTWARE\WOW6432Node\NinjaRMM LLC\NinjaWPM'"
