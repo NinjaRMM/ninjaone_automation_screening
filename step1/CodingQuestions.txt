@@ -1,41 +1,69 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+	IDE (IntelliJ, STS, Eclipse)
+	DB client (DBeaver, Kibana)
+	Test tools (Postman, Unit Test)
+	Documentation API (Swagger)
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
-
+	Add good logs
+	Cloud watch
+	Cloud formation
+	Unit and integration test	
+	
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
 a. How did you deploy and execute your test suites? 
+	if the api is made using maven with mvn test for execute all tests for deploy run the corresponding pipeline for specific environment
 b. How did you target different devices? 
+	NA
 c. How did you handle scalability? 
+	Aplying good practices for API rest creation, service, dtos, repositories creation
+	Trying to decouple the large functions and code always thinking in code reuse
+	Adding unit test into CI/CD process
 d. How did you report test results?
+	CICD (Jenkins or GitLab) provide a report with the details of tests executed (failed and passed)
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+	JUnit
 
 5. What testing frameworks are you familiar with for browser applications? 
+	For services Postman
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+	Last project I colaborate was very interesting because we use a very new stack tech (AWS, Kotlin) the main challenge here was get a very good performance into the services integration and comunication
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
+	Dependes of the process, the multiprocessing uses processors and multithreading memory of the server, multithreading increase the performance of the process and is cheaper (in terms of resource use) than multiprocessing.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
+	there are test that run in every one of the layer of the application (service, controllers and full path)
 	i. Do you have a preference and why? 
+		I believe all these are importants and validate diferents thing and iteractions of the system
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+	POO has a better performance and allow you reuse of code using everyone of the characteristic of the paradigma (inheritance, polymorphism, encapsualtion, etc)
+	The code is maintenable and sclable in POO
+	The code is distribuided between the classes and is not coupled
 
 4. What security concerns have you come across in the past and how have you addressed them?
+	The most common issued of security are presented inside the REST API calls, so those need to have a token or SSO authentication for get a good security on the consume of all these services
 
 Small Programming Challenges
 
 1. Using a known programming language write a small program to: 
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
+		See step1\WindowsPatches\WindowsPatches.py
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+	
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
 	i. What automation framework(s) you would consider utiltizing? 
+		Selenium web driver once time
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+		I dont create a unit test for validate things that can change I mean stuffs that are not related with the code of the application, because is outside of the context of the code and many times can change so is not good practise test changing scenarios outside the code context
