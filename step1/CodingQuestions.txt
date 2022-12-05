@@ -37,5 +37,7 @@ a. Query the OS for the OS Patches that are currently installed on the system.
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
 	i. What automation framework(s) you would consider utiltizing? 
-c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
-	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program
+   and executing the test case(s) across multiple Windows, Linux and Mac devices?
+	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation?
+	   If so, what alternatives do you see available?
