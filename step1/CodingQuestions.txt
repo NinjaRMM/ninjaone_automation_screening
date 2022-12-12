@@ -1,41 +1,101 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+   R/ Tools: IntelliJ IDE, NotePad++, Postman, GitHub, Git, SonarLint, a file compare tool, WSL2(Windows Subsystem for Linux).
+      Techniques: Scrum, Agile Methodologies, TDD, Clean code, SOLID Principles
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+   R/ The code should be the most simple and concisely also every piece of code should be tested by JUnit or automated way with
+    the help of all new characteristics of  Continuous Integration and Continous delivery
+    (Git, Jenkins, Automatizations test (Cucumber))
 
-3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
-d. How did you report test results?
+3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline,
+    please feel free to be as detailed as you please.
+    a. How did you deploy and execute your test suites?
+       R/ For automation infrastructure I've used  Cucumber- Maven - Jenkins frameworks and tools.
+        For every generation of my new release, I execute a set of smoke tests automatically, and at the end of the process
+         I get a report detail with which scenarios passed and failed
+    b. How did you target different devices?
+       R/ Nowadays some pages help you with this type o thing for example screenfly, Google DevTools Device Mode
+    c. How did you handle scalability?
+       R/To handle the scalability is necessary to find out what are the limits of your applications
+        this task can be performed by some tools like (Jmeter, and Selenious) and load tests after that we can perform
+        some changes in the architecture, for instance, we can set up a set of nodes with the help a Kubernetes that automatically
+        can perform horizontal scaling if is necessary or we can use some features of AWS like (replication, disaster recovery,
+        cache, CloudFront )
+    d. How did you report test results?
+       R/ With Cucumber I can get a final complete report about which scenarios passed and whiches failed
 
-4. What testing frameworks are you familiar with for system level/desktop applications? 
+4. What testing frameworks are you familiar with for system-level/desktop applications?
+   R/ Selenium / Jmeter / Cucumber
 
-5. What testing frameworks are you familiar with for browser applications? 
+5. What testing frameworks are you familiar with for browser applications?
+   R/ Selenium / Jmeter / LambdaTest
 
-6. What tools are you familiar with for Performance, Load and Stress testing? 
+6. What tools are you familiar with for Performance, Load, and Stress testing?
+   R/ Jmeter / SOAPUI
 
-7. Tell us about a project your worked on that you found to be interesting or unusual.
+Tell us about a project you worked on that you found interesting or unusual.
+   A/ My first time with Kubernetes, about 4 years ago I deployed a REST-API backend application that supports a financial web application, this application follows the microservices architecture style, and this module was deployed on Java, SpringBoot, SpringCloud and
+   these modules were deployed with Kubernetes and containerized by docker, they were deployed in GCP, me it was great because I realized how you can scale in or scale down
+   easily any application according to various metrics or parameters such as CPU usage, and disk space using many Kubernetes pods.
+ Kubernetes offers me a set of services that are useful for container orchestration.  Understand how I can build a high transactional application with these technologies I liked it.
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+   R/
+   Multithreading: Is useful for IO-bound processes, such as reading files from a database
+    (copying files, downloading files, web applications)
+   Multiprocessing: Is useful for CPU-bound processes such as computationally
+   heavy tasks (Search algorithms, Video/Audio/Content conversion/compression algorithms, video streaming,
+   Graphics processing/rendering e.g games, videos, mathematical computations)
+
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
+   i. Do you have a preference and why?
+   R/ The differences are related to the scope of the test I mean
+Unit test: It checks components. and these tests are written by developers it involves testing applications at a unit level, testing only the piece of code like a function
+   Functional Test: This test verifies if all functionality meets the
+   the business objective that was proposed, this test can be automated as a technique that ensures the overall operability of the application.
+   Integration Test:  The general idea is to test if the different parts of a system can work together and how they work in synthesis. The purpose is to check the overall performance and reliability.
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+3. What are some of the pros and cons of object-oriented programming vs functional programming?
+   Pro OOP:  Helpful for abstracting the business case in classes and to model easier the context of a problem
+   Cons OOP: OOP is stateful which means the states of objects are saved in memory so it consumes more resources
+    Functional programming: Based on functions there are no objects on the stream of information that can be a transformer in another stream, stateless.
+    In my point of view, both styles(POO vs Functional programming) is excellent and they can be useful for different use cases.
+
 
 4. What security concerns have you come across in the past and how have you addressed them?
+   R/ I had a report from the security area (all services were checking before deploying quality environment) that this REST-API-services can be vulnerable to XXE(XML external entity) injection the
+   the solution was to disable the DTD feature on the Gateway
+
 
 Small Programming Challenges
 
-1. Using a known programming language write a small program to: 
-a. Query the OS for the OS Patches that are currently installed on the system. 
-	i. For example, on windows: Windows Update Settings -> View Update History
-	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
-b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
-c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
-	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+1. Using a known programming language write a small program to:
+a. Query the OS for the OS Patches that are currently installed on the system.
+   i. For example, on windows: Windows Update Settings -> View Update History
+   R/
+   wmic qfe list full /format:htable > hotfixes.htm
+   start iexplore %userprofile%\hotfixes.htm
+
+    Go to the route -> step1/fixes.ps
+
+   iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+   R/
+   Get-Service wuauserv
+
+   Go to the route -> step2/AutomaticUpdateCheck.ps
+
+b. How would you consider validating that the above program returns all installed patches on the system from an automation perspective?
+   i. What automation framework(s) you would consider utilizing?
+   R/ This functionality would be  useful for automating revisions on a stack of servers and validating if all are meeting the
+   security restrictions in a company.
+c. Let's say your program was written to be cross-platform, how would you design an infrastructure for deploying your program and
+     executing the test case(s) across multiple Windows, Linux, and Mac devices?
+   i. After a reboot, a system may show different patches as installed, would this cause complication with your validation?
+   If so, what alternatives do you see available? R/ restart before executing these validations
+   R/ I can design an automated infrastructure with an ansible tool(playbook) and a pipe-line (Jenkins) with these tools I can easily
+   automate these tasks (Healthy security automated revision on a company).
