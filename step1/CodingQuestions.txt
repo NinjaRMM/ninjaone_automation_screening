@@ -1,36 +1,73 @@
+-------------------------------
 General Questions
-
+-------------------------------
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+   ANSWERS: I recommend and like to work with: GIT, INTELLIJ, AZURE CI/CD, DOCKER, JUNIT, SPRING, GIT COMMIT TEMPLATE, DDD, SOLID
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+   ANSWERS: SPOT BUGS, SOLID, CLEAN CODE, DOCKER, JUNIT
 
-3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
+3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline,
+please feel free to be as detailed as you please.
 a. How did you deploy and execute your test suites? 
 b. How did you target different devices? 
 c. How did you handle scalability? 
 d. How did you report test results?
+   ANSWERS: We have an infrastructure team to work with Automation on Jenkins.
+            I have a little experience with that task, but I do the Unit test automation of my code. In this case the
+            test result only read by mysef and I do the corrections.
+            When we run the "partest" on the application (to figure out if my change broke tje aplication) an automatic
+            report did send to slack. All the team has access.
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+   ANSWERS: JUnit
 
 5. What testing frameworks are you familiar with for browser applications? 
+   ANSWERS: Selenium
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
+   ANSWERS: JMeters
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+   ANSWERS: When I worked with a stock market project, specifically with stock derivatives and the verification
+            of the processing of these operations
 
+-------------------------------
 Technical Questions
-
+-------------------------------
 1. When would you use multithreading vs multiprocessing? 
+   ANSWERS: Multithreading is useful for IO processes, such as reading files from a network (or local disk) or
+            database since each thread can run the IO process concurrently. Multiprocessing is useful for
+            CPU-bound processes, such as computationally heavy tasks since it will benefit from having multiple
+            processors on server.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
 	i. Do you have a preference and why? 
+    ANSWERS: _Unit testing_ means testing individual modules of an application in isolation (without any interaction
+             with dependencies) to confirm that the code is doing things right.
+             _Integration testing_ means checking if different modules are working fine when combined as a group.
+             _Functional testing_ means testing a slice of functionality in the system (may interact with dependencies)
+             to confirm that the code is doing the right things.
+             I don't have a preference because all then are very important.
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+   ANSWERS: Functional programming mainly supports abstraction over data and abstraction over behavior.
+            Object-oriented programming mainly supports abstraction over data only.
+            Functional programming provides high performance in processing large data for applications.
+            Object-oriented programming is not good for big data processing.
+            Functional programming has a stateless programming model. Object-oriented programming has a
+            stateful programming model.
+            In functional programming, a state does not exist. In object-oriented programming, the state exists.
 
 4. What security concerns have you come across in the past and how have you addressed them?
+    ANSWERS: I have concerns about "injections" (SQL and Code) and we fixed that implementing validation on the server
+             side to prevent unwanted characters, such as spaces and '' quotes marks, from trickling through.
+             Also improve validation to prevent additional JavaScript code and did apply input validation with
+             output sanitizing and scaping.
 
+------------------------------
 Small Programming Challenges
-
+-------------------------------
 1. Using a known programming language write a small program to: 
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
