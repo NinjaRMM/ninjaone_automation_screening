@@ -1,41 +1,107 @@
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+* Intellisense or similar autocomplete and/or in-editor reference 
+* A design document or very granular tasks/tickets with proper descriptions
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+* Intellisense or similar autocomplete and/or in-editor reference 
+* Proper documentation
+* Proper instructions on what is desired by the manager/ticket requester
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
+
 a. How did you deploy and execute your test suites? 
+Depends on the company:
+* Manually, developer ran (no test suite, no instructions on what to test).
+* Manually, QA team ran.
+* Incomplete test suite ran live on developer machine on demand and would show errors found so the developer does not push changes. No full test suite available.
+* Test suite ran automatically on PR and failed the PRs if necessary. While some third party git extensions showed their results on the PR itself, had to go to a separate system to retrieve the company's test results.
+Deployment of new tests varied, unit tests were part of the main source code and were included in the regular PR process. Some tests were ran on separate threads on a server farm and these were prepackaged and sent to QA so they figure how to include them on their set.
+We were encouraged to run the suite on our branch before submitting the PR, we had to go to the automation system webpage (outside git) and queue our branch against the specific suite we wanted to test, e.g. Mac Debug.
+We could also run specific units (or the entire suite) if we knew the commands to execute manually on our dev machine. We sometimes did this for access to the debugger.
+
 b. How did you target different devices? 
+For the manual ones, only the device the tester was using was tested. For the last one, all devices and build configurations ran the automated tests in parallel.
+
 c. How did you handle scalability? 
+Scalability of the product: Either no need (Product does not have use cases where it changes in load, or in the case of AWS, scalability is assured), or it was part of a test already.
+Scalability of test automation: Scaled manually if needed, I was not in charge of this.
+
 d. How did you report test results?
+Log files were collected and sent to a test result server. You could locate specific archived files using MS active directory, the webpage for the main automation would show the state and keep the results of test jobs, a webpage had filters to locate recently completed builds, it also had a dashboard so management could check the state of the main branch.
+
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+I have not held testing responsibilities previously.
+
+*I have fixed bugs on established tests, this did not even require learning what framework I was fixing.
+* I have designed very few unit tests, this did not require learning what framework was gonna run the test (I only had to provide a function that ran the test and printed error, return 0, if the test failed).
+* I have created jenkins jobs to build open source projects, and ran their test suites with a cmake command line. Have fixed errors in the build when these tests failed, possibly fixing the library, or the test.
+* I have connected several open source image library test suites (eg GIF test suite, or BMP test suite) so they can be tested against our bigger product test suite (functional test).
+
 
 5. What testing frameworks are you familiar with for browser applications? 
+I have only tested manually using Postman, and using the browser Developer mode.
+
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
+Have not used external tools for these. At most the Debugger of the programming language.
+
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+I believe all my projects were interesting. The biggest codebase was Autodesk Maya, the biggest codebase I controlled was on Megatrack. The only thing unusual about my projects is that I have moved to very different projects from past experience every time. Different languages, different level of responsability, different industry, etc.
+
+Since this questionaire gives importance to testing, my manager wanted to introduce OpenColorIO library to the software and tasked me to build the library for Windows, Linux and Mac and set up an automated CI / CD pipeline for this build. Once I finished this on a git to Jenkins pipeline he wanted me to prove that I had built it correctly, before trying to integrate it into the software and possibly introducing a thousand memory leaks. The only way to do this was to run the library tests, as far as I could imagine.
+
+OIIO however deals with images of many formats, so its test suite connects to the test suites for these formats in order to validate its own results (e.g. to ensure BMP files are processed correctly, OIIO would process a BMP file from the BMP test suite, and compare results to what is expected of BMP editors). So, in order to validate OIIO i had to pass a dozen or more test suites and I had to learn how to obtain and run them.
+
+Once I finished I reported to my manager, and it was raised that, once the integration to the software was finished, the only way to prove that the integration was correct, was to also pass the same image tests that OIIO had passed independently, with the bonus that it would make the software compliant to all these image formats test suites as well. However, it was not easy to simply obtain the individual pixels of images in the memory of the software, so I designed a functional test that would compare the end result image that the end user would see, versus the images from the test suite rendered on both the pre-OIIO version of the software, and OIIO version, this would highlight any problems with the integration, OIIO, and with the software. This could connect easily to tests we already did that compared screenshots of the software to expected results so we would save effort as the framework was in place already.
+
+
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
+In the context of testing automation I would use multiprocessing to run separate tests as this would keep ones failure from corrupting the others environment. Multithreading would only be used within the scope of a single test, if needed (e.g. IO thread to read test data and an test execution thread to execute the actual test).
+
+A single test could use multiprocessing if it was testing client / server behaviors.
+
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
+Unit tests will test all functions on a class that involve a single module, Integration tests will test functions that involve multiple modules, Functional tests will test end user use cases on the built program.
+
 	i. Do you have a preference and why? 
+	No, probably functional since I get to test what the user will see and that is what I should care about in the end.
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+FP languages I have used are too cumbersome to get running efficiently (eg read a stream of ints, sort them, and print them) and you are stuck on their implemented calls, it could however be that my brain is wired for the classic style.
+As a pro, they have very complex functions (eg statistics) already implemented and prepackaged for you to use.
+
 
 4. What security concerns have you come across in the past and how have you addressed them?
+I have come across previously undetected exploits on the software I was maintaining, reported to the appropriate person (manager usually) and was tasked with fixing them which I did. Besides this I have raised possible security concerns multiple times, which were no-gos (no actual issue once investigated), or were in the design phase so they were avoided in the first place.
+
 
 Small Programming Challenges
 
 1. Using a known programming language write a small program to: 
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
+I seem to have never uninstalled a KB as I do not have any entries other than installations, I will not risk breaking my installations to figure this out. Assuming that an uninstallation generates two entries, one for the installation and a later dated one for the uninstallation, the program would have to first retrieve the objects, sort by date if needed, remove the uninstallation entries after removing their previous installation. This still leaves the problem with the "Other" entries which I am assuming match "Installation" but could be "Failure" and would be therefore ignored. See the /src folder for the script.
+
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+See /src folder
+
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+* Have a prepared frozen image so that the expected results are known beforehand, validate against a baked "expected string" result.
+* Use some functional testing solution to validate from the screen itself.
+
+	i. What automation framework(s) you would consider utilizing?
+	Jenkins is probably enough for this.
+
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+Jenkins can be defined to run the test(s) on multiple slave configurations, alternatively, if virtualization from a single central controller is available through a test framework, it could be used.
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+	The complication with a frozen image is that a new patch could be introduced that is not detectable by the software and you will not know about this since your image (and text result) are outdated and still passing, a false positive passing grade. A possibility is to add a second test that rather than just evaluating string results would take a screenshot of the actual View Update History screen and validate against an "expected screenshot(s)" used for the test. In this case, whenever there is a change on the UI, OS internal behavior, or a new patch, etc the test will fail, and will be up to a developer to review and update the program, the expected screenshot and/or the expected text result.
+	If a functional testing framework is available that can not only navigate the OS but also parse text from screens (and compare to other screens using different fonts or possibly save this text to file) then the View Update History could be parsed and compared to the output from the tested software. This removes the need for a baked string on the test.
