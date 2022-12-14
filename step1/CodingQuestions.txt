@@ -74,7 +74,10 @@ Small Programming Challenges
         iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
     (b) How would you consider validating the above program returns all installed patches on the system from an automation perspective?
         i. What automation framework(s) you would consider utilizing?
+        ANSWERS: I would put a schedule in the so to call the application
     (c) Let's say your program was written to be cross-platform, how would you design an infrastructure for deploying your program
         and executing the test case(s) across multiple Windows, Linux and Mac devices?
         i. After a reboot, a system may show different patches as installed, would this cause complications with your validation?
            If so, what alternatives do you see available?
+        ANSWERS: I've never worked with software that had OS integration, but I don't see how rebooting could
+                 cause validation issues.
