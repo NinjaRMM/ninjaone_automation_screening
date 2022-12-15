@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/step2/src/Movies/Movies.iml" filepath="$PROJECT_DIR$/step2/src/Movies/Movies.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ninjaone_automation_screening.iml" filepath="$PROJECT_DIR$/.idea/ninjaone_automation_screening.iml" />
     </modules>
   </component>
