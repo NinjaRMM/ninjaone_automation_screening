@@ -31,14 +31,14 @@ public class BaconsLaw {
 	public Integer calculateDegrees(String[] args) throws IOException {
 		FilterInput filterInput = getInputs(args);
 		validateFilters(filterInput);
-		
+
 		ObjectMapper mapper = new ObjectMapper();
 		JsonFactory jsonFactory = new JsonFactory(mapper);
 		JsonParser jsonParser = getJsonParser(jsonFactory);
 
 		loadMoviesAndActors(jsonParser);
 		validateActors(filterInput, actors);
-		
+
 		queue.add(filterInput.getActor1());
 		visitedActors.add(filterInput.getActor1());
 		degrees.put(filterInput.getActor1(), 0);
@@ -66,8 +66,7 @@ public class BaconsLaw {
 					}
 
 					if (targetActor.equals(actor)) {
-						System.out.println(movie);
-						return degrees.get(actor);
+						return degrees.get(currentActor);
 					}
 				}
 			}
@@ -109,10 +108,10 @@ public class BaconsLaw {
 		if (args == null || args.length == 0) {
 			throw new IllegalArgumentException(MISSING_REQUIRED_ARGUMENTS_ACTOR1);
 		}
-		
+
 		String arg = String.join(" ", args);
 		String[] splittedArgs = arg.split(",");
-		
+
 		String actor1 = splittedArgs[0];
 		String actor2 = splittedArgs.length > 1 ? splittedArgs[1] : KEVIN_BACON;
 
@@ -123,7 +122,7 @@ public class BaconsLaw {
 		if (filterInput.getActor1() == null) {
 			throw new IllegalArgumentException(MISSING_REQUIRED_ARGUMENTS_ACTOR1);
 		}
-		
+
 		if (filterInput.getActor1().equals(filterInput.getActor2())) {
 			throw new IllegalArgumentException("actor1 and actor2 must be different");
 		}
@@ -143,11 +142,11 @@ public class BaconsLaw {
 		BaconsLaw baconsLaw = new BaconsLaw();
 		try {
 			Integer degrees = baconsLaw.calculateDegrees(args);
-			System.out.println(degrees);	
+			System.out.println(degrees);
 		} catch (ActorDidNotStarException e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 	}
 
 }

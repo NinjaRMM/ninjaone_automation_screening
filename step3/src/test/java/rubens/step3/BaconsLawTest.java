@@ -32,20 +32,29 @@ public class BaconsLawTest {
 	}
 	
 	@Test
-	public void shouldMatchExecutionSet() throws IOException {
-		String[] args1 = {"Tom Cruise,Kevin Bacon"};
-		assertEquals(new Integer(2), baconsLaw.calculateDegrees(args1));
-		
-		String[] args2 = {"Tom Cruise,Sylvester Stallone"};
-		assertEquals(new Integer(2), baconsLaw.calculateDegrees(args2));
-		
-		String[] args3 = {"Buzz Lightyear"};
-		ActorDidNotStarException e1 = assertThrows(ActorDidNotStarException.class, () -> baconsLaw.calculateDegrees(args3));
-		assertEquals("Buzz Lightyear did not star in a movie in the data provided", e1.getMessage());
-		
-		String[] args4 = {"Buzz Lightyear", "Tom Cruise"};
-		ActorDidNotStarException e2 = assertThrows(ActorDidNotStarException.class, () -> baconsLaw.calculateDegrees(args4));
-		assertEquals("Buzz Lightyear did not star in a movie in the data provided", e2.getMessage());
+	public void shouldReturnDegree1BetweenKevinBaconAndTomCruise() throws IOException {
+		String[] args = {"Tom Cruise"};
+		assertEquals(new Integer(1), baconsLaw.calculateDegrees(args));
+	}
+	
+	@Test
+	public void shouldReturnDegree2BetweenTomCruiseAndSylvesterStallone() throws IOException {
+		String[] args = {"Tom Cruise,Sylvester Stallone"};
+		assertEquals(new Integer(2), baconsLaw.calculateDegrees(args));
+	}
+	
+	@Test
+	public void shouldShowErrorMessageWhenTheOnlyActorIsNotFound() throws IOException {
+		String[] args = {"Buzz Lightyear"};
+		ActorDidNotStarException e = assertThrows(ActorDidNotStarException.class, () -> baconsLaw.calculateDegrees(args));
+		assertEquals("Buzz Lightyear did not star in a movie in the data provided", e.getMessage());
+	}
+	
+	@Test
+	public void shouldShowErrorMessageWhenOneActorIsNotFound() throws IOException {
+		String[] args = {"Buzz Lightyear,Tom Cruise"};
+		ActorDidNotStarException e = assertThrows(ActorDidNotStarException.class, () -> baconsLaw.calculateDegrees(args));
+		assertEquals("Buzz Lightyear did not star in a movie in the data provided", e.getMessage());
 	}
 	
 }
