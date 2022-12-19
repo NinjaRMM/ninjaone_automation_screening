@@ -19,6 +19,10 @@ public class MovieFilterTest {
 	
 	private MovieFilter movieFilter = new MovieFilter();
 	
+	@Test
+	public void shouldThrowExceptionWhenNoArgumentIsPassed() {
+		assertThrows(IllegalArgumentException.class, () -> movieFilter.run(null));
+	}
 	
 	@Test
 	public void shouldThrowExceptionWhenDecadeIsAbsent() {

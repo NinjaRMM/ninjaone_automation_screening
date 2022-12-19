@@ -15,11 +15,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MovieFilter {
 	
+	private static final String MISSING_REQUIRED_ARGUMENTS_DECADE_AND_OUTPUT = "Missing required arguments: --decade and --output";
 	private static final String MOVIES_JSON = "movies.json";
 	
 	public void run(String[] args) throws IOException {
-		MovieFilter movieFilter = new MovieFilter();
-		FilterInput filterInput = movieFilter.getInputs(args);
+		FilterInput filterInput = getInputs(args);
 		validateFilters(filterInput);
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -68,6 +68,10 @@ public class MovieFilter {
 	}
 
 	private FilterInput getInputs(String[] args) {
+		if (args == null) {
+			throw new IllegalArgumentException(MISSING_REQUIRED_ARGUMENTS_DECADE_AND_OUTPUT);
+		}
+		
 		Integer decade = null;
 		String outputPath = null;
 		for (String arg : args) {
@@ -84,7 +88,7 @@ public class MovieFilter {
 	
 	private void validateFilters(FilterInput filterInput) {
 		if (filterInput.getDecade() == null || filterInput.getOutputPath() == null) {
-			throw new IllegalArgumentException("Missing required arguments: --decade and --output");
+			throw new IllegalArgumentException(MISSING_REQUIRED_ARGUMENTS_DECADE_AND_OUTPUT);
 		}
 
 		if (filterInput.getDecade() % 10 > 0 || filterInput.getDecade() < 0) {
