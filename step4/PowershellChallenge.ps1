@@ -3,8 +3,19 @@
 #Please review the below code and answer the following questions to the best of your ability: 
 
 #1.) What is this code doing?
+#This code checks if NinjaWPM is installed on the VM WPM, using Ninja/helloworld as credentials
+#Also, it checks if the NinjaWPM.exe is downloaded, but it's not clear to me what it does in case the .exe is found
+
 #2.) What does the program assume you need to have access to in order to execute? 
+#- Access to Power Shell
+#- Permission to manage VMs
+
 #3.) What architectures can this script run on? 
+#- Any OS with PowerShell installed
+#- VM must be windows
+
+#PS.: I don't have experience with PowerShell, so I had to google some concepts
+#I hope my assumptions are correct :)
 
 $vm = Get-VM -Name WPM
 $IsNinjaInstalled = "Test-Path 'HKLM:\SOFTWARE\WOW6432Node\NinjaRMM LLC\NinjaWPM'"
