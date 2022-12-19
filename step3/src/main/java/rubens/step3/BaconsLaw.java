@@ -18,12 +18,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class BaconsLaw {
 
 	private static final String MISSING_REQUIRED_ARGUMENTS_ACTOR1 = "You must provide at least one actor";
-	private static final String MOVIES_JSON = "movies.json";
+	private static final String MOVIES_JSON = "80s-movies.json";
 	private static final String KEVIN_BACON = "Kevin Bacon";
 
 	Map<String, Set<String>> actors = new HashMap<>();
 	Map<String, Set<String>> movies = new HashMap<>();
 	Set<String> visitedActors = new HashSet<>();
+	Set<String> visitedMovies = new HashSet<>();
 	Map<String, Integer> degrees = new HashMap<>();
 	Queue<String> queue = new LinkedList<>();
 
@@ -38,21 +39,9 @@ public class BaconsLaw {
 		loadMoviesAndActors(jsonParser);
 		validateActors(filterInput, actors);
 		
-		/*
-		 * 
-		 *
-		// I was not sure if it should count as 1 in case actors 1 and 2 have acted together
-		// As the description says Tom Cruise and Kevin Bacon have degree=2 and they've acted together, I'm not considering this scenario
-		
-		if (actedTogether(filterInput.getActor1(), filterInput.getActor2())) {
-			return 1;
-		}
-		*/
- 
-
 		queue.add(filterInput.getActor1());
 		visitedActors.add(filterInput.getActor1());
-		degrees.put(filterInput.getActor1(), 1);
+		degrees.put(filterInput.getActor1(), 0);
 
 		while (!queue.isEmpty()) {
 			String currentActor = queue.poll();
@@ -65,29 +54,21 @@ public class BaconsLaw {
 		return -1;
 	}
 
-	/*
-	private boolean actedTogether(String startActor, String targetActor) {
-		Set<String> startActorMovies = actors.get(startActor);
-		Set<String> targetActorMovies = actors.get(targetActor);
-		startActorMovies.retainAll(targetActorMovies);
-		if (!startActorMovies.isEmpty()) {
-			return true;
-		}
-		return false;
-	}
-	*/
-
 	private Integer visitActor(String currentActor, String targetActor) {
 		for (String movie : actors.get(currentActor)) {
-			for (String actor : movies.get(movie)) {
-				if (!visitedActors.contains(actor)) {
-					visitedActors.add(actor);
-					queue.add(actor);
-					degrees.put(actor, degrees.get(currentActor) + 1);
-				}
+			if (!visitedMovies.contains(movie)) {
+				visitedMovies.add(movie);
+				for (String actor : movies.get(movie)) {
+					if (!visitedActors.contains(actor)) {
+						visitedActors.add(actor);
+						queue.add(actor);
+						degrees.put(actor, degrees.get(currentActor) + 1);
+					}
 
-				if (targetActor.equals(actor)) {
-					return degrees.get(actor);
+					if (targetActor.equals(actor)) {
+						System.out.println(movie);
+						return degrees.get(actor);
+					}
 				}
 			}
 		}
