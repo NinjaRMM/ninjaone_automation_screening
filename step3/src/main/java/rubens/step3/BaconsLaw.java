@@ -2,9 +2,11 @@ package rubens.step3;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
@@ -25,6 +27,7 @@ public class BaconsLaw {
 	Map<String, Set<String>> movies = new HashMap<>();
 	Set<String> visitedActors = new HashSet<>();
 	Set<String> visitedMovies = new HashSet<>();
+	Map<String, ChainElement> chain = new HashMap<>();
 	Map<String, Integer> degrees = new HashMap<>();
 	Queue<String> queue = new LinkedList<>();
 
@@ -47,11 +50,24 @@ public class BaconsLaw {
 			String currentActor = queue.poll();
 			Integer degree = visitActor(currentActor, filterInput.getActor2());
 			if (degree > -1) {
+				buildShorttestPathChain(chain, filterInput.getActor2()).forEach(movie -> System.out.println(movie));
 				return degree;
 			}
 		}
 
 		return -1;
+	}
+	
+	List<String> buildShorttestPathChain(Map<String, ChainElement> fullChain, String targetActor) {
+		List<String> chain = new ArrayList<>();
+		ChainElement element = fullChain.get(targetActor);
+		
+		while (element != null) {
+			chain.add(element.getMovie());
+			element = fullChain.get(element.getActor());
+		}
+		
+		return chain;
 	}
 
 	private Integer visitActor(String currentActor, String targetActor) {
@@ -63,8 +79,9 @@ public class BaconsLaw {
 						visitedActors.add(actor);
 						queue.add(actor);
 						degrees.put(actor, degrees.get(currentActor) + 1);
+						chain.put(actor, new ChainElement(currentActor, movie));
 					}
-
+					
 					if (targetActor.equals(actor)) {
 						return degrees.get(currentActor);
 					}

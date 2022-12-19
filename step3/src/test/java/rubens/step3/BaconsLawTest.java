@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -35,12 +36,21 @@ public class BaconsLawTest {
 	public void shouldReturnDegree1BetweenKevinBaconAndTomCruise() throws IOException {
 		String[] args = {"Tom Cruise"};
 		assertEquals(new Integer(1), baconsLaw.calculateDegrees(args));
+		
+		List<String> chain = baconsLaw.buildShorttestPathChain(baconsLaw.chain, "Kevin Bacon");
+		assertEquals(chain.get(0), "Footloose");
+		assertEquals(chain.get(1), "All the Right Moves");
 	}
 	
 	@Test
 	public void shouldReturnDegree2BetweenTomCruiseAndSylvesterStallone() throws IOException {
 		String[] args = {"Tom Cruise,Sylvester Stallone"};
 		assertEquals(new Integer(2), baconsLaw.calculateDegrees(args));
+		
+		List<String> chain = baconsLaw.buildShorttestPathChain(baconsLaw.chain, "Sylvester Stallone");
+		assertEquals(chain.get(0), "Nighthawks");
+		assertEquals(chain.get(1), "The Osterman Weekend");
+		assertEquals(chain.get(2), "All the Right Moves");
 	}
 	
 	@Test
