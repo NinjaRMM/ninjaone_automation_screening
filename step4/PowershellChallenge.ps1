@@ -3,8 +3,11 @@
 #Please review the below code and answer the following questions to the best of your ability: 
 
 #1.) What is this code doing?
-#2.) What does the program assume you need to have access to in order to execute? 
-#3.) What architectures can this script run on? 
+#    Checks if a program called NinhaRMM is installed on a VM and runs it. Checks if it was installed on the local drive and runs it.
+#2.) What does the program assume you need to have access to in order to execute?
+#    Access to execute commands on VM
+#3.) What architectures can this script run on?
+#    32bits or 64bits
 
 $vm = Get-VM -Name WPM
 $IsNinjaInstalled = "Test-Path 'HKLM:\SOFTWARE\WOW6432Node\NinjaRMM LLC\NinjaWPM'"
