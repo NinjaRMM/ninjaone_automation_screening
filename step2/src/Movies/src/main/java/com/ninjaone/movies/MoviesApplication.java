@@ -37,7 +37,7 @@ public class MoviesApplication implements CommandLineRunner {
                 decade = args[i + 1].trim();
             }
             if (args[i].contains("output")) {
-                outputFile = args[i + 1].trim();
+                outputFile = "../../data/" + args[i + 1].trim();
             }
         }
 

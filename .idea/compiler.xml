@@ -7,16 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="sixDegree" />
         <module name="Movies" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Movies" target="17" />
+      <module name="sixDegree" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Movies" options="-parameters" />
+      <module name="sixDegree" options="-parameters" />
     </option>
   </component>
 </project>
