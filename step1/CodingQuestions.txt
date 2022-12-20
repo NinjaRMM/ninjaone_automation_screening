@@ -1,47 +1,159 @@
 Focus Questions
 
 1. What is your full name?
+Answ: Marlon Harnisch
 
-2. Any repositories you wish to share with us? 
+2. Any repositories you wish to share with us?
+Answ: https://github.com/piabao Do not have too much projects, most of my working projects are private
 
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
-
+Answ: As a developer we use a lot of tools and techniques on our daily basis. Like git, Junit, Cucumber, Gradle for automation build process,
+	CI/CD (Jenkins) for Continuous integration, Agile methodologies like MVP, swagger, postman, insomnia.
+	For techniques, using good patters, clean code techniques, aply MVC arquitecture,
+	having a good amount of tests (unit, integration, feature), using TDD, BDD etc.
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+Answ: The same as for development.
 
-3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
+3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please.
+a. How did you deploy and execute your test suites?
+b. How did you target different devices?
+c. How did you handle scalability?
 d. How did you report test results?
+Answ: There are a few different approaches you can take to deploy and execute test suites, depending on your specific needs and the tools you are using.
+	Here are some general steps you might follow:
+	1 - Set up a testing environment: This typically involves setting up the hardware and software you will use to run your tests.
+	For example, you might set up a testing server, or configure a set of virtual machines or cloud instances.
+	2 - Configure your test suite: This typically involves setting up the test cases and test data you will use to test your application.
+	You might also need to configure any test runners or automation frameworks you are using.
+	3 - Deploy and execute your test suite: Once your test suite is configured, you can deploy it to your testing environment and execute it.
+	This might involve running a script or command to trigger the tests, or using a continuous integration (CI) tool to run the tests automatically.
+	4 - Target different devices: To test your application on different devices, you might need to use a combination of physical devices and
+	emulators or simulators. You can use tools like Appium or Selenium to run your tests on different devices and operating systems.
+	5 - Handle scalability: To handle scalability, you might need to set up a distributed testing environment, where you can run your tests
+	concurrently on multiple machines. This can help you test your application more quickly and at a larger scale.
+	6 - Report test results: There are a variety of tools and techniques you can use to report test results. Some common options include using a
+	testing tool that generates reports automatically, creating custom scripts to generate reports, or using a reporting tool like Jenkins or
+	TestRail to track and report on test results.
 
-4. What testing frameworks are you familiar with for system level/desktop applications? 
+4. What testing frameworks are you familiar with for system level/desktop applications?
+Answ: I'm familiar wit h JUnit that is a Java-based testing framework that is commonly used to test system level applications.
+  	It offers support for test runners, assertion libraries, and test-driven development (TDD).
+  	I also used Cucumber that is a behavior-driven development (BDD) testing framework that can be used in java applications.
+  	I also already use Robot framework classes in java to perform automations.
 
-5. What testing frameworks are you familiar with for browser applications? 
+5. What testing frameworks are you familiar with for browser applications?
+Answ: I already use Selenium, that is a is a browser automation tool that can be used to test web applications, including system level applications that have a web interface.
 
-6. What tools are you familiar with for Performance, Load and Stress testing? 
+6. What tools are you familiar with for Performance, Load and Stress testing?
+Answ: I'm familiar with JMeter that is a tool that can be used to load test web applications, as well as measure the performance of servers,
+  	databases, and other resources. It supports a wide range of protocols and can generate detailed reports on test results.
+	I also use Postman for doing rest calls in batch with diferent environments.
+	In web based applications I also use swagger-ui for doing api tests.
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+Answ: I participated in developing the ‘Guardião’ system. Specifically I worker with a GIS system (Geographic Information System)
+	that could be used to monitor and manage all the strategic federal government / army operations in Brazil.
+	It was used in the 2014 World Cup in Brazil. The entire system was made in Java, and we developed a Selenium aplication, with java as well,
+	that could automated 90% of the tests in the main ploject.
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+Answ: In general, you would use multithreading when you want to run multiple threads within the same process,
+	and you would use multiprocessing when you want to run multiple processes concurrently.
+	For example: Multithreading is useful when you want to run multiple threads within a single process,
+	sharing the same memory space. This can be useful for tasks that involve a lot of communication between
+	threads, or for running multiple threads on a single CPU.
+	For the other hand, Multiprocessing is useful when you want to run multiple independent processes concurrently.
+	This can be useful for tasks that do not involve a lot of communication between processes, or for running multiple processes on a machine with multiple CPUs.
+
+	In general, you should choose the approach that best fits the needs of your application.
+	If you are running a task that involves a lot of communication between threads or that requires a lot of
+	CPU power, multiprocessing may be a better choice. If you are running a task that can be easily divided
+	into independent units of work, multithreading may be a better choice.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
+	i. Do you have a preference and why?
+Answ: - Unit tests: Unit tests are small, isolated tests that validate the behavior of a single unit of code (e.g., a function or method or a Class).
+	They are typically written by developers as part of the development process, and are designed to test the smallest units of an application
+	in isolation from the rest of the system. (ex: JUnit)
+	- Functional tests: Functional tests validate the behavior of an application from the user's perspective, by simulating user actions and
+	verifying that the application responds correctly. These tests are often used to validate the overall functionality of an application and
+	ensure that it is working as expected. (ex: Selenium)
+	- Integration tests: Integration tests validate the interaction between different units or components of an application. They are used to
+	test how well the units or components work together, and to ensure that they are properly integrated into the overall system. (ex: Cucumber)
+	- I find it very fun to work with automation of functional tests
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
+Answ: Pros of object-oriented programming (OOP):
+	- OOP allows for modular and reusable code, as objects can be easily composed and reused.
+	- OOP makes it easier to model real-world concepts, as objects can represent entities and their properties and behaviors.
+	- OOP allows for encapsulation, which helps to reduce the complexity of larger systems by hiding the implementation details of objects.
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+	Cons of OOP:
+	- OOP can be more complex to learn and use, as it involves concepts such as inheritance, polymorphism, and encapsulation.
+	- OOP can lead to larger and more complex codebases, as objects often have many dependencies and interactions.
+	- OOP can be more difficult to debug and maintain, as changes to one object can have unintended consequences on other objects.
+
+	Pros of functional programming (FP):
+	- FP encourages a declarative programming style, which can make code more concise and easier to read.
+	- FP promotes immutability, which can make it easier to reason about and debug code.
+	- FP makes it easier to write concurrent and parallel code, as functions are self-contained and do not rely on shared state.
+
+	Cons of FP:
+	- FP can be more difficult to learn and use, as it involves concepts such as higher-order functions and recursion.
+	- FP can lead to more complex codebases, as functions may need to be composed in order to achieve the desired behavior.
+	- FP may be less intuitive for some developers, as it involves a different way of thinking about problems.
 
 4. What security concerns have you come across in the past and how have you addressed them?
+	Usually there are many security concerns that can arise in software development.
+	For example, I usually concern about secure coding practices. We need to develop using secure coding practices such as avoiding
+	the use of hardcoded passwords, properly sanitizing inputs, and using error handling and logging mechanisms to detect and prevent
+	security vulnerabilities.
 
 Small Programming Challenges
 
-1. Using a known programming language write a small program to: 
-a. Query the OS for the OS Patches that are currently installed on the system. 
+1. Using a known programming language write a small program to:
+a. Query the OS for the OS Patches that are currently installed on the system.
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
-b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+b. How would you consider validating the above program returns all installed patches on the system from an automation perspective?
+	i. What automation framework(s) you would consider utiltizing?
+Answ: We can intall an config a Selenium or a cucumber test environment and setting up a continuous integration (CI) platform
+	like Jenkins or Travis.
+	The features coud be based on a specification of a determined expected output when it is run on a system with a known set of installed patches.
+	This could involve manually checking the list of installed patches on a test system and comparing it to the output of the program.
+	Or maybe we could see the current avaliable updates for the build
+	(ex: if is a Windows OS we can serch on https://blogs.windows.com/windows-insider/2022/10/18/releasing-windows-10-build-19044-2192-to-release-preview-channel/)
+	and map all possible results.
+    Based on the expected output, you can write one or more test cases that exercise the program and check that it returns the correct list of installed patches.
+	The test cases should include a variety of different patch configurations (e.g., a system with no patches installed, a system with only critical patches installed,
+	a system with a mix of patches from different vendors).
+	Next, you will need to set up the test environment, which includes installing the program on a test system and configuring the test system to have the desired set of patches installed.
+	You may need to create multiple test systems to cover a range of patch configurations.
+	Finally, you can automate the tests by writing a script or using a testing framework (such as pytest, selenium or cucumber) that runs the program on the test system and compares the output to the expected results.
+	The script should be able to run the tests on multiple test systems with different patch configurations, and report any discrepancies between the expected and actual results.
+
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+Answ: There are several ways to design an infrastructure for deploying and testing a cross-platform program on multiple devices running different operating systems. Some options can be:
+	1 - Use a cloud-based testing service: There are several cloud-based testing services that allow you to run tests on a variety of devices and operating systems.
+	These services typically provide a web-based interface where you can upload your program and test cases, specify the devices and operating systems on which you want to run the tests,
+	and view the test results. Some examples of cloud-based testing services include AWS Device Farm, Google Cloud Test Lab, and BrowserStack.
+	2 - Use a continuous integration (CI) platform: CI platforms allow you to automate the process of building, testing, and deploying your program.
+	You can use a CI platform to set up a pipeline that builds and tests your program on multiple operating systems and devices as part of the CI process.
+	Some examples of CI platforms include Jenkins, CircleCI, and Travis CI.
+	3 - Set up your own testing infrastructure: If you have the resources and expertise, you can set up your own testing infrastructure by installing virtualization software (such as VirtualBox or VMware)
+	on a central server, and creating virtual machines for each operating system and device you want to test on. You can then use a tool like Ansible to automate the process of deploying your program and
+	running the test cases on each virtual machine.
+
+	About the the reboot question, yes, it is possible for the test to fail due to changes in the patch configuration after a reboot.
+	This could happen if the system installs or removes patches during the boot process, or if the system's patch management software (such as Windows Update) runs and modifies the patch configuration
+	after the test program has been run.
+	To avoid this issue, you can take a couple of different approaches:
+	1 - Freeze the patch configuration: One option is to "freeze" the patch configuration on the test system by disabling any patch management software or processes that could modify the patch
+	configuration after the test program has been run. This will ensure that the patch configuration remains unchanged during the test, allowing you to accurately validate the output of the program.
+	2 - Modify the test to account for patch changes: Alternatively, you can modify the test to account for the possibility of patch changes after a reboot. For example, you could write the test so that
+	it checks the patch configuration both before and after a reboot, and only reports a failure if the patch configuration changes in an unexpected way. This approach will allow the test to continue
+	running correctly even if patches are installed or removed during the boot process.
