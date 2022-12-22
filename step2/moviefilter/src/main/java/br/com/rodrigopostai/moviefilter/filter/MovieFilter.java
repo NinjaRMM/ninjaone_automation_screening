@@ -34,6 +34,7 @@ public class MovieFilter {
         matchers.add(new AfterYearMovieFilterMatcher());
         matchers.add(new DecadeMovieFilterMatcher());
         matchers.add(new GenreMovieFilterMatcher());
+        matchers.add(new CastMovieFilterMatcher());
     }
 
     public MovieFilter exactTitle(String title) {
