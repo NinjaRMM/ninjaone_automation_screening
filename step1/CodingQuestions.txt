@@ -1,39 +1,97 @@
 Focus Questions
 
 1. What is your full name?
+Rodrigo Monteiro Postai
 
 2. Any repositories you wish to share with us? 
+https://github.com/rpostai
 
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+TDD - Test Driven Development
+DDD - Domain Driven Design
+Clean code
+Clean Architecture
+Design Patterns
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+TDD - Test Driven Development
+Refactoring
+
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
+a. How did you deploy and execute your test suites?
+All my projects are developed using Java and its environment. To create the unit tests, I use JUnit and Mockito. Once it is integrated to any IDE, it's pretty simple to create and maintain unit tests. I also use Maven and therefore its plugins, including maven-surefire-plugin that runs all unit tests during the building.
+For integration tests besides Junit and if the project uses some relational database like Oracle, MS SQL Server or others, I use DBUnit to populate the database and create the correct test scenarios. If the project doesn't demand that we run the queries on the real database, I use H2 database (in-memory database) to test the repository components. Otherwise I create/use a database "docker" image with the target database and before the integration test phase I start the container and after the tests I stop it using "docker-maven-plugin" configured on pom.xml
+For functional tests, I use Selenium and, as described previously, I use the tools for integration tests.
+All the tests are deployed in the same project repository.
+As "CI/CD" I'm current using Jenkins. In the past I also used Gitlab.
+
+b. How did you target different devices?
+I haven't had to target different devices, because all my projects were projects to run on browser or only apis to be consumed by other clients. But, if necessary, we can address this creating different profiles on Maven and for every profile, create/user a docker instance with the target device. For example. Let's say our project needs to run on Oracle and Postgres database. So I could create two maven profiles: one for Oracle and one for Postgres. Each profile would create/use a different docker instance with the database configured. Then we just could run the tests for each profile.
+
+
+c. How did you handle scalability?
+To allow horizontal scalability we need to make sure that the application is stateless. This is the essential requirement for providing high scalability.
+In some projects we wanted to test the borders of the project. In that case we created a pool of docker containers (either managed by Docker Compose or K8s), or even using the cloud infrastructure (using Azure) and created several LnP (Load and performance) tests using JMeter. Those tests were run before every project release.
+
 d. How did you report test results?
+Using Jacoco and Maven
+
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+I haven't developed desktop applications with automated tests
+
 
 5. What testing frameworks are you familiar with for browser applications? 
+Selenium/Webdriver
+
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
+JMeter
+
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+I architected and designed a systems development platform based on Java and Java EE 8 that speed up the development of new software products through automatic code generation, automatic user interface generation, automatic unit and integration test generation.
+To backend/frontend developers team was created an Eclipse plugin that, based on the definition
+of "entities" generate all the code necessary to create a simple CRUD application. Besides this, all
+the logging, observability, security, audit, communication between applications (synchronous and asynchronous), scalability, multitenancy, customization by end users were addressed in a full platform for build and run several applications developed by the company. Tasks like developing a simple crud that took 8h were reduced to 10 minutes or less.
+Technology stack: Java 8/11, Java EE 7/8, JPA/Eclipselink, Junit, DBUnit, Selenium, Arquillian, Angular 4+, Groovy, Maven, Gitlab, Git, Docker, Docker-compose, Kubernetes
+
+
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+Multithreading is used when we can parallelize a task, to make the most of the machine's processing power and multiprocessing is used when we need to work with a very large amount of data, that couldn't be processed on one machine (Big Data)
+
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
 	i. Do you have a preference and why? 
+Unit tests -> Its goal is to test every piece of the code, every method, every class to make sure everything is being executed as expected. 
+Integration tests -> Its goal is to test the integration among the software component, like containers, databases, message brokers and so on.
+Functional tests -> Its goal is to test all the user interfaces from customer point of view.
+All kinds of tests are very important. Unit tests are supposed to cover as much as possible. Ideally it should be 100%. From the developer perspective this is the most important set of tests and it is my favorite because it helps me to develop and mainly to modify existing code safely.
+Functional tests are my second set of favorite tests, because they help us to make sure that, from customers perspective, everything is working as expected. Funcional tests are also very important for Sales Department, because on a demo, if we run the tests, we enchant the customer.
+
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+Object Oriented Programming:
+ - Pros: Encapsulation, Polymorphism 
+ - Cons: In general, the classes are stateful, which makes difficult to parallelize
+Functional Programing:
+ - Pros: Everything is a method and it does not keep any state. Therefore the tasks can be easily parallelized. Easy to test
+ - Cons: Hard to read
+
 
 4. What security concerns have you come across in the past and how have you addressed them?
+Authentication: Addressed using in-house solution, using Filters and Interceptors
+
+
+Authorization: The customer needed to set up a set of permissions to the end user according to his/her role or even individually. For example: the customer needed to hide some fields from the end user, like the field salary in a table employee. The solution was creating a table called resources that kept all entities and its fields as a resource and then link those resources to the roles/users.
+After searching that record, like, "employee" in the database, the record was submitted to a interceptor that checked if the field returned was allowed to a given role/user.
+
 
 Small Programming Challenges
 
@@ -41,7 +99,13 @@ Small Programming Challenges
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+	i. What automation framework(s) you would consider utiltizing?
+I would build a docker image, with the target OS system. In the "dockerfile" I would disable automatic patches update and I would apply a known number of patches. After that, I would deploy the app on that instance and run it. After that, just check if the result is the same as the known patches that were applied.
+
+ 
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+I would build the same solution as the answer given on item b) for each OS. 
+But lest's say I hadn't had disabled the automatic patches update, my test would consider only the known patches that I had applied to validate the test case.
