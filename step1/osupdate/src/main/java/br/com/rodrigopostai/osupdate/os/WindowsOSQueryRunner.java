@@ -8,6 +8,6 @@ import java.util.List;
 public class WindowsOSQueryRunner implements OSQueryRunner {
     @Override
     public List<OSUpdate> search() throws IOException {
-        return null;
+        throw new RuntimeException("Not implemented for Windows yet!!!");
     }
 }

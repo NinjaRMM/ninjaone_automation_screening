@@ -9,8 +9,5 @@ public interface OSQueryRunner {
     static String getOS() {
         return System.getProperty("os.name");
     }
-    static String getHomeDirectory() {
-        return System.getProperty("user.home");
-    }
     List<OSUpdate> search() throws IOException;
 }

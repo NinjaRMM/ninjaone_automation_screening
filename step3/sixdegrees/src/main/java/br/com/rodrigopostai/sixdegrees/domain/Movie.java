@@ -8,11 +8,16 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Queue;
 import java.util.Set;
+import java.util.Stack;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Movie implements Serializable {
 
@@ -38,9 +43,9 @@ public class Movie implements Serializable {
 
     @JsonCreator
     public Movie(@JsonProperty("title") String title,
-                  @JsonProperty("year") int year,
-                  @JsonProperty("cast") List<String> cast,
-                  @JsonProperty("genres") List<String> genres) {
+                 @JsonProperty("year") int year,
+                 @JsonProperty("cast") List<String> cast,
+                 @JsonProperty("genres") List<String> genres) {
         this.title = title;
         this.year = year;
         this.cast = CollectionUtils.isNotEmpty(cast) ? cast.stream().collect(Collectors.toSet()) : Collections.emptySet();
@@ -144,20 +149,54 @@ public class Movie implements Serializable {
         }
     }
 
-    /***
-     *          Movie m1 = Movie.newBuilder().title("The Outsiders")
-     *                         .cast("Ralph Macchio")
-     *                                 .cast("Tom Cruise").build();
-     *          Movie m2 = Movie.newBuilder().title("Distant Thunders")
-     *                          .cast("John Lithgow")
-     *                                  .cast("Ralph Macchio")
-     *                                          .build();
-     *          Movie m3 = Movie.newBuilder().title("Footloose")
-     *                          .cast("Kevin Bacon")
-     *                                  .cast("John Lithgow").build();
-     */
-    public static int getNumberOfDegreesBetween(List<Movie> movies, String actor1, String actor2) {
-        
+    public static List<MovieGraph> getRelations(List<Movie> movies, String actor1, String actor2) {
+        if (CollectionUtils.isNotEmpty(movies)) {
+            return createMovieGraph(movies, actor1, actor2);
+        }
+        return null;
+    }
+
+    private static List<MovieGraph> createMovieGraph(List<Movie> movies, String actor1, String actor2) {
+        List<Movie> moviesStarredByActor1 = movies.parallelStream().filter(movie -> movie.isStarredBy(actor1)).collect(Collectors.toList());
+        List<MovieGraph> result = new ArrayList<>();
+        if (CollectionUtils.isNotEmpty(moviesStarredByActor1)) {
+            for (Movie movie : moviesStarredByActor1) {
+                MovieGraph.MovieGraphBuilder builder = MovieGraph.newBuilder();
+                builder.movie(movie);
+                if (movie.isStarredBy(actor2)) {
+                    builder.movie(movie);
+                    builder.actor(actor1);
+                    builder.setFoundActor(true);
+                    result.add(builder.build());
+                } else {
+                    Set<String> cast = movie.getCastExcept(actor1);
+                    List<Movie> moviesNotStarredByActor1 = movies.parallelStream().filter(m -> !m.isStarredBy(actor1)).collect(Collectors.toList());
+                    for (String actor: cast) {
+                        List<MovieGraph> movieGraph = createMovieGraph(moviesNotStarredByActor1, actor, actor2);
+                        if (!movieGraph.isEmpty()) {
+                            builder.actor(actor);
+                            builder.relatedMovies(movieGraph);
+                            result.add(builder.build());
+                        }
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    private boolean isStarredBy(String actor) {
+        if (CollectionUtils.isNotEmpty(cast)) {
+            return cast.stream().anyMatch(c -> c.equals(actor));
+        }
+        return false;
+    }
+
+    private Set<String> getCastExcept(String actor) {
+        if (CollectionUtils.isNotEmpty(cast)) {
+            return cast.stream().filter(c -> !c.equalsIgnoreCase(actor)).collect(Collectors.toSet());
+        }
+        return Collections.emptySet();
     }
 
 

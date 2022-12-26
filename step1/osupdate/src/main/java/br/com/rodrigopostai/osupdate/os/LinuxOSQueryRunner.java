@@ -8,6 +8,6 @@ import java.util.List;
 public class LinuxOSQueryRunner implements OSQueryRunner {
     @Override
     public List<OSUpdate> search() throws IOException {
-        return null;
+        throw new RuntimeException("Not implemented for Linux yet!!!");
     }
 }

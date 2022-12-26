@@ -37,10 +37,10 @@ class MoviefilterApplicationTest {
         Map<String, List<String>> parameters = new HashMap<>();
         parameters.put("file", Collections.singletonList("src/test/resources/movies.json"));
         parameters.put("decade", Collections.singletonList("1980"));
-        parameters.put("genres", Collections.singletonList("Comedy"));
+//        parameters.put("genres", Collections.singletonList("Comedy"));
         MovieFilterApplicationArguments args = new MovieFilterApplicationArguments(parameters);
         app.run(args);
-        String comediesFrom80s = Files.readAllLines(Paths.get("1980-Comedy-movies.json")).stream().collect(Collectors.joining());
+        String comediesFrom80s = Files.readAllLines(Paths.get("1980-movies.json")).stream().collect(Collectors.joining());
         Movie[] movies = new ObjectMapper().readValue(comediesFrom80s, Movie[].class);
         assertTrue(Arrays.stream(movies).allMatch(movie -> movie.getYear() >= 1980 && movie.getYear() <= 1989));
     }

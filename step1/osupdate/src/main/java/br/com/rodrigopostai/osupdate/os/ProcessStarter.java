@@ -12,7 +12,7 @@ public class ProcessStarter {
 
     private List<String> commands;
 
-    public ProcessStarter() {
+    private ProcessStarter() {
 
     }
 
@@ -26,7 +26,10 @@ public class ProcessStarter {
 
     public InputStream start() throws IOException {
         ProcessBuilder builder = new ProcessBuilder();
-        builder.command("sh", "-c","softwareupdate --history").directory(new File(System.getProperty("user.home")));
+        for (String command: commands) {
+            builder.command(command);
+        }
+        builder.directory(new File(System.getProperty("user.home")));
         Process start = builder.start();
         return start.getInputStream();
     }

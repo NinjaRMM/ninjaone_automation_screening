@@ -29,6 +29,6 @@ public class OSFactory {
     }
 
     private static boolean isWindows(String os) {
-        return StringUtils.containsIgnoreCase(os, "Linux");
+        return StringUtils.containsIgnoreCase(os, "Windows");
     }
 }

@@ -3,6 +3,7 @@ package br.com.rodrigopostai.osupdate;
 import br.com.rodrigopostai.osupdate.os.OSQueryRunner;
 import br.com.rodrigopostai.osupdate.os.ProcessStarter;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -15,6 +16,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class OSUpdateApplicationTest {
@@ -73,5 +75,20 @@ class OSUpdateApplicationTest {
         assertTrue(consoleResult.contains("macOS Big Sur 11.6"));
         assertTrue(consoleResult.contains("Safari"));
         assertTrue(consoleResult.contains("macOS Big Sur 11.6.1"));
+    }
+
+    @Test
+    public void shouldThrowsExceptionForWindowsAndLinux() {
+        Mockito.when(OSQueryRunner.getOS()).thenReturn("linux");
+        RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> {
+            OSUpdateApplication.main(new String[]{});
+        });
+        assertEquals("Not implemented for Linux yet!!!", exception.getCause().getMessage());
+
+        Mockito.when(OSQueryRunner.getOS()).thenReturn("windows");
+        exception = Assertions.assertThrows(RuntimeException.class, () -> {
+            OSUpdateApplication.main(new String[]{});
+        });
+        assertEquals("Not implemented for Windows yet!!!", exception.getCause().getMessage());
     }
 }
