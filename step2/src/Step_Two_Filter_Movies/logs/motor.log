@@ -1,8 +1,0 @@
-2023-01-01 09:31:19,623 INFO org.springframework.boot.StartupInfoLogger [main] Starting StepTwoFilterMoviesApplication using Java 11.0.11 on Guilhermes-Mac-mini.local with PID 2046 (/Users/guilhermebahia/Developer/Projects/interview/ninjaone_automation_screening/step2/src/Step_Two_Filter_Movies/target/classes started by guilhermebahia in /Users/guilhermebahia/Developer/Projects/interview/ninjaone_automation_screening/step2/src/Step_Two_Filter_Movies)
-2023-01-01 09:31:19,624 INFO org.springframework.boot.SpringApplication [main] The following 1 profile is active: "prod"
-2023-01-01 09:31:20,118 INFO org.springframework.boot.StartupInfoLogger [main] Started StepTwoFilterMoviesApplication in 1.03 seconds (JVM running for 1.826)
-2023-01-01 09:31:20,120 INFO com.gbvbahia.ninjarmm.runner.MoviesByYearRunner [main] Arg to process: --spring.profiles.active=prod
-2023-01-01 09:31:20,121 INFO com.gbvbahia.ninjarmm.runner.MoviesByYearRunner [main] Arg to process: --spring.output.ansi.enabled=always
-2023-01-01 09:31:20,121 INFO com.gbvbahia.ninjarmm.runner.MoviesByYearRunner [main] Arg to process: -decade 80
-2023-01-01 09:31:20,121 INFO com.gbvbahia.ninjarmm.runner.MoviesByYearRunner [main] Arg to process: -output 80s-movies.json
-2023-01-01 09:31:20,123 INFO com.gbvbahia.ninjarmm.StepTwoFilterMoviesApplication [main] Applications Step 2 Ends.
