@@ -22,8 +22,8 @@ public class MoviesByYearArgsValidator implements ApplicationRunner {
 
   public MoviesByYearArgsValidator(@Value("${app.args.decade}") String decadeArg,
                                    @Value("${app.args.output}") String outputArg,
-                                   @Value("${app.args.decade-min}") int decadeMin,
-                                   @Value("${app.args.decade-max}") int decadeMax) {
+                                   @Value("${app.valid.decade-min}") int decadeMin,
+                                   @Value("${app.valid.decade-max}") int decadeMax) {
     super();
     expectedArgs.add(decadeArg);
     expectedArgs.add(outputArg);
@@ -43,7 +43,7 @@ public class MoviesByYearArgsValidator implements ApplicationRunner {
     velidateAllRequiredArgsWereInformed(args);
 
     String decadeValueString = args.getOptionValues(expectedArgs.get(0)).get(0);
-    String invalidDecadeText = String.format("The decade must ends with 0 and must be beetween $d and $d", decadeMin, decadeMax);
+    String invalidDecadeText = String.format("The decade must ends with 0 and must be beetween %d and %d", decadeMin, decadeMax);
     
     validadeDecadeEndsWith0(decadeValueString, invalidDecadeText);
     
