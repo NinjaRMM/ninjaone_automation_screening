@@ -1,0 +1,16 @@
+info:
+  app:
+    name: Step 2 - Movies By Year Command Line
+    version: 1.0.0
+    
+spring:
+  main:
+    web-application-type: none
+
+app:
+  args:
+    decade: decade
+    output: output
+  valid:
+    decade-min: 1900
+    decade-max: 2010
