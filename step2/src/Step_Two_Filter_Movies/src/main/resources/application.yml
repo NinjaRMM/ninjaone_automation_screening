@@ -14,3 +14,7 @@ app:
   valid:
     decade-min: 1900
     decade-max: 2010
+  data:
+    movies:
+      json: ../../../data/movies.json
+      output: ../../../data/

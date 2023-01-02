@@ -1,5 +1,6 @@
 package com.gbvbahia.ninjarmm.runner;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -16,19 +17,23 @@ import lombok.extern.slf4j.Slf4j;
 @Order(1)
 public class MoviesByYearArgsValidator implements ApplicationRunner {
 
-  private final List<String>  expectedArgs = new ArrayList<>();
+  private final List<String> expectedArgs = new ArrayList<>();
   private final int decadeMin;
   private final int decadeMax;
+  private final String outputFolder;
 
   public MoviesByYearArgsValidator(@Value("${app.args.decade}") String decadeArg,
-                                   @Value("${app.args.output}") String outputArg,
-                                   @Value("${app.valid.decade-min}") int decadeMin,
-                                   @Value("${app.valid.decade-max}") int decadeMax) {
+      @Value("${app.args.output}") String outputArg,
+      @Value("${app.valid.decade-min}") int decadeMin,
+      @Value("${app.valid.decade-max}") int decadeMax,
+      @Value("${app.data.movies.output}") String outputFolder) {
+    
     super();
     expectedArgs.add(decadeArg);
     expectedArgs.add(outputArg);
     this.decadeMin = decadeMin;
     this.decadeMax = decadeMax;
+    this.outputFolder = outputFolder;
   }
 
   @PostConstruct
@@ -43,18 +48,24 @@ public class MoviesByYearArgsValidator implements ApplicationRunner {
     velidateAllRequiredArgsWereInformed(args);
 
     String decadeValueString = args.getOptionValues(expectedArgs.get(0)).get(0);
-    String invalidDecadeText = String.format("The decade must ends with 0 and must be beetween %d and %d", decadeMin, decadeMax);
+    String invalidDecadeText = String
+        .format("The decade must ends with 0 and must be beetween %d and %d", decadeMin, decadeMax);
+
+    String outputFileName = args.getOptionValues(expectedArgs.get(1)).get(0);
+    
     
     validadeDecadeEndsWith0(decadeValueString, invalidDecadeText);
-    
+
     validadeDecadeIsBetweenMinAndMax(decadeValueString, invalidDecadeText);
     
+    validateFileAlreadyExists(outputFileName);
   }
 
   private void velidateAllRequiredArgsWereInformed(ApplicationArguments args) {
     for (String expected : expectedArgs) {
       if (!args.containsOption(expected)) {
-        String error = String.format("These args: %s are expected!", String.join(", ", expectedArgs));
+        String error =
+            String.format("These args: %s are expected!", String.join(", ", expectedArgs));
         log.error(error);
         throw new MoviesByYearArgsException(error);
       }
@@ -66,11 +77,26 @@ public class MoviesByYearArgsValidator implements ApplicationRunner {
       throw new MoviesByYearArgsException(invalidDecade);
     }
   }
-  
+
   private void validadeDecadeIsBetweenMinAndMax(String decadeValueString, String invalidDecade) {
-    Integer decadeValue = Integer.valueOf(decadeValueString);
-    if (decadeValue < decadeMin || decadeValue > decadeMax) {
-      throw new MoviesByYearArgsException(invalidDecade);
+    try {
+      
+      Integer decadeValue = Integer.valueOf(decadeValueString);
+      if (decadeValue < decadeMin || decadeValue > decadeMax) {
+        throw new MoviesByYearArgsException(invalidDecade);
+      }
+      
+    } catch (NumberFormatException e) {
+      throw new MoviesByYearArgsException(invalidDecade, e);
+    }
+  }
+  
+  private void validateFileAlreadyExists(String outputFileName) {
+    File outputFile = new File(outputFolder, outputFileName);
+    if (outputFile.exists()) {
+      String error = String.format("The file: %s already exists on folder: %s", outputFileName, outputFolder);
+      log.error(error);
+      throw new MoviesByYearArgsException(error);
     }
   }
 }

@@ -19,7 +19,7 @@ public class MoviesByYearArgsValidatorRunSteps {
   
   @Before
   public void setUp() {
-    moviesByYearArgsValidator = new MoviesByYearArgsValidator("decade", "output", 1900, 2010);
+    moviesByYearArgsValidator = new MoviesByYearArgsValidator("decade", "output", 1900, 2010, "./src/test/resources/json_movies");
     validateException = null;
     appArgs = null;
   }
