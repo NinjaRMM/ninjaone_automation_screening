@@ -13,13 +13,13 @@ import io.cucumber.java.en.When;
 
 public class MoviesByYearArgsValidatorRunSteps {
 
-  private MoviesByYearArgsValidator moviesByYearArgsValidator;
+  private MoviesByYearArgsValidator subject;
   private ApplicationArguments appArgs;
   private Exception validateException;
   
   @Before
   public void setUp() {
-    moviesByYearArgsValidator = new MoviesByYearArgsValidator("decade", "output", 1900, 2010, "./src/test/resources/json_movies");
+    subject = new MoviesByYearArgsValidator("decade", "output", 1900, 2010, "./src/test/resources/json_movies");
     validateException = null;
     appArgs = null;
   }
@@ -39,7 +39,7 @@ public class MoviesByYearArgsValidatorRunSteps {
 
     try {
       
-      moviesByYearArgsValidator.run(appArgs);
+      subject.run(appArgs);
       
     } catch (Exception e) {
       

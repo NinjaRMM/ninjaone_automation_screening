@@ -35,7 +35,7 @@ public class MoviesDataReaderService {
       
     } else {
       String error = String.format("File %s was not found. pwd is: %s", moviesFile,
-          new File(".").getAbsolutePath());
+          new File(".").getCanonicalPath());
       throw new IOException(error);
     }
   }

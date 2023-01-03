@@ -1,3 +1,296 @@
-{
-	"key": 1
-}
+[
+	{
+		"title": "Abraham Lincoln",
+		"year": 1930,
+		"cast": [
+			"Walter Huston",
+			"Kay Hammond"
+		],
+		"genres": [
+			"Historical",
+			"Drama"
+		]
+	},
+	{
+		"title": "Africa Speaks!",
+		"year": 1930,
+		"cast": [
+			"Paul Hoefler",
+			"Lowell Thomas"
+		],
+		"genres": [
+			"Documentary"
+		]
+	},
+	{
+		"title": "Alias French Gertie",
+		"year": 1930,
+		"cast": [
+			"Bebe Daniels",
+			"Ben Lyon"
+		],
+		"genres": [
+			"Romance",
+			"Drama"
+		]
+	},
+	{
+		"title": "20 Mule Team",
+		"year": 1940,
+		"cast": [
+			"Wallace Beery",
+			"Leo Carrillo",
+			"Marjorie Rambeau",
+			"Anne Baxter"
+		],
+		"genres": [
+			"Western"
+		]
+	},
+	{
+		"title": "100 Pygmies and Andy Panda",
+		"year": 1940,
+		"cast": [
+			"Bernice Hansen",
+			"(voice)",
+			"Dick Nelson",
+			"(voice)"
+		],
+		"genres": [
+			"Animated",
+			"Short"
+		]
+	},
+	{
+		"title": "Abe Lincoln in Illinois",
+		"year": 1940,
+		"cast": [
+			"Raymond Massey",
+			"Gene Lockhart",
+			"Ruth Gordon"
+		],
+		"genres": [
+			"Drama",
+			"Biography"
+		]
+	},
+	{
+		"title": "Adventures of Red Ryder",
+		"year": 1940,
+		"cast": [
+			"Don \"Red\" Barry",
+			"Noah Beery",
+			"Tommy Cook"
+		],
+		"genres": [
+			"Western"
+		]
+	},
+	{
+		"title": "The Admiral Was a Lady",
+		"year": 1950,
+		"cast": [
+			"Edmond O'Brien",
+			"Wanda Hendrix",
+			"Steve Brodie"
+		],
+		"genres": [
+			"Comedy"
+		]
+	},
+	{
+		"title": "All About Eve",
+		"year": 1950,
+		"cast": [
+			"Bette Davis",
+			"Anne Baxter",
+			"Gary Merrill",
+			"Celeste Holm",
+			"George Sanders",
+			"Hugh Marlowe",
+			"Marilyn Monroe"
+		],
+		"genres": [
+			"Drama"
+		]
+	},
+	{
+		"title": "13 Ghosts",
+		"year": 1960,
+		"cast": [
+			"Charles Herbert",
+			"Jo Morrow"
+		],
+		"genres": [
+			"Horror"
+		]
+	},
+	{
+		"title": "The Adventures of Huckleberry Finn",
+		"year": 1960,
+		"cast": [
+			"Tony Randall",
+			"Patty McCormack",
+			"Eddie Hodges",
+			"Archie Moore"
+		],
+		"genres": [
+			"Family"
+		]
+	},
+	{
+		"title": "The Alamo",
+		"year": 1960,
+		"cast": [
+			"John Wayne",
+			"Richard Widmark",
+			"Laurence Harvey",
+			"Chill Wills",
+			"Frankie Avalon",
+			"Richard Boone"
+		],
+		"genres": [
+			"Biography",
+			"Western"
+		]
+	},
+	{
+		"title": "Angel Unchained",
+		"year": 1970,
+		"cast": [
+			"Larry Bishop",
+			"Tyne Daly",
+			"Aldo Ray"
+		],
+		"genres": [
+			"Drama"
+		]
+	},
+	{
+		"title": "Atlantic City",
+		"year": 1980,
+		"cast": [
+			"Burt Lancaster",
+			"Susan Sarandon"
+		],
+		"genres": []
+	},
+	{
+		"title": "The Baltimore Bullet",
+		"year": 1980,
+		"cast": [
+			"James Coburn",
+			"Omar Sharif",
+			"Ronee Blakley"
+		],
+		"genres": [
+			"Comedy"
+		]
+	},
+	{
+		"title": "American Ninja 4: The Annihilation",
+		"year": 1990,
+		"cast": [
+			"Michael Dudikoff"
+		],
+		"genres": [
+			"Action"
+		]
+	},
+	{
+		"title": "Andre's Mother",
+		"year": 1990,
+		"cast": [
+			"Richard Thomas",
+			"Sada Thompson"
+		],
+		"genres": [
+			"Drama"
+		]
+	},
+	{
+		"title": "Angel Town",
+		"year": 1990,
+		"cast": [
+			"Olivier Gruner",
+			"Theresa Saldana"
+		],
+		"genres": [
+			"Action"
+		]
+	},
+	{
+		"title": "Almost Famous",
+		"year": 2000,
+		"cast": [
+			"Billy Crudup",
+			"Frances McDormand",
+			"Kate Hudson",
+			"Jason Lee",
+			"Patrick Fugit",
+			"Anna Paquin",
+			"Fairuza Balk"
+		],
+		"genres": [
+			"Comedy",
+			"Drama"
+		]
+	},
+	{
+		"title": "American Psycho",
+		"year": 2000,
+		"cast": [
+			"Christian Bale",
+			"Chloë Sevigny",
+			"Willem Dafoe"
+		],
+		"genres": [
+			"Comedy",
+			"Thriller"
+		]
+	},
+	{
+		"title": "Animal Factory",
+		"year": 2000,
+		"cast": [
+			"Willem Dafoe",
+			"Edward Furlong",
+			"Mickey Rourke"
+		],
+		"genres": [
+			"Crime",
+			"Drama"
+		]
+	},
+	{
+		"title": "Alpha and Omega",
+		"year": 2010,
+		"cast": [
+			"Justin Long",
+			"Hayden Panettiere",
+			"Dennis Hopper",
+			"Danny Glover",
+			"Christina Ricci"
+		],
+		"genres": [
+			"Animated",
+			"Comedy",
+			"Drama",
+			"Family"
+		]
+	},
+	{
+		"title": "The American",
+		"year": 2010,
+		"cast": [
+			"George Clooney",
+			"Violante Placido",
+			"Thekla Reuten",
+			"Paolo Bonacelli"
+		],
+		"genres": [
+			"Drama",
+			"Thriller"
+		]
+	}
+]
