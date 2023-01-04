@@ -17,6 +17,9 @@ import lombok.extern.slf4j.Slf4j;
 @Order(1)
 public class MoviesByYearArgsValidator implements ApplicationRunner {
 
+  private static final int OUTPUT_IDX = 1;
+  private static final int DECADE_IDX = 0;
+  
   private final List<String> expectedArgs = new ArrayList<>();
   private final int decadeMin;
   private final int decadeMax;
@@ -45,13 +48,13 @@ public class MoviesByYearArgsValidator implements ApplicationRunner {
   @Override
   public void run(ApplicationArguments args) throws Exception {
 
-    velidateAllRequiredArgsWereInformed(args);
+    validateAllRequiredArgsWereInformed(args);
 
-    String decadeValueString = args.getOptionValues(expectedArgs.get(0)).get(0);
+    String decadeValueString = args.getOptionValues(expectedArgs.get(DECADE_IDX)).get(0);
     String invalidDecadeText = String
         .format("The decade must ends with 0 and must be beetween %d and %d", decadeMin, decadeMax);
 
-    String outputFileName = args.getOptionValues(expectedArgs.get(1)).get(0);
+    String outputFileName = args.getOptionValues(expectedArgs.get(OUTPUT_IDX)).get(0);
     
     
     validadeDecadeEndsWith0(decadeValueString, invalidDecadeText);
@@ -61,7 +64,7 @@ public class MoviesByYearArgsValidator implements ApplicationRunner {
     validateFileAlreadyExists(outputFileName);
   }
 
-  private void velidateAllRequiredArgsWereInformed(ApplicationArguments args) {
+  private void validateAllRequiredArgsWereInformed(ApplicationArguments args) {
     for (String expected : expectedArgs) {
       if (!args.containsOption(expected)) {
         String error =

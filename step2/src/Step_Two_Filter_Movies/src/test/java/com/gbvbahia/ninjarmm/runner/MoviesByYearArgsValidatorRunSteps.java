@@ -29,11 +29,7 @@ public class MoviesByYearArgsValidatorRunSteps {
   @Given("^I send args to validate$")
   public void given(DataTable table) throws Exception {
     List<String> rows = table.values();
-    String[] args = new String[2];
-    for (int i = 0; i < rows.size(); i++) {
-     args[i] = rows.get(i);  
-    }
-    appArgs = new DefaultApplicationArguments(args);
+    appArgs = new DefaultApplicationArguments(rows.toArray(new String[rows.size()]));
   }
 
   @When("^I execute validation with parameters list$")
