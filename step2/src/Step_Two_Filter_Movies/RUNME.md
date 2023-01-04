@@ -12,12 +12,6 @@ mvn clean package
 ### Run   
 On Step2/src/Step_Two_Filter_Movies folder execute:   
 
-> MACOS:   
-```
-mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev --decade=2010 --output=2010s-movies.json"
-```
-
-> Windows:
 ```
 mvn spring-boot:run "-Dspring-boot.run.arguments=--spring.profiles.active=dev --decade=2010 --output=2010s-movies.json"
 ```
