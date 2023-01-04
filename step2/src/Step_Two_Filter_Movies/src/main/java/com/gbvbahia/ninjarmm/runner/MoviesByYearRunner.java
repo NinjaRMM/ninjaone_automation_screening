@@ -1,6 +1,6 @@
 package com.gbvbahia.ninjarmm.runner;
 
-import org.springframework.beans.factory.annotation.Lookup;
+import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -16,18 +16,21 @@ import lombok.extern.slf4j.Slf4j;
 public class MoviesByYearRunner implements ApplicationRunner {
 
   private final MoviesDataReaderService moviesDataReaderService;
+  private final ObjectFactory<MoviesDataWriterService> moviesDataWriterServiceProvider;
   private final String decadeArg;
   private final String outputArg;
 
   public MoviesByYearRunner(
       @Value("${app.args.decade}") String decadeArg,
       @Value("${app.args.output}") String outputArg,
-      MoviesDataReaderService moviesDataReaderService) {
+      MoviesDataReaderService moviesDataReaderService,
+      ObjectFactory<MoviesDataWriterService> moviesDataWriterServiceProvider) {
     
     super();
     this.moviesDataReaderService = moviesDataReaderService;
     this.decadeArg = decadeArg;
     this.outputArg = outputArg;
+    this.moviesDataWriterServiceProvider = moviesDataWriterServiceProvider;
   }
 
   @Override
@@ -49,10 +52,8 @@ public class MoviesByYearRunner implements ApplicationRunner {
     
   }
   
-  @Lookup
   public MoviesDataWriterService getMoviesDataWriterService() {
-    //Spring will replace this with the writer bean.
-      return null;
+      return moviesDataWriterServiceProvider.getObject();
   }
 
 }

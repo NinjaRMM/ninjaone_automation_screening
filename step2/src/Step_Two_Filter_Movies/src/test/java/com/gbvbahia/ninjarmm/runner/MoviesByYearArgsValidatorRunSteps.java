@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import java.util.List;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.DefaultApplicationArguments;
+import org.springframework.test.util.ReflectionTestUtils;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
@@ -20,6 +21,7 @@ public class MoviesByYearArgsValidatorRunSteps {
   @Before
   public void setUp() {
     subject = new MoviesByYearArgsValidator("decade", "output", 1900, 2010, "./src/test/resources/json_movies");
+    ReflectionTestUtils.invokeMethod(subject, "init");
     validateException = null;
     appArgs = null;
   }

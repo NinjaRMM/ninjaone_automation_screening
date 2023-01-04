@@ -1,5 +1,5 @@
 Feature: Required arguments are valid or not
-  I whan to check if all requires parameters are valid or not
+  I want to check if all requires parameters are valid or not
 
   Scenario: Valid Parameters
     Given I send args to validate
@@ -34,6 +34,12 @@ Feature: Required arguments are valid or not
    Scenario: Invalid Decade Parameter
     Given I send args to validate
     |--decade=1981| --output=80s-movies.json|
+    When I execute validation with parameters list
+    Then An exception should be thrown
+    
+   Scenario: Invalid Number Format for Decade Parameter
+    Given I send args to validate
+    |--decade=19A0| --output=80s-movies.json|
     When I execute validation with parameters list
     Then An exception should be thrown
 
