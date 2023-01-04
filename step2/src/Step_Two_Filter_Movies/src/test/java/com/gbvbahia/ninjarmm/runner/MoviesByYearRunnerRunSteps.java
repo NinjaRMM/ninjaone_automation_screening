@@ -6,7 +6,9 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import java.util.List;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.DefaultApplicationArguments;
@@ -21,19 +23,19 @@ import io.cucumber.java.en.When;
 public class MoviesByYearRunnerRunSteps {
 
   private MoviesByYearRunner subject;
+  @Mock
   private MoviesDataReaderService moviesDataReaderService;
+  @Mock
   private MoviesDataWriterService moviesDataWriterService;
+  @Mock
   private ObjectFactory<MoviesDataWriterService> moviesDataWriterServiceProvider;
 
   private ApplicationArguments appArgs;
   private Exception exception;
   
-  @SuppressWarnings("unchecked")
   @Before
   public void setUp() throws Exception {
-    moviesDataReaderService = Mockito.mock(MoviesDataReaderService.class);
-    moviesDataWriterServiceProvider = Mockito.mock(ObjectFactory.class);
-    moviesDataWriterService = Mockito.mock(MoviesDataWriterService.class);
+    MockitoAnnotations.openMocks(this);
     Mockito.when(moviesDataWriterServiceProvider.getObject()).thenReturn(moviesDataWriterService);
     Mockito.when(moviesDataWriterService.begin(anyString())).thenReturn(moviesDataWriterService);
     appArgs = null;
