@@ -1,0 +1,20 @@
+info:
+  app:
+    name: Step 3 - Six Degrees of Separation Command Line
+    version: 1.0.0
+    
+spring:
+  main:
+    web-application-type: none
+
+app:
+  args:
+    actors: actors
+    split-by: ","
+    def-decade: 1980
+    def-actor: Kevin Bacon
+  data:
+    movies:
+      json: ../../../data/movies.json
+      output: ../../../data/
+      movies-80s: ../../../80s-movies.json
