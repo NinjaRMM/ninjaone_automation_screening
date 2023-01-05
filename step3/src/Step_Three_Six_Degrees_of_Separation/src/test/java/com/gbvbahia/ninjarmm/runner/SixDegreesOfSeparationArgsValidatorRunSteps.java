@@ -17,7 +17,7 @@ public class SixDegreesOfSeparationArgsValidatorRunSteps {
   
   @Before
   public void setUp() {
-    subject = new SixDegreesOfSeparationArgsValidator("actors", ",");
+    subject = new SixDegreesOfSeparationArgsValidator("actors", ",", "Kevin Bacon");
     validateException = null;
     appArgs = null;
   }

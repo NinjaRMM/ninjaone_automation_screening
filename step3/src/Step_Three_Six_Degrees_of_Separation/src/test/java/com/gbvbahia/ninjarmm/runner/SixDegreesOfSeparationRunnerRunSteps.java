@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import org.springframework.boot.ApplicationArguments;
+import com.gbvbahia.ninjarmm.service.SixDegreesService;
+import com.gbvbahia.ninjarmm.service.io.Movies80ServiceReaderService;
 import com.gbvbahia.ninjarmm.service.io.MoviesDataReaderService;
 import com.gbvbahia.ninjarmm.service.io.MoviesDataService;
 import com.gbvbahia.ninjarmm.service.io.MoviesDataWriterService;
@@ -28,7 +30,12 @@ public class SixDegreesOfSeparationRunnerRunSteps {
     @SuppressWarnings("all")
     MoviesDataWriterService writer = new MoviesDataWriterService(MOVIES_FOLDER_DEFAULT);
     MoviesDataService moviesDataService = new MoviesDataService(DECATE_80_DEFAULT, MOVIES_80_JSON_DEFAULT, reader, () -> writer);
-    subject = new SixDegreesOfSeparationRunner("actors", "'", "Kevin Bacon", moviesDataService);
+    
+    Movies80ServiceReaderService movies80ServiceReaderService = new Movies80ServiceReaderService(MOVIES_FOLDER_DEFAULT, MOVIES_80_JSON_DEFAULT);
+    
+    SixDegreesService sixDegreesService = new SixDegreesService(movies80ServiceReaderService, 6);
+    
+    subject = new SixDegreesOfSeparationRunner("actors", "'", "Kevin Bacon", moviesDataService, sixDegreesService);
 
     appArgs = null;
   }

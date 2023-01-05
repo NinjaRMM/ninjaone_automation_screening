@@ -25,3 +25,13 @@ Feature: Required arguments are valid or not
     Given I send actors to validate --actors=
     When I execute validation with parameters list
     Then An actors exception should be thrown
+    
+  Scenario: Same Parameters actors
+    Given I send actors to validate --actors=Tom Cruise,Tom Cruise
+    When I execute validation with parameters list
+    Then An actors exception should be thrown
+    
+  Scenario: One Actor Parameter As Kevin Bacon
+    Given I send actors to validate --actors=Kevin Bacon
+    When I execute validation with parameters list
+    Then An actors exception should be thrown

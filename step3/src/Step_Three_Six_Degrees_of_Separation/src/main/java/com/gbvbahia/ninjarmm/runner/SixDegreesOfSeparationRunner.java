@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import com.gbvbahia.ninjarmm.service.SixDegreesService;
 import com.gbvbahia.ninjarmm.service.io.MoviesDataService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,6 +17,7 @@ public class SixDegreesOfSeparationRunner implements ApplicationRunner {
   private static final int ONE_ACTOR = 1;
   
   private final MoviesDataService moviesDataService;
+  private final SixDegreesService sixDegreesService;
   private final String actorsArg;
   private final String actorDefault;
   private final String splitBy;
@@ -25,13 +27,15 @@ public class SixDegreesOfSeparationRunner implements ApplicationRunner {
       @Value("${app.args.def-actor}") String actorDefault,
       @Value("${app.args.actors}") String actorsArg,
       @Value("${app.args.split-by}") String splitBy,
-      MoviesDataService moviesDataService) {
+      MoviesDataService moviesDataService,
+      SixDegreesService sixDegreesService) {
     
     super();
     this.actorDefault = actorDefault;
     this.actorsArg = actorsArg;
     this.splitBy = splitBy;
     this.moviesDataService = moviesDataService;
+    this.sixDegreesService = sixDegreesService;
   }
 
   @Override
@@ -42,9 +46,10 @@ public class SixDegreesOfSeparationRunner implements ApplicationRunner {
     }
     
     generate80Movies();
+    
     fetchActors(args);
     
-    
+    sixDegreesService.calculateSeparation(actorsDegrees[0], actorsDegrees[1]);
   }
 
   protected void generate80Movies() throws Exception {
