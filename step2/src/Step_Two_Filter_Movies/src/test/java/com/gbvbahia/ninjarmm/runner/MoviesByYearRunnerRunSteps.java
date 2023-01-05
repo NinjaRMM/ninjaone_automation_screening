@@ -39,6 +39,7 @@ public class MoviesByYearRunnerRunSteps {
     Mockito.when(moviesDataWriterServiceProvider.getObject()).thenReturn(moviesDataWriterService);
     Mockito.when(moviesDataWriterService.begin(anyString())).thenReturn(moviesDataWriterService);
     appArgs = null;
+    exception = null;
   }
   
   @Given("^I start movies by year runner (.+) (.+)$")
