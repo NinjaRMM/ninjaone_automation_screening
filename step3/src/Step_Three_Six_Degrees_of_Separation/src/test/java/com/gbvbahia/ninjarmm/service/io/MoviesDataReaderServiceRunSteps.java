@@ -1,4 +1,4 @@
-package com.gbvbahia.ninjarmm.service;
+package com.gbvbahia.ninjarmm.service.io;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

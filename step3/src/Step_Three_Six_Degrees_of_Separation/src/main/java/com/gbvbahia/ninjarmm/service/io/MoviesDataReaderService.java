@@ -1,4 +1,4 @@
-package com.gbvbahia.ninjarmm.service;
+package com.gbvbahia.ninjarmm.service.io;
 
 import java.io.File;
 import java.io.IOException;

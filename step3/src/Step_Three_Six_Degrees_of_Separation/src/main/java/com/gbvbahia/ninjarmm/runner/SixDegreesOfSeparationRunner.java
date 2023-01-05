@@ -1,16 +1,11 @@
 package com.gbvbahia.ninjarmm.runner;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import com.gbvbahia.ninjarmm.service.MoviesDataReaderService;
-import com.gbvbahia.ninjarmm.service.MoviesDataWriterService;
+import com.gbvbahia.ninjarmm.service.io.MoviesDataService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -18,25 +13,25 @@ import lombok.extern.slf4j.Slf4j;
 @Order(2)
 public class SixDegreesOfSeparationRunner implements ApplicationRunner {
 
-  private final MoviesDataReaderService moviesDataReaderService;
-  private final ObjectFactory<MoviesDataWriterService> moviesDataWriterServiceProvider;
-  private final Integer decadeDefault;
+  private static final int ONE_ACTOR = 1;
+  
+  private final MoviesDataService moviesDataService;
+  private final String actorsArg;
   private final String actorDefault;
-  private final String moviesJsonDefault;
+  private final String splitBy;
+  private final String[] actorsDegrees = new String[2];
   
   public SixDegreesOfSeparationRunner(
-      @Value("${app.args.def-decade}") Integer decadeDefault,
       @Value("${app.args.def-actor}") String actorDefault,
-      @Value("${app.data.movies-80s}") String moviesJsonDefault,
-      MoviesDataReaderService moviesDataReaderService,
-      ObjectFactory<MoviesDataWriterService> moviesDataWriterServiceProvider) {
+      @Value("${app.args.actors}") String actorsArg,
+      @Value("${app.args.split-by}") String splitBy,
+      MoviesDataService moviesDataService) {
     
     super();
-    this.decadeDefault = decadeDefault;
     this.actorDefault = actorDefault;
-    this.moviesJsonDefault = moviesJsonDefault;
-    this.moviesDataReaderService = moviesDataReaderService;
-    this.moviesDataWriterServiceProvider = moviesDataWriterServiceProvider;
+    this.actorsArg = actorsArg;
+    this.splitBy = splitBy;
+    this.moviesDataService = moviesDataService;
   }
 
   @Override
@@ -47,24 +42,24 @@ public class SixDegreesOfSeparationRunner implements ApplicationRunner {
     }
     
     generate80Movies();
-    //TODO get actors names
+    fetchActors(args);
+    
+    
   }
 
-  private void generate80Movies() throws Exception, IOException {
-    if (Files.notExists(Path.of(moviesJsonDefault))) {
-      MoviesDataWriterService writer = getMoviesDataWriterService();
-      
-      log.info("Starting to process {} decade movies...", decadeDefault);
-      
-      try (writer) {
-        moviesDataReaderService.fetchAllMoviesByDecade(decadeDefault, writer.begin(moviesJsonDefault));
-      }
-      log.info("The file {} could not be found, so it was generated. .", moviesJsonDefault);
+  protected void generate80Movies() throws Exception {
+    moviesDataService.generate80MoviesIfNotExists();
+  }
+
+  protected void fetchActors(ApplicationArguments args) {
+    String arg = args.getOptionValues(actorsArg).get(0);
+    String[] actors = arg.split(splitBy);
+    if (actors.length == ONE_ACTOR) {
+      actorsDegrees[0] = actorDefault;
+      actorsDegrees[1] = actors[0];
+    } else {
+      actorsDegrees[0] = actors[0];
+      actorsDegrees[1] = actors[1];
     }
   }
-  
-  public MoviesDataWriterService getMoviesDataWriterService() {
-      return moviesDataWriterServiceProvider.getObject();
-  }
-
 }

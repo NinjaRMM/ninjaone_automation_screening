@@ -19,7 +19,8 @@ public class SixDegreesOfSeparationArgsValidator implements ApplicationRunner {
   private final String actorsArg;
   private final String splitBy;
 
-  public SixDegreesOfSeparationArgsValidator(@Value("${app.args.actors}") String actorsArg,
+  public SixDegreesOfSeparationArgsValidator(
+      @Value("${app.args.actors}") String actorsArg,
       @Value("${app.args.split-by}") String splitBy) {
 
     super();

@@ -1,4 +1,4 @@
-package com.gbvbahia.ninjarmm.service;
+package com.gbvbahia.ninjarmm.service.io;
 
 public interface WriterService<T> {
 
