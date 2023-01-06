@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.DefaultApplicationArguments;
 import com.gbvbahia.ninjarmm.service.SixDegreesService;
 import com.gbvbahia.ninjarmm.service.io.Movies80ServiceReaderService;
 import com.gbvbahia.ninjarmm.service.io.MoviesDataReaderService;
@@ -13,6 +14,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 
 public class SixDegreesOfSeparationRunnerRunSteps {
 
@@ -33,9 +35,9 @@ public class SixDegreesOfSeparationRunnerRunSteps {
     
     Movies80ServiceReaderService movies80ServiceReaderService = new Movies80ServiceReaderService(MOVIES_FOLDER_DEFAULT, MOVIES_80_JSON_DEFAULT);
     
-    SixDegreesService sixDegreesService = new SixDegreesService(movies80ServiceReaderService, 6);
+    SixDegreesService sixDegreesService = new SixDegreesService(movies80ServiceReaderService);
     
-    subject = new SixDegreesOfSeparationRunner("actors", "'", "Kevin Bacon", moviesDataService, sixDegreesService);
+    subject = new SixDegreesOfSeparationRunner("Kevin Bacon", "actors", ",", moviesDataService, sixDegreesService);
 
     appArgs = null;
   }
@@ -55,4 +57,11 @@ public class SixDegreesOfSeparationRunnerRunSteps {
     assertTrue(Files.exists(Path.of(MOVIES_FOLDER_DEFAULT, MOVIES_80_JSON_DEFAULT)));
   }
 
+  @When("^I provide two actors names as a parameters (.+)$") 
+  public void runWith(String actorsArg) throws Exception {
+    String[] args = new String[] {actorsArg};
+    appArgs = new DefaultApplicationArguments(args);
+    subject.run(appArgs);
+  }
+  
 }

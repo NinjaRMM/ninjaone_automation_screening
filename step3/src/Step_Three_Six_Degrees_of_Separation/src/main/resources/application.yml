@@ -18,5 +18,3 @@ app:
       json: ../../../data/movies.json
       output: ../../../data/
       movies-80s: 80s-movies.json
-  setup:
-    max-degrees: 6 

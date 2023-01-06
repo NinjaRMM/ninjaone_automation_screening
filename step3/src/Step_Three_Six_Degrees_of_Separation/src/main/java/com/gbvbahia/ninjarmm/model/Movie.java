@@ -5,6 +5,7 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -15,7 +16,9 @@ public class Movie {
 
   private String title;
   private int year;
+  @EqualsAndHashCode.Exclude
   private List<String> cast;
+  @EqualsAndHashCode.Exclude
   private List<String> genres;
 
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+		<property name="LOGS" value="./logs" />
+		<appender name="Console"
+			class="ch.qos.logback.core.ConsoleAppender">
+			<encoder>
+				<Pattern>%d{HH:mm:ss.SSS} %msg%n%throwable</Pattern>
+			</encoder>
+		</appender>
+
+		<root level="error">
+			<appender-ref ref="Console" />
+		</root>
+
+		<logger name="com.gbvbahia" level="info"
+			additivity="false">
+			<appender-ref ref="Console" />
+		</logger>
+
+</configuration>
