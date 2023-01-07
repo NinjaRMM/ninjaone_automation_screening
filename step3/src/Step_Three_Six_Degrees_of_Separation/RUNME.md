@@ -24,7 +24,7 @@ The two minus signs should be used as described
 
 2. actors   
 > should be informed between "," (comma).   
-> Do not ad space after comma.   
+> Do not add space after comma.   
 > maximum of two actors   
    
 
