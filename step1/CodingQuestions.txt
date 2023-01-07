@@ -1,33 +1,70 @@
 Focus Questions
 
 1. What is your full name?
+Guilherme Braga Viana Bahia   
 
-2. Any repositories you wish to share with us? 
-
+2. Any repositories you wish to share with us?   
+	As a Spring Developer user, the Spring tool that I like most is Spring Batch.    
+	The Single Responsibility Principle is simple to define, easy to maintain, and increase perform using parallelism to increase speed it's not a headache.   
+	
+	I wrote two articles on Medium about Spring Batch:   
+	a. GIT https://github.com/gbvbahia01/Spring-Batch-Cotahist Medium:https://medium.com/@gbvbahia01/spring-batch-parameters-between-steps-ee1af2bc11d4   
+	This application is an example of how to pass and get small parameters between Spring Batch Steps.   
+	b. GIT https://github.com/gbvbahia01/Spring-Batch-Thread-ItemReader-Stuck Medium:https://medium.com/@gbvbahia01/spring-batch-thread-itemreader-stuck-eec9eddcd70b   
+	A project that shows the impact of a customized ItemReader can have on Spring Batch Job execution.   
+	
 General Questions
 
-1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
-
+1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.   
+	* The Single Responsibility Principle. Each class should have a single reason for doing something. This technique makes maintaining code simple.   
+	* Open-Closed Principle. What has been tested and is safe to use should not be changed. I try to add new functionality with a subclass or a common superclass with safe code and the new code separated.
+	* To efficiently maintain the code, I always write unit tests with broad coverage. Junit with Mockito are nice tools for that. For coverage, I use a plugin in Eclipse.   
+	* When a bug is discovered, before changing any code, I create a unit test that reproduces the bug before fixing it.   
+	
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
-
+	** I think that all the answers to the previous question can be applied here.
+	* Sonar on CI/CD helps the team track where to refactor and fix some potential problems.   
+	* A well-designed Gitlab pipeline aids in the tracking of project code quality. Like: unit test coverage, build quality, track vulnerabilities, and more.
+	
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
 a. How did you deploy and execute your test suites? 
+	In the company that I work today we use Gitlab pipeline to deploy applications on PCF vmware. Flexdeploy to deploy applications on VMs. And Jenkins to deploy applications on Kubernates.
+	
 b. How did you target different devices? 
+	I don't have this responsibility as a backend developer.
+	
 c. How did you handle scalability? 
-d. How did you report test results?
+	Our team creates only microservices that run on containers. We increase the number of pods when we need more bandwish.  
+	To redirect the latencies between the microservices, we use the Spring Eureka framework, which is now the Spring Cloud framework, on top of all microservices.   
 
+d. How did you report test results?
+	All CI/CD tools, Jenkins, FlexDeploy, and Gitlab pipelines, send statistics to our DevOps Assessment Dashboard. There we get reports as coverage, tests build results, vulnerabilities on libs.
+	
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+	Junit and Mockito are most used on my workday.
 
 5. What testing frameworks are you familiar with for browser applications? 
-
+	I don't use any as a backend developer.
+	
 6. What tools are you familiar with for Performance, Load and Stress testing? 
-
+	For almost one year, I created some performance tests on Volvo using Apache JMeter.
+	It was for a specific project that I created, and before we deployed it in production, we had to make sure it could handle the load.
+	
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+	My first microservice on Volvo was about an application that should maintain rules to verify the capabilities of trucks to receive an update.
+	All rules should be saved on MongoDB and should be easy to change on the fly. 
+	I created a Spring application with Drools. With rest end points to read and update the rules. Was not possible to create a new rule or delete a rule.
+	It was a challenge to create all the architecture to make the first microservice with so much complexity.
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
-
+	Multithreading: when I have to complete a task, I increase the number of "workers" to complete the task together in order to improve performance.
+	Example: read the lines of a file, process each line, and save on a database.
+	
+	Multiprocessing: when performing a large number of computationally intensive tasks, having multiple processors is advantageous.
+	In Java we use to use multithreading. I never have a situaton to use multiprocessing. 
+	
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
 	i. Do you have a preference and why? 
 
