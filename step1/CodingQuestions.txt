@@ -90,8 +90,17 @@ Small Programming Challenges
 1. Using a known programming language write a small program to: 
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
+	I created an application on step1/src folder.
+	
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+	Not sure how to get this info from command
+	
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
 	i. What automation framework(s) you would consider utiltizing? 
+	I don't know of any tool that would pick up that information.
+	
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+	With Java running on multiple platforms is not an issue. For the scripts, I will create a factory to get the specific processor by platform.
+	
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+	Not sure.
