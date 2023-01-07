@@ -20,6 +20,8 @@ public class Summary {
   @Override
   public String toString() {
     final StringBuilder builder = new StringBuilder("\n");
+    builder.append("************************************************************************");
+    builder.append("\n");
     switch (type) {
       case ACTOR_NOT_FOUND:
         builder.append(String.format("%s did not star in a movie in the data provided.", actor1));
@@ -39,6 +41,8 @@ public class Summary {
           builder.append("\n");
         });
     }
+    builder.append("************************************************************************");
+    builder.append("\n");
     return builder.toString();
   }
   

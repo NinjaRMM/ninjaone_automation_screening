@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Queue;
 import org.springframework.stereotype.Service;
+import com.gbvbahia.ninjarmm.listenner.SixDegreesSumarryListener;
 import com.gbvbahia.ninjarmm.model.Graph;
 import com.gbvbahia.ninjarmm.model.Movie;
 import com.gbvbahia.ninjarmm.model.Node;
@@ -21,9 +22,11 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class SixDegreesService {
 
+  private final List<SixDegreesSumarryListener> summaryListener = new ArrayList<>();
+  
   private final Movies80ServiceReaderService movies80ServiceReaderService;
 
-  public Summary calculateSeparation(String actor1, String actor2)
+  public void calculateSeparation(String actor1, String actor2)
       throws Exception {
 
     log.info("Actors to verify: {} and {}", actor1, actor2);
@@ -33,12 +36,14 @@ public class SixDegreesService {
 
     Optional<Node> iOpt = graph.getNode(actor1);
     if (iOpt.isEmpty()) {
-      return createSummaryActorNotFound(actor1);
+      notifyListeners(createSummaryActorNotFound(actor1));
+      return;
     }
     
     Optional<Node> eOpt = graph.getNode(actor2);
     if (eOpt.isEmpty()) {
-      return createSummaryActorNotFound(actor2);
+      notifyListeners(createSummaryActorNotFound(actor2));
+      return;
     }
     
     Node ini = iOpt.get();
@@ -48,14 +53,15 @@ public class SixDegreesService {
     
     if (found.isEmpty()) {
       Summary summary = createSumarryNotFoundDegreesBetweenActors(actor1, actor2, ini, end);
-      return summary;
+      notifyListeners(summary);
+      return;
     }
     
     List<Node> path = createTrackPath(ini, found.get());
     
     Summary summary = createSummaryDegreesFound(actor1, actor2, path);
     
-    return summary;
+    notifyListeners(summary);
 
   }
 
@@ -145,12 +151,25 @@ public class SixDegreesService {
         .type(SummaryType.FOUND)
         .build();
     
-    for (int i = 0; i < path.size(); i = i + 3) {
+    for (int i = 0; i + 2 < path.size(); i = i + 2) {
       Node n1 = path.get(i);
       Node nm = path.get(i + 1);
       Node n2 = path.get(i + 2);
       summary.getSteps().add(String.format("%s starred with %s in %s", n1.getName(), n2.getName(), nm.getName()));
     }
     return summary;
+  }
+  
+  //Listener
+  private void notifyListeners(Summary summary) {
+    summaryListener.forEach(sl -> sl.summaryPerformed(summary));
+  }
+  
+  public void addSummaryListener(SixDegreesSumarryListener sixDegreesSumarryListener) {
+    summaryListener.add(sixDegreesSumarryListener);
+  }
+  
+  public void removeSummaryListener(SixDegreesSumarryListener sixDegreesSumarryListener) {
+    summaryListener.remove(sixDegreesSumarryListener);
   }
 }

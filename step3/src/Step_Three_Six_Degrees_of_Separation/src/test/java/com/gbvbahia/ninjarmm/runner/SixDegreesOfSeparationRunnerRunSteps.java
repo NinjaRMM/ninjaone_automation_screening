@@ -1,10 +1,14 @@
 package com.gbvbahia.ninjarmm.runner;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.DefaultApplicationArguments;
+import org.springframework.test.util.ReflectionTestUtils;
+import com.gbvbahia.ninjarmm.model.Summary;
 import com.gbvbahia.ninjarmm.service.SixDegreesService;
 import com.gbvbahia.ninjarmm.service.io.Movies80ServiceReaderService;
 import com.gbvbahia.ninjarmm.service.io.MoviesDataReaderService;
@@ -14,6 +18,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class SixDegreesOfSeparationRunnerRunSteps {
@@ -25,6 +30,7 @@ public class SixDegreesOfSeparationRunnerRunSteps {
   private SixDegreesOfSeparationRunner subject;
 
   private ApplicationArguments appArgs;
+  private Summary summary;
   
   @Before
   public void setUp() throws Exception {
@@ -36,9 +42,10 @@ public class SixDegreesOfSeparationRunnerRunSteps {
     Movies80ServiceReaderService movies80ServiceReaderService = new Movies80ServiceReaderService(MOVIES_FOLDER_DEFAULT, MOVIES_80_JSON_DEFAULT);
     
     SixDegreesService sixDegreesService = new SixDegreesService(movies80ServiceReaderService);
+    sixDegreesService.addSummaryListener((summary) -> this.summary = summary);
     
     subject = new SixDegreesOfSeparationRunner("Kevin Bacon", "actors", ",", moviesDataService, sixDegreesService);
-
+    ReflectionTestUtils.invokeMethod(subject, "init");
     appArgs = null;
   }
   
@@ -62,6 +69,21 @@ public class SixDegreesOfSeparationRunnerRunSteps {
     String[] args = new String[] {actorsArg};
     appArgs = new DefaultApplicationArguments(args);
     subject.run(appArgs);
+  }
+  
+  @Then("^I should see a generated summary$")
+  public void checkSummaryGenerated() {
+    assertNotNull(summary);
+  }
+  
+  @Then("^I should see the number of degrees of separation between the two actors (\\d+)$")
+  public void verifyDegreesSeparation(long degreeExpected) {
+    assertEquals(degreeExpected, summary.getDegrees());
+  }
+
+  @Then("^I see a list of movies describing the degree steps (\\d+)$")
+  public void verifyListDescribingTheDegreeSteps(int sizeExpected) {
+    assertEquals(sizeExpected, summary.getSteps().size());
   }
   
 }

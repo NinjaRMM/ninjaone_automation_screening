@@ -1,11 +1,11 @@
 package com.gbvbahia.ninjarmm.runner;
 
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import com.gbvbahia.ninjarmm.model.Summary;
 import com.gbvbahia.ninjarmm.service.SixDegreesService;
 import com.gbvbahia.ninjarmm.service.io.MoviesDataService;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +39,11 @@ public class SixDegreesOfSeparationRunner implements ApplicationRunner {
     this.sixDegreesService = sixDegreesService;
   }
 
+  @PostConstruct
+  void init() {
+    this.sixDegreesService.addSummaryListener((summary) -> log.info("{}", summary));
+  }
+  
   @Override
   public void run(ApplicationArguments args) throws Exception {
     
@@ -50,9 +55,8 @@ public class SixDegreesOfSeparationRunner implements ApplicationRunner {
     
     fetchActors(args);
     
-    Summary summary = sixDegreesService.calculateSeparation(actorsDegrees[0], actorsDegrees[1]);
+    sixDegreesService.calculateSeparation(actorsDegrees[0], actorsDegrees[1]);
     
-    log.info("{}", summary);
   }
 
   protected void generate80Movies() throws Exception {
