@@ -55,6 +55,7 @@ Feature: Six Degrees of Separation
 		Then I should see a generated summary
 		Then I should see the number of degrees of separation between the two actors 6
 		Then I see a list of movies describing the degree steps 6
+		Then I see the actors names on summary 'Sylvester Stallone' 'Linda Kerridge'
 
   Scenario: I enter one actors that have 1 degrees with Kevin Bacon
     Given I run the application
@@ -71,6 +72,7 @@ Feature: Six Degrees of Separation
 		Then I should see a generated summary
 		Then I should see the number of degrees of separation between the two actors 2
 		Then I see a list of movies describing the degree steps 2
+		Then I see the actors names on summary 'Kevin Bacon' 'Sylvester Stallone'
 		
   Scenario: I enter two actor's name that one did not star in a movie
     Given I run the application
@@ -79,7 +81,15 @@ Feature: Six Degrees of Separation
 		Then I should see a generated summary
 		Then I should see the number of degrees of separation between the two actors 0
 		Then I see a list of movies describing the degree steps 0
-		
+
+  Scenario: I enter two actor's name that one did not star in a movie inverted
+    Given I run the application
+    And "80s-movies.json" exists from step one
+	  When I provide two actors names as a parameters --actors=Lindo Xishzu,Sylvester Stallone
+		Then I should see a generated summary
+		Then I should see the number of degrees of separation between the two actors 0
+		Then I see a list of movies describing the degree steps 0
+				
   Scenario: I enter one actor's name that did not star in a movie
     Given I run the application
     And "80s-movies.json" exists from step one

@@ -18,8 +18,8 @@ public class Movies80ServiceReaderService {
   private final Gson gson = new Gson();
   
   public Movies80ServiceReaderService(
-      @Value("${app.data.output}") String folder,
-      @Value("${app.data.movies-80s}") String file) {
+      @Value("${app.data.movies.output}") String folder,
+      @Value("${app.data.movies.movies-80s}") String file) {
     
     super();
     this.folder = folder;

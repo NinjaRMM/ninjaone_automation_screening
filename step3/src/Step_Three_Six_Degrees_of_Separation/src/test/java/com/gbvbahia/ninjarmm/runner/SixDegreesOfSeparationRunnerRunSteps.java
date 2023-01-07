@@ -86,4 +86,9 @@ public class SixDegreesOfSeparationRunnerRunSteps {
     assertEquals(sizeExpected, summary.getSteps().size());
   }
   
+  @Then("I see the actors names on summary {string} {string}")
+  public void verifyListDescribingTheDegreeSteps(String actor1Expected, String actor2Expected) {
+    assertEquals(actor1Expected, summary.getActor1());
+    assertEquals(actor2Expected, summary.getActor2());
+  }
 }

@@ -7,14 +7,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication
 @Slf4j
-public class StepTwoFilterMoviesApplication {
+public class StepThreeSixDegreesOfSeparationApplication {
 
 	public static void main(String[] args) {
-	    log.info("Applications Step 2 Starts with args: {}", Arrays.toString(args));
+	    log.info("Applications Step 3 Starts with args: {}", Arrays.toString(args));
 	  
-		SpringApplication.run(StepTwoFilterMoviesApplication.class, args);
+		SpringApplication.run(StepThreeSixDegreesOfSeparationApplication.class, args);
 		
-		log.info("Applications Step 2 Ends.");
+		log.info("Applications Step 3 Ends.");
 	}
 
 }

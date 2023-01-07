@@ -29,7 +29,7 @@ public class SixDegreesService {
   public void calculateSeparation(String actor1, String actor2)
       throws Exception {
 
-    log.info("Actors to verify: {} and {}", actor1, actor2);
+    log.info("Actors to verify: {} and {}.", actor1, actor2);
     List<Movie> movies = movies80ServiceReaderService.get80sMovies();
     
     Graph graph = generateGraph(movies);

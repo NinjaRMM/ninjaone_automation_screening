@@ -5,10 +5,8 @@ import java.nio.file.Path;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@RequiredArgsConstructor
 @Service
 @Slf4j
 public class MoviesDataService {
@@ -20,7 +18,7 @@ public class MoviesDataService {
   
   public MoviesDataService(
       @Value("${app.args.def-decade}") Integer decadeDefault,
-      @Value("${app.data.movies-80s}") String moviesJsonDefault,
+      @Value("${app.data.movies.movies-80s}") String moviesJsonDefault,
       MoviesDataReaderService moviesDataReaderService,
       ObjectFactory<MoviesDataWriterService> moviesDataWriterServiceProvider) {
     
@@ -41,7 +39,7 @@ public class MoviesDataService {
       try (writer) {
         moviesDataReaderService.fetchAllMoviesByDecade(decadeDefault, writer.begin(moviesJsonDefault));
       }
-      log.info("The file {} could not be found, so it was generated. .", moviesJsonDefault);
+      log.info("The file {} could not be found, so it was generated.", moviesJsonDefault);
     }
   }
   

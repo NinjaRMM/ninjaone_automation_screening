@@ -3,17 +3,17 @@
 > Maven    
 
 ### Build   
-On Step2/src/Step_Two_Filter_Movies folder execute:   
+On Step3/src/Step_Three_Six_Degrees_of_Separation folder execute:   
 
 ```
 mvn clean package
 ```
 
 ### Run   
-On Step2/src/Step_Two_Filter_Movies folder execute:   
+On Step3/src/Step_Three_Six_Degrees_of_Separation folder execute:   
 
 ```
-mvn spring-boot:run "-Dspring-boot.run.arguments=--spring.profiles.active=dev --decade=2010 --output=2010s-movies.json"
+mvn spring-boot:run "-Dspring-boot.run.arguments=--spring.profiles.active=dev --actors=Sylvester Stallone,Linda Kerridge"
 ```
 
 The two minus signs should be used as described   
@@ -22,12 +22,9 @@ The two minus signs should be used as described
 > should be dev or prod   
 > only will change the log level   
 
-2. decade   
-> should be informed between 1900 and 2010   
-> should be lowercase   
-> should ends with 0   
+2. actors   
+> should be informed between "," (comma).   
+> Do not ad space after comma.   
+> maximum of two actors   
+   
 
-3. output   
-> should be lowercase   
-> the file will have same name informed.   
-> by default, the file will be save on same folder that is movides.json, data folder.   

@@ -31,7 +31,7 @@ public class MoviesDataReaderService {
   void init() throws Exception {
     
     if (Files.exists(Path.of(moviesFile))) {
-      log.info("File {} was fond!", moviesFile);
+      log.info("File {} was found!", moviesFile);
       
     } else {
       String error = String.format("File %s was not found. pwd is: %s", moviesFile,
