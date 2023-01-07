@@ -66,11 +66,24 @@ Technical Questions
 	In Java we use to use multithreading. I never have a situaton to use multiprocessing. 
 	
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
+	Unit Tests: checks the most basic unit of the application, each method, grouping small peace of logic, individually.
+	Functional Tests: is a black box test that covers the overall functionality of the application.
+	Integration Tests: Test whether the communication between two different applications, or application modules, is working correctly.
+	
 	i. Do you have a preference and why? 
+	Unit tests. Changes in logic are more common than changes in application communication. A high level of coverage in unit testing can help to avoid many bugs. 
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
-
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
+	functional programming: is good when you want same behavior for same parameters does not matter the state.
+	Parallel programming is not a problem.
+	Because the result is always the same, a function can be used at any time in the application or for other applications. 
+	object-oriented programming: You can define a state control to define a process result. To change a result process, you do not need to change the code.
+	Usually it cannot be reused because the behavior changes.
+	
 4. What security concerns have you come across in the past and how have you addressed them?
+	The business defined that your system, which was running only inside your network, should be available on the internet.
+	We were given two weeks to change everething and open the application to the world.
+	We updated all rest endpoints to use JWT and all libraries, as well as Spring and Spring Security, to the most recent versions. 
 
 Small Programming Challenges
 
