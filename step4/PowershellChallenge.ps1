@@ -1,6 +1,6 @@
 ﻿#NINJARMM Code Challenge
- 
-#Please review the below code and answer the following questions to the best of your ability: 
+
+#Please review the below code and answer the following questions to the best of your ability:
 
 ### *** My knowledge on shell script is very basic, I try my best. ***
 
@@ -18,17 +18,17 @@ Runs the command $isNinjaWPMDownloaded on the VM called WPM with user and passwo
 Check if the $Result was not ok, if not stop the process with error exit.
 End the process with success.
 
-#2.) What does the program assume you need to have access to in order to execute? 
+#2.) What does the program assume you need to have access to in order to execute?
 You need to have access to the Get-VM and execute commands there.
 
-#3.) What architectures can this script run on? 
-Wndows
+#3.) What architectures can this script run on?
+I think is Wndows
 
 $vm = Get-VM -Name WPM
 $IsNinjaInstalled = "Test-Path 'HKLM:\SOFTWARE\WOW6432Node\NinjaRMM LLC\NinjaWPM'"
 $Result = Invoke-VMScript -VM $vm -ScriptText $IsNinjaInstalled -GuestUser Ninja -GuestPassword helloworld
 $ExitCode = $Result.ExitCode
-if($Result.ExitCode -ne "0") 
+if($Result.ExitCode -ne "0")
 {
     Write-Host $vm Critical error on Test-Path: $ExitCode -ForegroundColor Red
     exit 1
@@ -42,7 +42,7 @@ if ($output -eq 'True') {
 $isNinjaWPMDownloaded = "Test-Path 'c:\NinjaInstaller\NinjaWPM.exe'"
 $Result = Invoke-VMScript -VM $vm -ScriptText $isNinjaWPMDownloaded -GuestUser Ninja -GuestPassword helloworld
 $ExitCode = $Result.ExitCode
-if($Result.ExitCode -ne "0") 
+if($Result.ExitCode -ne "0")
 {
     Write-Host $vm Critical error on Test-Path: $ExitCode -ForegroundColor Red
     exit 1

@@ -1,76 +1,78 @@
 Focus Questions
 
 1. What is your full name?
-Guilherme Braga Viana Bahia   
+Guilherme Braga Viana Bahia
 
-2. Any repositories you wish to share with us?   
-	As a Spring Developer user, the Spring tool that I like most is Spring Batch.    
-	The Single Responsibility Principle is simple to define, easy to maintain, and increase perform using parallelism to increase speed it's not a headache.   
-	
-	I wrote two articles on Medium about Spring Batch:   
-	a. GIT https://github.com/gbvbahia01/Spring-Batch-Cotahist Medium:https://medium.com/@gbvbahia01/spring-batch-parameters-between-steps-ee1af2bc11d4   
-	This application is an example of how to pass and get small parameters between Spring Batch Steps.   
-	b. GIT https://github.com/gbvbahia01/Spring-Batch-Thread-ItemReader-Stuck Medium:https://medium.com/@gbvbahia01/spring-batch-thread-itemreader-stuck-eec9eddcd70b   
-	A project that shows the impact of a customized ItemReader can have on Spring Batch Job execution.   
-	
+2. Any repositories you wish to share with us?
+	As a Spring Developer user, the Spring tool that I like most is Spring Batch.
+	The Single Responsibility Principle is simple to define, easy to maintain, and increase perform using parallelism to increase speed it's not a headache.
+
+	I wrote two articles on Medium about Spring Batch:
+	a. GIT https://github.com/gbvbahia01/Spring-Batch-Cotahist Medium:https://medium.com/@gbvbahia01/spring-batch-parameters-between-steps-ee1af2bc11d4
+	This application is an example of how to pass and get small parameters between Spring Batch Steps.
+	b. GIT https://github.com/gbvbahia01/Spring-Batch-Thread-ItemReader-Stuck Medium:https://medium.com/@gbvbahia01/spring-batch-thread-itemreader-stuck-eec9eddcd70b
+	A project that shows the impact of a customized ItemReader can have on Spring Batch Job execution.
+
 General Questions
 
-1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.   
-	* The Single Responsibility Principle. Each class should have a single reason for doing something. This technique makes maintaining code simple.   
+1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+	* The Single Responsibility Principle. Each class should have a single reason for doing something. This technique makes maintaining code simple.
 	* Open-Closed Principle. What has been tested and is safe to use should not be changed. I try to add new functionality with a subclass or a common superclass with safe code and the new code separated.
-	* To efficiently maintain the code, I always write unit tests with broad coverage. Junit with Mockito are nice tools for that. For coverage, I use a plugin in Eclipse.   
-	* When a bug is discovered, before changing any code, I create a unit test that reproduces the bug before fixing it.   
-	
+	* To efficiently maintain the code, I always write unit tests with broad coverage. Junit with Mockito are nice tools for that. For coverage, I use a plugin in Eclipse.
+	* When a bug is discovered, before changing any code, I create a unit test that reproduces the bug before fixing it.
+
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
 	** I think that all the answers to the previous question can be applied here.
-	* Sonar on CI/CD helps the team track where to refactor and fix some potential problems.   
+	* Sonar on CI/CD helps the team track where to refactor and fix some potential problems.
 	* A well-designed Gitlab pipeline aids in the tracking of project code quality. Like: unit test coverage, build quality, track vulnerabilities, and more.
-	
-3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
+
+3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please.
+a. How did you deploy and execute your test suites?
 	In the company that I work today we use Gitlab pipeline to deploy applications on PCF vmware. Flexdeploy to deploy applications on VMs. And Jenkins to deploy applications on Kubernates.
-	
-b. How did you target different devices? 
-	I don't have this responsibility as a backend developer.
-	
-c. How did you handle scalability? 
-	Our team creates only microservices that run on containers. We increase the number of pods when we need more bandwish.  
-	To redirect the latencies between the microservices, we use the Spring Eureka framework, which is now the Spring Cloud framework, on top of all microservices.   
+
+b. How did you target different devices?
+	I don't have this responsibility as a backend developer at the company that I worked for.
+	But I created an IOS app, personal work, and I have to manage different IOS devices, Ipads and Iphones by system property and screen size.
+	My app may look different even on iPhones if they have different resolutions.
+
+c. How did you handle scalability?
+	Our team creates only microservices that run on containers. We increase the number of pods when we need more bandwish. 
+	To redirect the latencies between the microservices, we use the Spring Eureka framework, which is now the Spring Cloud framework, on top of all microservices. 
 
 d. How did you report test results?
 	All CI/CD tools, Jenkins, FlexDeploy, and Gitlab pipelines, send statistics to our DevOps Assessment Dashboard. There we get reports as coverage, tests build results, vulnerabilities on libs.
-	
-4. What testing frameworks are you familiar with for system level/desktop applications? 
+
+4. What testing frameworks are you familiar with for system level/desktop applications?
 	Junit and Mockito are most used on my workday.
 
-5. What testing frameworks are you familiar with for browser applications? 
+5. What testing frameworks are you familiar with for browser applications?
 	I don't use any as a backend developer.
-	
-6. What tools are you familiar with for Performance, Load and Stress testing? 
+
+6. What tools are you familiar with for Performance, Load and Stress testing?
 	For almost one year, I created some performance tests on Volvo using Apache JMeter.
 	It was for a specific project that I created, and before we deployed it in production, we had to make sure it could handle the load.
-	
+
 7. Tell us about a project your worked on that you found to be interesting or unusual.
 	My first microservice on Volvo was about an application that should maintain rules to verify the capabilities of trucks to receive an update.
-	All rules should be saved on MongoDB and should be easy to change on the fly. 
+	All rules should be saved on MongoDB and should be easy to change on the fly.
 	I created a Spring application with Drools. With rest end points to read and update the rules. Was not possible to create a new rule or delete a rule.
 	It was a challenge to create all the architecture to make the first microservice with so much complexity.
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
 	Multithreading: when I have to complete a task, I increase the number of "workers" to complete the task together in order to improve performance.
 	Example: read the lines of a file, process each line, and save on a database.
-	
+
 	Multiprocessing: when performing a large number of computationally intensive tasks, having multiple processors is advantageous.
-	In Java we use to use multithreading. I never have a situaton to use multiprocessing. 
-	
+	In Java we use to use multithreading. I never have a situaton to use multiprocessing.
+
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
 	Unit Tests: checks the most basic unit of the application, each method, grouping small peace of logic, individually.
 	Functional Tests: is a black box test that covers the overall functionality of the application.
 	Integration Tests: Test whether the communication between two different applications, or application modules, is working correctly.
-	
-	i. Do you have a preference and why? 
+
+	i. Do you have a preference and why?
 	Unit tests. Changes in logic are more common than changes in application communication. A high level of coverage in unit testing can help to avoid many bugs. 
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming?
@@ -79,28 +81,28 @@ Technical Questions
 	Because the result is always the same, a function can be used at any time in the application or for other applications. 
 	object-oriented programming: You can define a state control to define a process result. To change a result process, you do not need to change the code.
 	Usually it cannot be reused because the behavior changes.
-	
+
 4. What security concerns have you come across in the past and how have you addressed them?
 	The business defined that your system, which was running only inside your network, should be available on the internet.
 	We were given two weeks to change everething and open the application to the world.
-	We updated all rest endpoints to use JWT and all libraries, as well as Spring and Spring Security, to the most recent versions. 
+	We updated all rest endpoints to use JWT and all libraries, as well as Spring and Spring Security, to the most recent versions.
 
 Small Programming Challenges
 
-1. Using a known programming language write a small program to: 
-a. Query the OS for the OS Patches that are currently installed on the system. 
+1. Using a known programming language write a small program to:
+a. Query the OS for the OS Patches that are currently installed on the system.
 	i. For example, on windows: Windows Update Settings -> View Update History
 	I created an application on step1/src folder.
-	
+
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
-	Not sure how to get this info from command
-	
-b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+	Not sure how to get this info from command line.
+
+b. How would you consider validating the above program returns all installed patches on the system from an automation perspective?
+	i. What automation framework(s) you would consider utiltizing?
 	I don't know of any tool that would pick up that information.
-	
+
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
 	With Java running on multiple platforms is not an issue. For the scripts, I will create a factory to get the specific processor by platform.
-	
+
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
-	Not sure.
+	Not sure. I needed to better understand the context of this problem.
