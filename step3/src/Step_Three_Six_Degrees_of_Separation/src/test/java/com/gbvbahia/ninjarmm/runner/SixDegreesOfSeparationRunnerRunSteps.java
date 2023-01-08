@@ -37,7 +37,7 @@ public class SixDegreesOfSeparationRunnerRunSteps {
     MoviesDataReaderService reader = new MoviesDataReaderService("../../../data/movies.json");
     @SuppressWarnings("all")
     MoviesDataWriterService writer = new MoviesDataWriterService(MOVIES_FOLDER_DEFAULT);
-    MoviesDataService moviesDataService = new MoviesDataService(DECATE_80_DEFAULT, MOVIES_80_JSON_DEFAULT, reader, () -> writer);
+    MoviesDataService moviesDataService = new MoviesDataService(DECATE_80_DEFAULT, MOVIES_FOLDER_DEFAULT, MOVIES_80_JSON_DEFAULT, reader, () -> writer);
     
     Movies80ServiceReaderService movies80ServiceReaderService = new Movies80ServiceReaderService(MOVIES_FOLDER_DEFAULT, MOVIES_80_JSON_DEFAULT);
     
@@ -50,7 +50,7 @@ public class SixDegreesOfSeparationRunnerRunSteps {
   }
   
   @After
-  private void end() throws Exception {
+  public void end() throws Exception {
     Files.deleteIfExists(Path.of(MOVIES_FOLDER_DEFAULT, MOVIES_80_JSON_DEFAULT));
   }
   

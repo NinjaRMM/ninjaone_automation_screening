@@ -14,16 +14,19 @@ public class MoviesDataService {
   private final MoviesDataReaderService moviesDataReaderService;
   private final ObjectFactory<MoviesDataWriterService> moviesDataWriterServiceProvider;
   private final Integer decadeDefault;
+  private final String output;
   private final String moviesJsonDefault;
   
   public MoviesDataService(
       @Value("${app.args.def-decade}") Integer decadeDefault,
+      @Value("${app.data.movies.output}") String output,
       @Value("${app.data.movies.movies-80s}") String moviesJsonDefault,
       MoviesDataReaderService moviesDataReaderService,
       ObjectFactory<MoviesDataWriterService> moviesDataWriterServiceProvider) {
     
     super();
     this.decadeDefault = decadeDefault;
+    this.output = output;
     this.moviesJsonDefault = moviesJsonDefault;
     this.moviesDataReaderService = moviesDataReaderService;
     this.moviesDataWriterServiceProvider = moviesDataWriterServiceProvider;
@@ -31,7 +34,7 @@ public class MoviesDataService {
   
   public void generate80MoviesIfNotExists() throws Exception {
     
-    if (Files.notExists(Path.of(moviesJsonDefault))) {
+    if (Files.notExists(Path.of(output, moviesJsonDefault))) {
       MoviesDataWriterService writer = getMoviesDataWriterService();
       
       log.info("Starting to process {} decade movies...", decadeDefault);

@@ -15,6 +15,11 @@ On Step3/src/Step_Three_Six_Degrees_of_Separation folder execute:
 ```
 mvn spring-boot:run "-Dspring-boot.run.arguments=--spring.profiles.active=dev --actors=Sylvester Stallone,Linda Kerridge"
 ```
+Alternatively, call the jar created in the target folder: 
+
+```
+java -jar -Dspring.profiles.active=dev ./target/Step_Three_Six_Degrees_of_Separation-1.0.0.jar "--actors=Sylvester Stallone,Linda Kerridge"
+```
 
 The two minus signs should be used as described   
 
