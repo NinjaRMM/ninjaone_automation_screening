@@ -62,10 +62,14 @@ public class MoviesDataWriterService implements WriterService<Movie>, Closeable 
   
   public void close() throws IOException {
     if (writer != null) {
-      log.info("Process completed.");
-      log.info("File saved at: {}", filePath);
       writer.endArray();
       writer.close();
+      StringBuilder builder = new StringBuilder("\n");
+      builder.append("***********************************************").append("\n");
+      builder.append("Process completed.").append("\n");
+      builder.append("File saved at: ").append(filePath).append("\n");
+      builder.append("***********************************************").append("\n");
+      log.info(builder.toString());
     }
   }
 

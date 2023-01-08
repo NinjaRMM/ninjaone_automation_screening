@@ -20,7 +20,9 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class SixDegreesOfSeparationRunnerRunSteps {
 
   private final String MOVIES_80_JSON_DEFAULT = "80s-movies.json";
@@ -51,7 +53,12 @@ public class SixDegreesOfSeparationRunnerRunSteps {
   
   @After
   public void end() throws Exception {
-    Files.deleteIfExists(Path.of(MOVIES_FOLDER_DEFAULT, MOVIES_80_JSON_DEFAULT));
+	  try {
+		  Files.deleteIfExists(Path.of(MOVIES_FOLDER_DEFAULT, MOVIES_80_JSON_DEFAULT));
+	  } catch (Exception e) {
+		log.warn("Not possible to delete the file generated. Some parallel process may be blocking it. {}", e.getMessage());
+		log.warn("This does not prevent the build from continuing.");
+	}
   }
   
   @Given("^I run the application$")

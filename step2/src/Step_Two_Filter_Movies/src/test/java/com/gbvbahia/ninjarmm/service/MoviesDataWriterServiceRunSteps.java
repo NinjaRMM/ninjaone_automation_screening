@@ -3,14 +3,18 @@ package com.gbvbahia.ninjarmm.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.lang3.StringUtils;
+
 import com.gbvbahia.ninjarmm.model.Movie;
+
 import io.cucumber.core.internal.com.fasterxml.jackson.core.type.TypeReference;
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.datatable.DataTable;
@@ -41,7 +45,7 @@ public class MoviesDataWriterServiceRunSteps {
   @After
   public void end() throws Exception {
     if (StringUtils.isNoneBlank(outputFolder, outputFileName)) {
-      Files.deleteIfExists(Path.of(outputFolder, outputFileName));
+		  Files.deleteIfExists(Path.of(outputFolder, outputFileName));
     }
   }
   
