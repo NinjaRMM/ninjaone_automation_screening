@@ -3,7 +3,7 @@ Feature: Validade the Movie Json Data Writer
 
   Scenario: Write two movies and check file content
     Given I create a new writer for folder ./src/test/resources/json_movies/
-    When I call begin method twoDelete.json
+    When I call begin method toDelete.json
     When I call process method with movie
     |title|year|cast|genres|
     |Angel Town|1990|Olivier Gruner,Theresa Saldana|Action|

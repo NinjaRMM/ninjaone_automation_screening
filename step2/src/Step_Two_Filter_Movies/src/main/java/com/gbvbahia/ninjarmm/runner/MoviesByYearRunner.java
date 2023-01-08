@@ -1,13 +1,11 @@
 package com.gbvbahia.ninjarmm.runner;
 
-import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import com.gbvbahia.ninjarmm.service.MoviesDataReaderService;
-import com.gbvbahia.ninjarmm.service.MoviesDataWriterService;
+import com.gbvbahia.ninjarmm.service.MoviesDataService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -15,22 +13,19 @@ import lombok.extern.slf4j.Slf4j;
 @Order(2)
 public class MoviesByYearRunner implements ApplicationRunner {
 
-  private final MoviesDataReaderService moviesDataReaderService;
-  private final ObjectFactory<MoviesDataWriterService> moviesDataWriterServiceProvider;
+  private final MoviesDataService moviesDataService;
   private final String decadeArg;
   private final String outputArg;
 
   public MoviesByYearRunner(
       @Value("${app.args.decade}") String decadeArg,
       @Value("${app.args.output}") String outputArg,
-      MoviesDataReaderService moviesDataReaderService,
-      ObjectFactory<MoviesDataWriterService> moviesDataWriterServiceProvider) {
+      MoviesDataService moviesDataService) {
     
     super();
-    this.moviesDataReaderService = moviesDataReaderService;
+    this.moviesDataService = moviesDataService;
     this.decadeArg = decadeArg;
     this.outputArg = outputArg;
-    this.moviesDataWriterServiceProvider = moviesDataWriterServiceProvider;
   }
 
   @Override
@@ -42,18 +37,11 @@ public class MoviesByYearRunner implements ApplicationRunner {
     
     Integer decade = Integer.valueOf(args.getOptionValues(decadeArg).get(0));
     String output = args.getOptionValues(outputArg).get(0);
-    MoviesDataWriterService writer = getMoviesDataWriterService();
     
     log.info("Starting to process {} decade movies...", decade);
     
-    try (writer) {
-      moviesDataReaderService.fetchAllMoviesByDecade(decade, writer.begin(output));
-    }
-    
+    moviesDataService.generateMovies(decade, output);
   }
   
-  public MoviesDataWriterService getMoviesDataWriterService() {
-      return moviesDataWriterServiceProvider.getObject();
-  }
 
 }

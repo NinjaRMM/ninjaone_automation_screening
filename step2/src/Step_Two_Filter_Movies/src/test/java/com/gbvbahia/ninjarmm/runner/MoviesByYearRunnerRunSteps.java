@@ -13,6 +13,7 @@ import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.DefaultApplicationArguments;
 import com.gbvbahia.ninjarmm.service.MoviesDataReaderService;
+import com.gbvbahia.ninjarmm.service.MoviesDataService;
 import com.gbvbahia.ninjarmm.service.MoviesDataWriterService;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
@@ -44,7 +45,7 @@ public class MoviesByYearRunnerRunSteps {
   
   @Given("^I start movies by year runner (.+) (.+)$")
   public void given(String decadeArg, String outputArg) {
-    subject = new MoviesByYearRunner(decadeArg, outputArg, moviesDataReaderService, moviesDataWriterServiceProvider);
+    subject = new MoviesByYearRunner(decadeArg, outputArg, new MoviesDataService(moviesDataReaderService, moviesDataWriterServiceProvider));
   }
   
   @Given("^I send args to run$")
