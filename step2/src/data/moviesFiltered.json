@@ -1,0 +1,427 @@
+[
+  {
+    "cast": [
+      "Owen Wilson",
+      "Vince Vaughn",
+      "Christopher Walken",
+      "Rachel McAdams",
+      "Jane Seymour",
+      "Bradley Cooper"
+    ],
+    "year": 2005,
+    "genres": [
+      "Comedy"
+    ],
+    "title": "Wedding Crashers"
+  },
+  {
+    "cast": [
+      "Bradley Cooper",
+      "Leslie Bibb",
+      "Tony Curran"
+    ],
+    "year": 2008,
+    "genres": [
+      "Horror"
+    ],
+    "title": "The Midnight Meat Train"
+  },
+  {
+    "cast": [
+      "Sandra Bullock",
+      "Bradley Cooper",
+      "Thomas Haden Church"
+    ],
+    "year": 2009,
+    "genres": [
+      "Comedy"
+    ],
+    "title": "All About Steve"
+  },
+  {
+    "cast": [
+      "Bradley Cooper",
+      "Ed Helms",
+      "Zach Galifianakis",
+      "Heather Graham",
+      "Justin Bartha"
+    ],
+    "year": 2009,
+    "genres": [
+      "Comedy"
+    ],
+    "title": "The Hangover"
+  },
+  {
+    "cast": [
+      "Ben Affleck",
+      "Jennifer Aniston",
+      "Drew Barrymore",
+      "Jennifer Connelly",
+      "Kevin Connelly",
+      "Bradley Cooper",
+      "Ginnifer Goodwin",
+      "Scarlett Johansson",
+      "Justin Long"
+    ],
+    "year": 2009,
+    "genres": [
+      "Romance",
+      "Comedy"
+    ],
+    "title": "He's Just Not That Into You"
+  },
+  {
+    "cast": [
+      "Bradley Cooper",
+      "Chris Cooper",
+      "Shia LaBeouf",
+      "Orlando Bloom",
+      "Andy García",
+      "Natalie Portman",
+      "Rachel Bilson",
+      "Julie Christie",
+      "James Caan"
+    ],
+    "year": 2009,
+    "genres": [
+      "Romance"
+    ],
+    "title": "New York, I Love You"
+  },
+  {
+    "cast": [
+      "Liam Neeson",
+      "Bradley Cooper",
+      "Quinton \"Rampage\" Jackson",
+      "Sharlto Copley",
+      "Jessica Biel",
+      "Patrick Wilson",
+      "Brian Bloom"
+    ],
+    "year": 2010,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "title": "The A-Team"
+  },
+  {
+    "cast": [
+      "Renée Zellweger",
+      "Jodelle Ferland",
+      "Ian McShane",
+      "Bradley Cooper"
+    ],
+    "year": 2010,
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "title": "Case 39"
+  },
+  {
+    "cast": [
+      "Jessica Alba",
+      "Kathy Bates",
+      "Jessica Biel",
+      "Bradley Cooper",
+      "Eric Dane",
+      "Patrick Dempsey",
+      "Héctor Elizondo",
+      "Jamie Foxx",
+      "Jennifer Garner",
+      "Topher Grace",
+      "Anne Hathaway",
+      "Ashton Kutcher",
+      "Queen Latifah",
+      "Taylor Lautner",
+      "George Lopez",
+      "Shirley MacLaine",
+      "Emma Roberts",
+      "Julia Roberts",
+      "Taylor Swift"
+    ],
+    "year": 2010,
+    "genres": [
+      "Romance",
+      "Comedy"
+    ],
+    "title": "Valentine's Day"
+  },
+  {
+    "cast": [
+      "Bradley Cooper",
+      "Ed Helms",
+      "Zach Galifianakis",
+      "Ken Jeong",
+      "Jeffrey Tambor",
+      "with",
+      "Justin Bartha",
+      "and",
+      "Paul Giamatti"
+    ],
+    "year": 2011,
+    "genres": [
+      "Comedy"
+    ],
+    "title": "The Hangover: Part II"
+  },
+  {
+    "cast": [
+      "Bradley Cooper",
+      "Abbie Cornish",
+      "Robert De Niro",
+      "Andrew Howard",
+      "Anna Friel"
+    ],
+    "year": 2011,
+    "genres": [
+      "Thriller"
+    ],
+    "title": "Limitless"
+  },
+  {
+    "cast": [
+      "Dax Shepard",
+      "Kristen Bell",
+      "Bradley Cooper",
+      "Tom Arnold",
+      "Kristin Chenoweth",
+      "Michael Rosenbaum",
+      "Joy Bryant",
+      "Ryan Hansen",
+      "Beau Bridges"
+    ],
+    "year": 2012,
+    "genres": [
+      "Action",
+      "Comedy"
+    ],
+    "title": "Hit and Run"
+  },
+  {
+    "cast": [
+      "Bradley Cooper",
+      "Jennifer Lawrence",
+      "Robert De Niro",
+      "Jacki Weaver",
+      "Anupam Kher",
+      "Julia Stiles",
+      "Chris Tucker"
+    ],
+    "year": 2012,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "title": "Silver Linings Playbook"
+  },
+  {
+    "cast": [
+      "Bradley Cooper",
+      "Jeremy Irons",
+      "Dennis Quaid",
+      "Olivia Wilde",
+      "and",
+      "Zoe Saldana",
+      "Ben Barnes",
+      "Nora Arnezeder"
+    ],
+    "year": 2012,
+    "genres": [
+      "Drama"
+    ],
+    "title": "The Words"
+  },
+  {
+    "cast": [
+      "Christian Bale",
+      "Bradley Cooper",
+      "Amy Adams",
+      "Jeremy Renner",
+      "Jennifer Lawrence"
+    ],
+    "year": 2013,
+    "genres": [
+      "Crime"
+    ],
+    "title": "American Hustle"
+  },
+  {
+    "cast": [
+      "Bradley Cooper",
+      "Ed Helms",
+      "Zach Galifianakis",
+      "Ken Jeong",
+      "Heather Graham",
+      "Jeffrey Tambor",
+      "Justin Bartha",
+      "John Goodman"
+    ],
+    "year": 2013,
+    "genres": [
+      "Comedy"
+    ],
+    "title": "The Hangover Part III"
+  },
+  {
+    "cast": [
+      "Ryan Gosling",
+      "Bradley Cooper",
+      "Eva Mendes",
+      "Ray Liotta",
+      "Ben Mendelsohn",
+      "Rose Byrne",
+      "Mahershala Ali",
+      "Bruce Greenwood",
+      "Harris Yulin"
+    ],
+    "year": 2013,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "title": "The Place Beyond the Pines"
+  },
+  {
+    "cast": [
+      "Vin Diesel",
+      "Dave Bautista",
+      "Zoe Saldana",
+      "Chris Pratt",
+      "Bradley Cooper"
+    ],
+    "year": 2014,
+    "genres": [
+      "Superhero"
+    ],
+    "title": "Guardians of the Galaxy"
+  },
+  {
+    "cast": [
+      "Bradley Cooper",
+      "Jennifer Lawrence",
+      "Rhys Ifans",
+      "Sean Harris"
+    ],
+    "year": 2015,
+    "genres": [
+      "Drama"
+    ],
+    "title": "Serena"
+  },
+  {
+    "cast": [
+      "Bradley Cooper",
+      "Emma Stone",
+      "Rachel McAdams",
+      "John Krasinski"
+    ],
+    "year": 2015,
+    "genres": [
+      "Romance",
+      "Comedy"
+    ],
+    "title": "Aloha"
+  },
+  {
+    "cast": [
+      "Chris Pratt",
+      "Zoe Saldana",
+      "Dave Bautista",
+      "Vin Diesel",
+      "Bradley Cooper",
+      "Michael Rooker",
+      "Karen Gillan",
+      "Sean Gunn",
+      "Pom Klementieff",
+      "Elizabeth Debicki",
+      "Chris Sullivan",
+      "Sylvester Stallone",
+      "Kurt Russell"
+    ],
+    "year": 2017,
+    "genres": [
+      "Superhero",
+      "Comedy",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "title": "Guardians of the Galaxy Vol. 2"
+  },
+  {
+    "cast": [
+      "Robert Downey Jr.",
+      "Chris Hemsworth",
+      "Mark Ruffalo",
+      "Chris Evans",
+      "Scarlett Johansson",
+      "Benedict Cumberbatch",
+      "Don Cheadle",
+      "Tom Holland",
+      "Chadwick Boseman",
+      "Paul Bettany",
+      "Elizabeth Olsen",
+      "Anthony Mackie",
+      "Sebastian Stan",
+      "Danai Gurira",
+      "Letitia Wright",
+      "Dave Bautista",
+      "Zoe Saldana",
+      "Pom Klementieff",
+      "Karen Gillan",
+      "Benedict Wong",
+      "Idris Elba",
+      "Peter Dinklage",
+      "Tom Hiddleston",
+      "Vin Diesel",
+      "Bradley Cooper",
+      "Gwyneth Paltrow",
+      "Benicio del Toro",
+      "Josh Brolin",
+      "Chris Pratt"
+    ],
+    "year": 2018,
+    "genres": [
+      "Superhero",
+      "Action",
+      "Adventure"
+    ],
+    "title": "Avengers: Infinity War"
+  },
+  {
+    "cast": [
+      "Bradley Cooper",
+      "Lady Gaga",
+      "Andrew Dice Clay",
+      "Dave Chappelle",
+      "Sam Elliott"
+    ],
+    "year": 2018,
+    "genres": [
+      "Romance",
+      "Drama",
+      "Musical"
+    ],
+    "title": "A Star Is Born"
+  },
+  {
+    "cast": [
+      "Clint Eastwood",
+      "Bradley Cooper",
+      "Laurence Fishburne",
+      "Michael Peña",
+      "Dianne Wiest",
+      "Andy Garcia"
+    ],
+    "year": 2018,
+    "genres": [
+      "Drama",
+      "Crime",
+      "Biography"
+    ],
+    "title": "The Mule"
+  }
+]

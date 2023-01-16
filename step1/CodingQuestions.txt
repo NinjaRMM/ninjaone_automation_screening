@@ -1,14 +1,19 @@
 Focus Questions
 
 1. What is your full name?
+A: Gabriel Chireia
 
-2. Any repositories you wish to share with us? 
+2. Any repositories you wish to share with us?
+A: https://github.com/gabrielChireia/sudoku-solver
+https://github.com/gabrielChireia/sim-card-api-challenge
 
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+A: Streams, Optionals, Spring Framework, Maven architecture, and IntelliJ IDE.
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+A: Postman, code reviews, unit tests, CI,
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
 a. How did you deploy and execute your test suites? 
@@ -20,18 +25,22 @@ d. How did you report test results?
 
 5. What testing frameworks are you familiar with for browser applications? 
 
-6. What tools are you familiar with for Performance, Load and Stress testing? 
+6. What tools are you familiar with for Performance, Load and Stress testing?
+A: JMeter
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+A:
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+A:
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
 	i. Do you have a preference and why? 
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
+A:
 
 4. What security concerns have you come across in the past and how have you addressed them?
 
