@@ -16,41 +16,57 @@ A: Streams, Optionals, Spring Framework, Maven architecture, and IntelliJ IDE.
 A: Postman, code reviews, unit tests, CI,
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
-d. How did you report test results?
+A: I'm not very familiar with automation infrastructures.
+If I were to develop an automated infra, I'd identify the page elements, create a test that works on multiple browsers, validate tests using asserts,
+write logs of failed tests, implement TDD and BDD methods, write the automation using a good design pattern and clean code methods, and create documentation.
 
-4. What testing frameworks are you familiar with for system level/desktop applications? 
+4. What testing frameworks are you familiar with for system level/desktop applications?
+A: JUnit, Mockito
 
-5. What testing frameworks are you familiar with for browser applications? 
+5. What testing frameworks are you familiar with for browser applications?
+A: Selenium
 
 6. What tools are you familiar with for Performance, Load and Stress testing?
 A: JMeter
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
-A:
+A: I've worked on a project that displays, inside a fitting-room of clothing stores, more options of the product the person entered the fitting-room with.
+It works as an anti-theft system as well, by keeping track of what and how many products the person has inside the fitting room.
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing?
-A:
+A: Multithreading is more useful when the process is not CPU dependant, such as reading files from a database or network.
+Multiprocessing is better when doing computationally heavy tasks.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
+A: Unit Tests -> used for testing individual modules of an application (without the use of dependencies)
+Functional Tests -> used for testing a part of a function in the system (maybe using dependencies)
+Integration Tests -> used to check if different modules of the application are working correctly as a group
+	i. Do you have a preference and why?
+	A: My preference is Unit Test because it's easier to implement and visualize while coding.
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming?
-A:
+A: OOP -> pros: improves software development productivity, maintenance, improvement, and reduces cost.
+cons: harder to learn and adapt, slower projects, and bigger programs.
+
+Functional programming -> pros: better to write compact and predictable code, and it's easier to test, reusable and scalable
+cons: uses more memory and reduced performance, low quantity of frameworks and tools
 
 4. What security concerns have you come across in the past and how have you addressed them?
+A: I found in the company code the address, username, and password for their database and also their server.
+I loaded these informations in another file and encrypted them.
 
 Small Programming Challenges
 
 1. Using a known programming language write a small program to: 
-a. Query the OS for the OS Patches that are currently installed on the system. 
+a. Query the OS for the OS Patches that are currently installed on the system. A: code on step1/src folder
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
-b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+b. How would you consider validating the above program returns all installed patches on the system from an automation perspective?
+A: creating a script to set up a test environment, then deploy the windows updates
+	i. What automation framework(s) you would consider utiltizing? A: Cypress
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+A: I'd create a script for each.
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+	A: probably not.

@@ -3,11 +3,11 @@
 #Please review the below code and answer the following questions to the best of your ability: 
 
 #1.) What is this code doing?
-# A: Checking if the system has the NinjaWPM virtual machine installed, then trying to run it with a guest user. After that it tries to check if the NinjaWPM is downloaded, with the same guest user run.
+# A: Checking if the system has the WPM virtual machine installed, then trying to run it with a guest user. After that it tries to check if the NinjaWPM is downloaded, with the same guest user run.
 #2.) What does the program assume you need to have access to in order to execute?
 # A: It assumes that you have the NinjaWPM VM downloaded and installed, with the guest user named: Ninja and the password being: helloworld
 #3.) What architectures can this script run on?
-# A: Ubuntu and Windows
+# A: Windows
 
 $vm = Get-VM -Name WPM
 $IsNinjaInstalled = "Test-Path 'HKLM:\SOFTWARE\WOW6432Node\NinjaRMM LLC\NinjaWPM'"
