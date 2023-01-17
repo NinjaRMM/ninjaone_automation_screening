@@ -16,7 +16,7 @@ public class ActorVertex {
     private Set<String> movieTitles;
 
     public ActorVertex(String actor) {
-    	this.actor = actor;
+        this.actor = actor;
     }
 
     @Override
