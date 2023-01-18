@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ninjaone.step2.model.Movie;
-import com.ninjaone.step2.service.MovieService;
+import com.ninjaone.step3.model.Movie;
+import com.ninjaone.step3.service.MovieService;
 
 @Service
 public class MovieServiceImpl implements MovieService {
