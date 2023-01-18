@@ -58,6 +58,8 @@ public class ParseCommand implements Callable<Integer> {
 
         movieService.writeMoviesToFile(filteredMovies, outputPath);
 
+        System.out.println("File created in: " + outputPath);
+
         return 0;
     }
 
