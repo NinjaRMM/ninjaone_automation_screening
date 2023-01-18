@@ -2,13 +2,32 @@ Focus Questions
 
 1. What is your full name?
 
+Bernardo Costa Bastos de Oliveira
+
 2. Any repositories you wish to share with us? 
+
+-
 
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
 
+-- Working in a team --
+- Collaborativeness, alignment, commitment, trust
+- Kanban
+
+-- In general --
+- Git
+- Rich IDE
+- Domain knowledge
+- Strongly typed languages, with a vibrant community
+
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+
+- Automated testing
+- Linter
+- Auto-formatter
+- Bug tracking/tech-debt management tools
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
 a. How did you deploy and execute your test suites? 
@@ -16,24 +35,70 @@ b. How did you target different devices?
 c. How did you handle scalability? 
 d. How did you report test results?
 
+I've used IaC to manage cloud resources and their permissions. The deploy and tests were done through CI/CD tools.
+The projects were all backend applications running on Docker.
+Scalability was handled by design choices - caching, DB design (tool choice, schema, optimization), load balancing.
+Test results were reported in a human-readable file, stored in the CI platform, and in case of failure, they were sent via email,
+Slack notifications, and blocking the merging of pull-requests.
+
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+
+JUnit/Code-coverage plugins for IDEs, Postman, Insomnia.
 
 5. What testing frameworks are you familiar with for browser applications? 
 
+- Lighthouse
+- Selenium
+- Puppeteer
+
 6. What tools are you familiar with for Performance, Load and Stress testing? 
 
+Apache Benchmark (though it has it's limitations)
+
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+
+I was once in charge of implementing an algorithm for optimization of routes for cutting eletric-power supply.
+I have gone back to university to take a course on "Multi-objective optimization", where I learned I was dealing
+with a multi-objective, asymmetric Traveling Salesperson Problem, which I solved using the genetic algorithm NSGA-ii.
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
 
+Multithreading trumps multiprocessing when there's little concurrency on CPU computation itself, e.g. a task is more
+CPU intensive while others make external API calls, I/O, etc.
+
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
 	i. Do you have a preference and why? 
 
+Unit tests goal is to test a single module of an application, emulating the expected behavior of its dependencies,
+in order isolate it from them and only test the module's own behavior.
+
+Functional tests is the type of test that usually comprise all modules necessary for executing a certain feature,
+with modules actually running (without emulated behavior)
+
+Integration tests, like functional tests, test the interaction among a group of running modules, but usually in a smaller
+scale - sometimes just two.
+
+I like all of them, but slightly prefer unit tests, as its cost of implementing is the lowest, but when widely adopted and well implemented, provide a good sense of trust on the application's behavior. I believe it has the best ROI in most cases.
+
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
 
+Pros:
+- the concept of objects and classes make it easier for humans to assimilate business rules, and allow for elegant abstractions when writing code;
+- the imperative paradigm makes it easier for humans to understand the logic.
+
+Cons:
+- worse performance;
+- possibility of side-effects.
+
 4. What security concerns have you come across in the past and how have you addressed them?
+
+For a mobile app I helped develop, we used OTP for restricting an account to a single cell phone number, then generated a JTW
+for authentication.
+
+Also, I once had to integrate a logic-tests platform (our side) with a recruiting platform which only feature was static HTTP headers.
+I provided them with a unique token and used TLS on our API, to prevent MitM attacks.
 
 Small Programming Challenges
 
