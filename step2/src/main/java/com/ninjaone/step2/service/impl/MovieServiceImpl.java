@@ -24,7 +24,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Collection<Movie> extractMoviesFromFile(File pathName) throws IOException {
+    public List<Movie> extractMoviesFromFile(File pathName) throws IOException {
         return mapper.readValue(pathName, mapper.getTypeFactory().constructCollectionType(List.class, Movie.class));
     }
 
