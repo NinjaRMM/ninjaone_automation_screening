@@ -45,7 +45,7 @@ public class CastGraphTest {
                                    .title("Footloose")
                                    .year(1984)
                                    .cast(new HashSet<String>(Arrays.asList(
-                                          "Kevin Bacon",
+                                       "Kevin Bacon",
                                        "John Lithgow",
                                        "Lori Singer",
                                        "Dianne Wiest",
