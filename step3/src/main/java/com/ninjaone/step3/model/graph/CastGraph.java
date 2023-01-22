@@ -19,6 +19,9 @@ import com.ninjaone.step3.model.Movie;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * A graph in which vertices are {@link ActorVertex}s, where connecting edges are the movies in which both actors starred.
+ */
 @Getter
 @Setter
 public class CastGraph {
@@ -27,6 +30,10 @@ public class CastGraph {
 
     private Map<ActorVertex, List<ActorVertex>> adjacentVertices;
 
+    /**
+     * Creates the graph from <b>movies</b>. First it loads all actors as {@link ActorVertex}s, then it connects the ones that
+     * have at least one common entry in their <b>movieTitles</b> set.
+     */
     public CastGraph(Collection<Movie> movies) {
 
         adjacentVertices = new HashMap<>();
@@ -36,6 +43,17 @@ public class CastGraph {
         createEdgesByMovieTitles();
     }
 
+    /**
+     * Returns a list "connecting" <b>root</b> and <b>target</b> actors, linked by common movies in which they starred.
+     * <br/><br/>
+     * For example, consider that actors "Alice" and "Bob" are respectively <b>root</b> and <b>target</b>, and acted
+     * together in "The Movie 1". In this case, the list returned will be [Alice, Bob].
+     * <br/><br/>
+     * On another example, consider again "Alice" and "Bob" as root and target, but they never acted together. In this example,
+     * "Charles", a third actor, starred in "The Movie 2" with Alice, and also starred in "The Movie 3", with Bob.
+     * <br/>
+     * In this case, the return will be [Alice, Charles, Bob].
+     */
     public List<ActorVertex> getDegreesOfSeparation(String root, String target) {
 
         // check if root and target vertices are present in the graph
