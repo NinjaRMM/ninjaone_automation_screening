@@ -7,6 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * A vertex in the graph class {@link CastGraph}, encapsulating exactly an actor and all movies in which s/he starred.
+ */
 @Getter
 @Setter
 @AllArgsConstructor
