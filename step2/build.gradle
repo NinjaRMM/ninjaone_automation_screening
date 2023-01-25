@@ -12,6 +12,9 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	cucumberRuntime {
+		extendsFrom testImplementation
+	}
 }
 
 repositories {
@@ -25,8 +28,27 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.9.0'
+	implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.9.0'
+	implementation group: 'io.cucumber', name: 'cucumber-spring', version: '7.9.0'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+task Step2Tests() {
+	dependsOn assemble, testClasses
+	doLast {
+		javaexec {
+			main = "io.cucumber.core.cli.Main"
+			classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+			args = [
+					'--plugin', 'pretty',
+					'--plugin', 'html:build/reports/step2/cucumber-report.html',
+					'--glue', 'com.ninjaone.step2.stepdefinitions',
+					'--glue', 'com.ninjaone.step2.configuration',
+					'src/test/resources/features']
+		}
+	}
 }
