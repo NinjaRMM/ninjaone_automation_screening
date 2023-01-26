@@ -105,8 +105,21 @@ Small Programming Challenges
 1. Using a known programming language write a small program to: 
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
-	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+
+This goes a bit beyond my experience, so I'll describe the steps I'd implement using Java:
+
+- Get what platform the application is running on (Win/Linux/Mac)
+- Based on that, create a 'switch' for defining a string with the respective command to be run on each terminal, to list the patches
+- use Process process = Runtime.getRuntime().exec(properCommandFor OS, [other args]);
+
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
 	i. What automation framework(s) you would consider utiltizing? 
+
+I would loop through the patches to validate one by one, maybe checking on the OS's repository API.
+
+Doing a little research, 'Serenity' seems like a good automation framework(s), as it easily integrates with BDD tools.
+
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+
+I would try using a tool like Ansible or Puppet, which seem widely used nowadays.
