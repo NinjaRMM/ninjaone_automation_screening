@@ -24,9 +24,8 @@ public class ParseCommand implements Callable<Integer> {
     @Autowired
     private MovieService movieService;
 
-    @Option(names = { "-a", "--actors" }, description = "One or two actor names, within escaped quotes - e.g. \\\"Tom Cruise\\\","
-    		+ "\\\'Kevin Bacon\\\' , which degrees of separation (among movies in the input file) you want to find out",
-    		arity = "1..2")
+    @Option(names = { "-a", "--actors" }, description = "One or two actor names, within single quotes, which degrees "
+            + "of separation (among movies in the input file) you want to find out", arity = "1..2")
     private List<String> actors;
 
     @Option(names = { "-i", "--input" }, description = "The input file's name, that must be in the 'data' folder")
