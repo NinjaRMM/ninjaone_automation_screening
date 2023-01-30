@@ -2,38 +2,160 @@ Focus Questions
 
 1. What is your full name?
 
-2. Any repositories you wish to share with us? 
+Edvan Soares
+
+2. Any repositories you wish to share with us?
+
+This is my GitHub profile https://github.com/edvanjsj, but I believe there's nothing very interesting there because most of the projects I've been working on are in private repositories.
 
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+- Some Agile Methodology (I've had experience with Scrum and Kanban)
+- SOLID principles in case of OOP languages
+- Clean code
+- TDD
+- Git
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+- Well written and clear documentation
+- Automated tests
+- Test coverage (JaCoCo, etc.)
+- Static code analysis (Checkstyle, SonarLint, CodeQL, etc.)
+- Git flow
+- Code review
+- Continuous integration
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
+
 a. How did you deploy and execute your test suites? 
+
+To deploy and execute test suites usually I use some CI/CD tool. For each type of test (Unit, Integration, Functional, Performance) 
+one pipeline is created to run each one individually. Talking about Java projects that is my main skill, I usually create different directories in the project for each
+type of test and tasks with respective configurations for those tests in a Gradle/Maven file.
+
+Those tests are executed when creating new pull requests to ensure that the new changes will not change the behavior of the existing code. 
+For this we can use something like GitHub Actions or GitLab CI, depending on the Git tool that's being used.
+
+After that step test suites are also executed when deploying application on some environment. In this case my experience is using Jenkins. 
+A Jenkinsfile is created in the project directory with pipeline configurations for those tests, other checks and deployment. 
+Once all pipelines are executed successfully the deployment will be done otherwise it will be cancelled.
+
+
 b. How did you target different devices? 
+
+To perform this type of test I usually use an matrix of configurations. In the configuration files of the CI/CD tools, we can define multiple 
+device configurations, with different operating systems, browsers, so that the same test can be executed several times in different environments.
+
+For example, we can create a scenario where we will have two OS's [Windows, Ubuntu] and two browsers [Chrome, Firefox]. In this scenario the same test suite will be
+executed four times:
+
+[Windows][Chrome]
+[Windows][Firefox]
+[Ubuntu][Chrome]
+[Ubuntu][Firefox]
+
+
 c. How did you handle scalability? 
+
+My experience with scalability is using Kubernetes. Depending on the company we can have our own cluster or use some service like AWS EKS. I've experienced both situations.
+If the application will run on a Kubernetes cluster, we can create a deployment file using Kustomize defining some configurations like the number of replicas of the application, 
+the CPU/Memory usage threshold for a new replica to be created, among other settings that make the scaling process more independent and automatic.
+
+
 d. How did you report test results?
+
+For test reports HTML files are generated. For JUnit results usually I use Maven Surefire Report Plugin. 
+For test coverage JaCoCo also generates HTML files showing code test coverage.
+
+If the question is related to notifications about test results, I have configured CI/CD tools to send messages about pipelines results to Slack, or other chat tool.
+
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
 
+Being honest I have not much experience with desktop applications. In java I've already worked on some desktop applications using Swing, 
+but it's been a long time and I didn't have much depth.
+
+
 5. What testing frameworks are you familiar with for browser applications? 
+
+- Selenium
+
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
 
+- JMeter
+
+
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+
+I worked on some interesting projects, but one that comes to mind was at a translation and localization company. 
+The project had several technical challenges such as reading and segmenting the content of files in various formats (DOC, XLS, XML, JSON, YML, etc.). 
+Segments of these files were sent to translators to translate them, after that the system was responsible for taking the translated segments 
+and recreating the file in the same format with the translation. Between reading and writing, the system had to process huge amount of data, 
+so I had the opportunity to work with different concepts such as batch processing, multithreading, database performance analysis, 
+microservices, scalability, reliability, observability, among others that made me a better developer.
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
 
+Multithreading is the ability of a single process run multiple threads concurrently, and multiprocessing means that a system has more than one CPU.
+Considering that I would use multithreading when I need to execute some tasks concurrently but there are some kind of dependency among those tasks, once they are running
+on the same process, for example, waiting for a response from other thread. I would use multiprocessing to increase performance running different processes
+in different CPU's, for example, run two distinct services of the application.
+
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
 	i. Do you have a preference and why? 
 
+Unit tests - Tests small pieces of code, such as methods, individually and in isolation without considering other parts of the code.
+
+Integration tests - Tests the integration among application modules. Unlike unit testing, which tests the unit individually, integration testing tests the interactions between different units.
+
+Functional tests - Tests the functionalities of the application. It's used to test the requirements/features of the system, providing inputs and verifying outputs, simulating
+user interactions, etc.
+
+
+I don't have any preference, I believe that all of them have their importance in maintaining the quality of the project.
+
+
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
 
+OOP Pros: 
+	- Code reuse 
+	- Easier to maintain 
+	- High quality software 
+	- Better productivity 
+	- Well adopted
+OOP Cons: 
+	- More code
+	- Some concepts like inheritance can be tough to understand
+	- Slower applications
+
+FP Pros: 
+	- Easier to test 
+	- High abstraction
+	- Easy to write concurrent and parallel code
+FP Cons: 
+	- Immutable values can lead performance problems
+	- Limited expressiveness, so it may be difficult to express some types of solutions
+	- It's not still widely used so lack of experienced professionals may be a problem
+	- Requires a different way to think compared to more traditional paradigms so it might requires a high learning curve
+
+
 4. What security concerns have you come across in the past and how have you addressed them?
+
+- Issues involving project dependencies with vulnerabilities
+  Solution: Checking dependencies using OWASP Dependency-Check and changing for safe versions
+
+- Code vulnerabilities
+Solution: Static checking with CodeQL to identify possible vulnerabilities
+
+- Account theft attempt
+Solution: Setting maximum number of failed access attempts policy
+
+- Misuse of API's that should not be public and should only be used by the application even with a valid token
+Solution: Configuring the private API's to only accept requests from specific domains
 
 Small Programming Challenges
 
