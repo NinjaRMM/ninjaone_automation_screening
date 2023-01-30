@@ -1,10 +1,12 @@
 package com.ninjaone.filtermovies.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
+@Builder
 public class Movie {
     private String title;
     private Integer year;

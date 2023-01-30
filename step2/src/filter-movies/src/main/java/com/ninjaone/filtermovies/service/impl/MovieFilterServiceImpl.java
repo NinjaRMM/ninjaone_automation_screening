@@ -23,7 +23,7 @@ public class MovieFilterServiceImpl implements FilterService<Movie, Integer> {
     }
 
     private void checkDecade(Integer decade) {
-        if (decade == null || decade % 10 != 0 || decade > 90) {
+        if (decade == null || decade % 10 != 0 || decade > 90 || decade < 0) {
             throw new RuntimeException("The value of the decade must range from 0 to 90 and must be a multiple of 10");
         }
     }
