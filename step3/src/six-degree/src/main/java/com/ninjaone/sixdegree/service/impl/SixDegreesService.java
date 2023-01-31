@@ -11,19 +11,19 @@ public class SixDegreesService {
 
     private Map<String, List<Movie>> GRAPH = new HashMap<>();
 
-    public void calculateDegree(String person1, String person2, List<Movie> movies) {
+    public List<String> calculateDegree(String person1, String person2, List<Movie> movies) {
         if (person2 == null || person2.isBlank()) {
             person2 = "Kevin Bacon";
         }
 
         if (!mapMovies(person1, movies)) {
             System.out.println(person1 + " did not star in a movie in the data provided.");
-            return;
+            return null;
         }
 
         if (!mapMovies(person2, movies)) {
             System.out.println(person2 + " did not star in a movie in the data provided.");
-            return;
+            return null;
         }
 
         LinkedHashSet<String> visited = new LinkedHashSet<>();
@@ -36,8 +36,9 @@ public class SixDegreesService {
             Entry<String, Integer> currentEntry = queue.poll();
 
             if (currentEntry.getKey().equals(person2)) {
-                printResult(selected.get(person2), person1, person2);
-                break;
+                List<String> result = selected.get(person2);
+                printResult(result, person1, person2);
+                return result;
             }
 
             if (visited.contains(currentEntry.getKey())) continue;
@@ -50,6 +51,8 @@ public class SixDegreesService {
 
             calculateCoWorkersDistance(visited, selected, queue, currentEntry);
         }
+
+        return null;
     }
 
     private void calculateCoWorkersDistance(LinkedHashSet<String> visited, Map<String, List<String>> selected, LinkedList<Entry<String, Integer>> queue, Entry<String, Integer> currentEntry) {
