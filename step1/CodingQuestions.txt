@@ -2,36 +2,105 @@ Focus Questions
 
 1. What is your full name?
 
+Timóteo Eduardo de Carvalho Soutello
+
 2. Any repositories you wish to share with us? 
+
+Yes, I do have some:
+With Java:
+- https://github.com/timoteosoutello/dev-java-simple-crud
+- https://github.com/timoteosoutello/dev-spring-data-rest
+With DevOps:
+- https://github.com/timoteosoutello/devops-aws-eks (AWS + Terraform)
+- https://github.com/timoteosoutello/devops-azure-aks (Azure + Terraform)
+- https://github.com/timoteosoutello/devops-azure-initial-terraform-state (Azure + Terraform)
+- DevOps + Java - Some contributions to Couchbase's Community (https://github.com/couchbaselabs/couchbase-micronaut/pull/54 and other unlisted repositories)
 
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
 
+Basically techniques and good practices that I use are around SOLID, Clean Code and the Design Patterns.
+All these in order to have good use of class responsability and dependency in order to achieve high cohesion, low coupling, readable code, reusable code and easy to maintain.
+Also like the usage of BDD is very helpful in order to create code with high coverage and good quality ensuring the uniticity and also integrated lines of code are consistency and covered by unit test and test automation.
+
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
 
+Besides clean code technique, I personally like to use sonar lint and sonarqube to keep high quality of the code and keeping less problematic issues around the code (security, vulnerabilities, good code test coverage and others). Also this can be integrated with CI/CD tools such as (Github Actions or Jenkins).
+
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
+
 a. How did you deploy and execute your test suites? 
+
+In different levels, 
+- Locally and Remote, 
+- Remote, in a specific server or in a pipeline using Github Action / Jenkins / Azure DevOps.
+-- Running unit tests (only code with service mocked).
+--- Running all tests by using command like like mvn test + Cobertura Plugin Report.
+-- Integrated tests (integrated with other live services) 
+-- Automated UI tests (integrating with UI components).
+The integrated and invoke forms such as:
+-- Using maven and running like mvn test -Dcucumber.options="feature file path + Tags"
+
 b. How did you target different devices? 
+
+Devices being different browsers, by passing using java parameter and specifying programatically which driver will be loaded. So then, the CI/CD tool can also use/incorporate such parameter to be specified.
+
 c. How did you handle scalability? 
+
+By running in different servers and different ways (By using testcontainer) and running in parallel.
+
 d. How did you report test results?
+
+Using Playwright or Selenium for UI tests with Cucumber integrated, it can be used by enabling it (cucumber.publish.enabled=true).
+Using Newman for API tests, it's possible to generate reporting by enabling newman-reporter-html npm library and run "newman run <postman_collection> -r html".
+
+Both ways a HTML will be extracted and also can be incorporated into the CI/CD tool using extensions or just attaching the report directly as binary file.
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
 
+System Level and Desktop Application I know the existence of some RPA, but didn't applied yet.
+
 5. What testing frameworks are you familiar with for browser applications? 
+
+Selenium and Playwright.
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
 
+Apache JMeter.
+
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+
+By using a Selenium's competitor, named as Playwright, very good performance [better than selenium] and more stable in terms of finding elements and more stable (with less ElementNotFound exceptions).
+
+
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
 
+I would use multiprocessing when the load of the server can handles more CPU, but it's required to check how many cores the server has, that then a proper paralellism can be set in order to not have a worse performance that a single execution.
+Ideally parallel executions should be equal to the number of cores, so the multiprocessing will be per core.
+
+I would use multithreading when I'm sure that isn't race conditions in the test suite which will be executed and when I want to have more performance for the test suite execution. 
+As it's a strategy binded to the way that is run, it's not really directly binded to the CPU core, so it can be run in different servers. 
+A performance test is mostly used on that strategy as well.
+
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
 	i. Do you have a preference and why? 
 
+Functional Tests are my preference as it can be more driven to the system behaviour and easy to check if the requirement is met.
+But Basically the difference is that unit test will cover the uniticity of the code, integrated tests will cover the integration between the code and other services/3rd parties.
+And the functional test will cover the behaviour of the requirement of the system.
+Functional Test is the mix that can cover the code and integrated, so there is more benefit in terms of ROI as the requirements are being covered, and in consequence, also the source code.
+
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+
+Functional programming has good advantage in terms of programming efficiency using nested functions, simple language, function easy-way to use and reuse keeping the code cleaner.
+In terms of pros, it might be hard and not so intuitive for beginners, specially using recursion, and some combined logics that can be worse in terms of performance (more memory and cpu usage).
+
+Object-oriented programming is more natural to use and code, can be easier to maintain, in consequence, quicker to investigate and resolve.
+The cons are more related to the code be more verbose, then bigger the program size can be. May require also more guidelines to change things [learn and adapt] in the project (as the code is bigger and more oriented to objects).
 
 4. What security concerns have you come across in the past and how have you addressed them?
 
@@ -40,8 +109,32 @@ Small Programming Challenges
 1. Using a known programming language write a small program to: 
 a. Query the OS for the OS Patches that are currently installed on the system. 
 	i. For example, on windows: Windows Update Settings -> View Update History
+	Last installation patch is 12-2022 (14.12.2022) with the package installed kb5021255 for Windows 22H2.
+
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
+
+Function: Get-WUServiceManager | grep "Windows Update" | awk '{ print $3 }'
+Result:	If true, means that the automatic update is activated, otherwise false.
+
+Three packages needs to be installed to be able to run such function:
+1-) Installing PSWindowsUpdate module
+	Install-Module -Name PSWindowsUpdate -Force
+	Import-Module PSWindowsUpdate
+	Get-Command -Module PSWindowsUpdate
+2-) By installing grep by chocolatey
+choco install grep
+2-) By installing awk  by chocolatey
+choco install awk
+
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
-	i. What automation framework(s) you would consider utiltizing? 
+	i. What automation framework(s) you would consider utilizing? 
+
+In server to client approach, it could be run via pipeline (nightly) in Tool such as Jenkins/AzureDevOps in administrative machine against listed machines (which could be in on-premises network or virtual machines).
+Frameworks were listed above already integrated into the pipeline tool in order to have and extract to a report out with data such as machine x patch name x installed (yes/no).
+In a client approach, the machine could have the script stored in a folder, and that script is runned daily and stored locally and reported to the server.
+
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+
+In terms of being cross-platform, one way is to implement three different scripts for the differents OSs [it can be client to server or opposite way], and the data would be populated / sent to an application (could be REST service) receiving the information (machine name, os version, last patch name, installed [yes/no], reported date) and stored to a database. In that way, this application will centralize data being agnostic from the origin.
+And yes, even if the reboot happens from the machine, it will still store the data per machine name (unique) that will be informed to the application, but as the date is stored, there will be a possibility to check which date the patch was installed or enabled.

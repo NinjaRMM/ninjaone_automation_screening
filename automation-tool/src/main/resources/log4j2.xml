@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" name="log">
+    <Properties>
+        <Property name="PATTERN">%-5level %d [%t] %c:%M(%L): %m%n
+        </Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console-Appender" target="SYSTEM_OUT">
+            <PatternLayout pattern="${PATTERN}" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console-Appender" />
+        </Root>
+        <Logger name="br.com.timoteosoutello" level="TRACE"
+            additivity="false">
+            <AppenderRef ref="Console-Appender" />
+        </Logger>
+        <Logger name="org.springframework.web" level="TRACE"
+            additivity="false">
+            <AppenderRef ref="Console-Appender" />
+        </Logger>
+    </Loggers>
+</Configuration>

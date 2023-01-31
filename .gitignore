@@ -1,0 +1,27 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS and Eclipse ###
+.settings/
+*.project
+*.classpath
+.prefs
+*.prefs
+.metadata/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### VS Code ###
+.vscode/
+
+#Others
+/automation-tool/*.classpath
+/automation-tool/*.factorypath
+/automation-tool/*.gitignore
+/automation-tool/*.project
