@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class FilterMoviesByDecadeMain {
 
-
     private static final String MOVIES_JSON_PATH = "../data/movies.json";
     private static final ObjectMapper objectMapper = new ObjectMapper();
 

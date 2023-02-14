@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class Movie {
+public class MovieDegreeOfSeparation {
     @JsonProperty("title")
     private String title;
     @JsonProperty("year")

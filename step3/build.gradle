@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group 'main.java.com.ninjaone'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.11.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.0'
+
+}
+
+task run(type: JavaExec) {
+    main = 'com.ninjaone.DegreesOfSeparationMain'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['Tom Cruise']
+}
