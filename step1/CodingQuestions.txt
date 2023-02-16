@@ -1,37 +1,68 @@
 Focus Questions
 
 1. What is your full name?
+Matheus Batista Teixeira
 
-2. Any repositories you wish to share with us? 
+2. Any repositories you wish to share with us?
+I have some repos in my github, but I don't have links to the main projects I worked on in the companies I was in.
+https://github.com/mathbteixeira
 
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+I have been using the Lombok library, it has some powerful features that enhances the development time, and avoid having so much boilerplate code in the classes.
+I like to use the IntelliJ IDEA, it has some plugins that are really helpful, and even the shortcuts are a great thing to use.
+Clean code is a great technique, that helps the development, and also code maintenance.
+And another tool I use a lot at work is Postman.
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+I started to work in the past year using clean architecture, and I really enjoyed using this technique, it helps a lot in code maintenance.
+Unit tests are also a great way to make sure you're not breaking code with changes. Using it together with TDD, for example, is a great combo.
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
-a. How did you deploy and execute your test suites? 
-b. How did you target different devices? 
-c. How did you handle scalability? 
+a. How did you deploy and execute your test suites?
+It was done using Jenkins, and we pointed it out to the desired repositories and branches, in order to execute it.
+
+b. How did you target different devices?
+At the time I worked with automation, I didn't had to work with different cases for different devices. The backend worked the same way.
+
+c. How did you handle scalability?
+Using CI/CD and cloud based environments
+
 d. How did you report test results?
+I executed the test pipelines on Jenkins, monitored the results, and then extracted these results in the form of a report.
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
 
-5. What testing frameworks are you familiar with for browser applications? 
+5. What testing frameworks are you familiar with for browser applications?
+BDD, JBehave, Gherkin, Selenium
 
-6. What tools are you familiar with for Performance, Load and Stress testing? 
+6. What tools are you familiar with for Performance, Load and Stress testing?
+None
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+I worked on a side project while I was at Mastercard.
+The testers of the team were wasting too much time (almost one day) at the start of every sprint, just to create the test cases for each story created.
+Since in most cases it was only necessary to read the story description and write each step as a new test case, I decided to create an API that did it automatically.
+It read the story description and then connected to the board API to create the test cases inside each story.
+This lowered down the time testers wasted with it almost to zero, enhancing their productivity.
 
 Technical Questions
 
-1. When would you use multithreading vs multiprocessing? 
+1. When would you use multithreading vs multiprocessing?
+When you need multiple processes running at the same time, you can choose multiprocessing, and when you only need one process, but executing multiple threads, multithreading can be used.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
-	i. Do you have a preference and why? 
+Unit tests are built to maintain every "unit" of the code working as expected, and avoid the code to break when changes happen.
+Functional tests are a way to ensure that application is working as expected, considering the functionalities it should perform.
+And Integration tests are meant to ensure all the different software modules or other applications works correctly together.
 
-3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+i. Do you have a preference and why?
+No, I think all are necessary and can be used together to have the best of quality.
+
+3. What are the some of the pros and cons of object-oriented programming vs functional programming?
+Pros of object orientation are the possibility of code reuse and use of abstraction, and a con is code complexity
+A pro of functional programming is having a more concise code, and a con is the lack of clarity in the code.
 
 4. What security concerns have you come across in the past and how have you addressed them?
 

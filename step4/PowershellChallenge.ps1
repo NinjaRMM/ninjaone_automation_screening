@@ -3,8 +3,15 @@
 #Please review the below code and answer the following questions to the best of your ability: 
 
 #1.) What is this code doing?
-#2.) What does the program assume you need to have access to in order to execute? 
-#3.) What architectures can this script run on? 
+# This code executes a powershell script inside of the VM "WPM" that checks if NinjaWPM is installed, using the given credentials.
+# Then it returns a message saying if the software is installed or not.
+# The last part executes the file located in 'c:\NinjaInstaller\NinjaWPM.exe', or returns an error if the software isn't installed.
+
+#2.) What does the program assume you need to have access to in order to execute?
+# It assumes you are on a windows machine, and that you have NinjaWPM software installed.
+
+#3.) What architectures can this script run on?
+# I don't know.
 
 $vm = Get-VM -Name WPM
 $IsNinjaInstalled = "Test-Path 'HKLM:\SOFTWARE\WOW6432Node\NinjaRMM LLC\NinjaWPM'"
