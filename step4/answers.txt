@@ -1,0 +1,34 @@
+#1.) What is this code doing?
+This is a PowerShell script that checks if a program called "NinjaWPM" is installed on a virtual machine named "WPM" and whether the program's installer file is downloaded to a specific path.
+
+The script first retrieves the virtual machine object by its name "WPM" using the "Get-VM" cmdlet and assigns it to the $vm variable.
+
+Next, it creates a PowerShell script that checks if the "NinjaWPM" program is installed on the guest operating system by using the "Test-Path" cmdlet to search for a specific registry key. The script is assigned to the $IsNinjaInstalled variable.
+
+The "Invoke-VMScript" cmdlet is used to run the script on the virtual machine specified by $vm using the guest credentials "Ninja" and "helloworld". The output of the script is stored in the $Result variable.
+
+The script then checks if the exit code of the script is equal to 0, indicating that the program was found. If the exit code is not 0, it means that the program was not found, and the script prints a message to the console in red color indicating the failure and exits with a status of 1.
+
+If the program is found, the script then checks if its installer file is downloaded to a specific path by creating another PowerShell script that uses the "Test-Path" cmdlet to search for the file. The script is assigned to the $isNinjaWPMDownloaded variable.
+
+The script again uses "Invoke-VMScript" to run this script on the virtual machine and check for the exit code. If the exit code is not 0, the script prints a message to the console in red color indicating the failure and exits with a status of 1.
+
+If the exit code is 0, the script prints a message to the console in green color indicating that the program was found and its installer file is downloaded to the specified path.
+
+Finally, the script exits with a status of 0, indicating success.
+
+#2.) What does the program assume you need to have access to in order to execute? 
+The PowerShell script assumes that you have access to a virtual machine named "WPM" and that you have the necessary permissions to run PowerShell scripts on the guest operating system of the virtual machine.
+
+It also assumes that you have the necessary credentials to authenticate as a guest user on the virtual machine. The script uses the "GuestUser" and "GuestPassword" parameters of the "Invoke-VMScript" cmdlet to specify the credentials to use for the guest user account.
+
+In addition, the script assumes that the guest operating system of the virtual machine is a Windows operating system and that the PowerShell environment is configured correctly on the guest operating system to execute the script.
+
+Finally, the script assumes that the required PowerShell cmdlets such as "Get-VM" and "Invoke-VMScript" are available on the system where the script is executed. These cmdlets are part of the VMware PowerCLI PowerShell module, so the module needs to be installed and loaded for the script to work properly.
+
+#3.) What architectures can this script run on? 
+This script is a PowerShell script that can be run on any system that has PowerShell installed.
+
+The script uses the "Invoke-VMScript" cmdlet of the VMware PowerCLI PowerShell module to run PowerShell scripts on the guest operating system of a virtual machine, so it can be used to manage and automate tasks on VMware virtual machines.
+
+However, the script assumes that the virtual machine guest operating system is a Windows operating system, so it may not be suitable for managing virtual machines running other operating systems such as Linux or macOS. In addition, the script may require modifications to work with different versions of Windows or different configurations of the VMware environment.
