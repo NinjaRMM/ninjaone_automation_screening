@@ -1,39 +1,62 @@
 Focus Questions
 
 1. What is your full name?
+Sebastian Villegas
 
-2. Any repositories you wish to share with us? 
+2. Any repositories you wish to share with us?
+I really like to automate stuff, so a lot of my repos are focused on automating tasks, e.g. https://github.com/svillegasz/money-lover-reporter  https://github.com/svillegasz/merobar-watcher https://github.com/svillegasz/judicial-processes-scraper/blob/main/gmail.py https://github.com/svillegasz/jira-reporter
+Besides that, most of the remaining repos are related with technologies I have learnt https://github.com/svillegasz/appium-boilerplate https://github.com/svillegasz/docker-getting-started https://github.com/svillegasz/cypress-demo https://github.com/svillegasz/ninjaone-testcafe (the most recent one, test cafe :D)
 
 General Questions
 
 1. Name some tools and/or techniques that you personally find to be the most helpful surrounding development.
+git, IDEs (vsc, intellij), jira (or any other tool for project management), jenkins (or similar), docker, cloud (aws, gcp, azure)
 
 2. Name some tools and/or techniques that you personally find to be the most helpful surrounding code maintenance.
+Test automation and continious integration, static code analysis tools (e.g. linters, sonarqube), peer reviews.
 
 3. Explain your familiarity with automation infrastructures. The questions below are to help give a guideline, please feel free to be as detailed as you please. 
 a. How did you deploy and execute your test suites? 
+The approach for test suite deployment and execution is contingent upon various factors. In the case of end-to-end test scenarios, we rely on an established QA/automation environment to run tests. We can configure jobs utilizing tools such as Jenkins or GitHub Actions to execute our scripts and run the scenarios against the testing environment. These jobs can be scheduled to run at designated intervals (regression testing) and can also be triggered to run specific flows after changes are deployed to the testing environment to ensure that critical functionality is not affected (acceptance testing). For lower-level test cases, we can start test execution before changes are merged, as part of our Continuous Integration (CI) pipelines, or we could even execute the test cases before a commit is done locally. In summary, our testing framework consists of multiple levels, including end-to-end, integration, and unit testing, and is deployed and executed as part of our Continuous Integration/Continuous Deployment (CI/CD) pipelines.
+
 b. How did you target different devices? 
+Depending on the automation framework being used, various configurations and capabilities can be utilized to target different devices. It is crucial to ensure that the required infrastructure is in place to execute test cases in multiple environments. In a local environment, the process is simpler, as it only requires ensuring that all dependencies, such as multiple browsers, Android devices/simulators, and required operating systems, are available on the local machine.
+For remote execution, there are multiple options available. For instance, docker can be used to provision a remote running machine (e.g., Jenkins agent) with all the necessary dependencies. Alternatively, cloud services such as AWS Device Farm can be leveraged to simplify the execution process, by executing mobile test cases. Additionally, cloud-based solutions such as BrowserStack or SauceLabs can be used to execute test cases remotely.
+The choice of the most suitable option would depend on various factors, such as the desired level of control over the tests, costs, and effort involved in setting up the required infrastructure.
+
 c. How did you handle scalability? 
+Following a parallel test execution approach. However this depends on various factors, such as the nature of the tests being executed and the automation framework in use. For instance, in the case of Selenium tests, it is common to use Selenium Grid for parallel execution. However, it is important to note that not all types of tests may be suitable for parallel execution. For example, tests that require a specific order of execution or those that rely on shared resources may not be easily parallelized. Therefore, it is necessary to carefully evaluate the testing requirements and choose an appropriate approach for parallel execution based on the specific context of the project.
+
 d. How did you report test results?
+The type of test being performed and the tools used can influence the type of test report generated. For instance, white box testing can generate coverage reports that provide an insight into the extent of code coverage. End-to-end tests, on the other hand, could benefit from using Behavior-Driven Development (BDD) reporters to share the flows being tested with different stakeholders. Alternatively, report libraries for test management tools like Zephyr could be used to generate automatic updates on test runs. Several reporting options are available, and it is essential to understand which one is valuable in the context of the project and the process, as well as how to integrate these reports into the overall testing framework. Ultimately, the choice of test report will depend on the nature of the tests being executed, the tools in use, and the needs of the different stakeholders involved in the project.
 
 4. What testing frameworks are you familiar with for system level/desktop applications? 
+I have not tested desktop applications so far
 
 5. What testing frameworks are you familiar with for browser applications? 
+Selenium webdriver clients: Protractor (webdriverjs), webdriverIO, Java, Python. Cypress. Test cafe (recently learnt)
 
 6. What tools are you familiar with for Performance, Load and Stress testing? 
+JMeter
 
 7. Tell us about a project your worked on that you found to be interesting or unusual.
+I was involved in a project that was entirely centered around services. From a testing and automation standpoint, this project presented a unique and interesting challenge because I had to develop a testing and automation strategy that focused on lower-level testing while also taking into account the microservices and event-driven architecture that were being used. One of the most remarkable aspects of this project was the inclusion of a rules engine at the core of the service, which was a completely new and unfamiliar concept, but presented an opportunity to learn and develop new skills.
 
 Technical Questions
 
 1. When would you use multithreading vs multiprocessing? 
+In a test automation context, both multithreading and multiprocessing can be used to improve the efficiency and speed of test execution. Multithreading can be used when there is a need to execute multiple tasks concurrently within the same process, for example, executing multiple tests within the same test suite. Multiprocessing, on the other hand, can be used when there is a need to execute multiple tasks concurrently across different processes, for example, running multiple test suites in parallel or running the tests using multiple capabilities.
 
 2. Describe the differences between Unit Tests, Functional Tests, and Integration Tests?
+From my perspective, functional testing refers to the set of tests that ensure the correct behavior of an application's functionality. It typically includes unit testing, which evaluates a specific and isolated block of the application's code; integration testing, which assesses how different parts of the application interact with each other; and end-to-end testing, which evaluates how the application and all its components work together as a whole.
 	i. Do you have a preference and why? 
+	Although I find lower-level automation such as unit and integration testing more technically challenging, I also appreciate end-to-end testing that covers both UI and API. End-to-end testing enables me to think in a behavior-driven mindset and consider the application from a consumer's perspective. Each level of testing, including unit, integration, and end-to-end, is important and valuable. The challenge lies in maximizing the value of each level and effectively integrating them into the testing strategy.
 
 3. What are the some of the pros and cons of object-oriented programming vs functional programming? 
+Object-oriented programming and functional programming are two paradigms that have different approaches to solving problems. Object-oriented programming focuses on creating objects that have attributes and methods, and these objects interact with each other to solve a problem. Functional programming, on the other hand, emphasizes the use of functions that take input and produce output, without modifying the state of the program or other variables. Some of the pros of object-oriented programming include encapsulation, polymorphism, and ease of maintenance, while some of the cons include potential for bloated code and difficulty in parallel processing. Some of the pros of functional programming include the emphasis on immutability and ease of parallel processing, while some of the cons include a steep learning curve and potential performance issues. Ultimately, the choice between the two paradigms depends on the specific needs of a project and the personal preferences of the developer or development team.
 
 4. What security concerns have you come across in the past and how have you addressed them?
+Many of the security challenges I have encountered in the past are associated with data, such as ensuring that specific data is only available to those with the proper roles or permissions, the approach we followed to ensure that only authorized users could access certain data was to implement a role-based access control (RBAC) system. Another example is ensuring that stored data complies with data protection laws and regulations, this was specially important working for a previous healthcare project. Another challenge is ensuring that sensitive information used in development or automation frameworks is correctly removed before the code is deployed to production environments.
 
 Small Programming Challenges
 
@@ -42,6 +65,10 @@ a. Query the OS for the OS Patches that are currently installed on the system.
 	i. For example, on windows: Windows Update Settings -> View Update History
 	iii. [Optional] Add a function to report if Automatic Updates are enabled or disabled for the device.
 b. How would you consider validating the above program returns all installed patches on the system from an automation perspective? 
+I would focus on unit testing for each individual function, "getInstalledPatches()" and "isAutomaticUpdatesEnabled()", while isolating them from any external dependencies by using mocking techniques I could test multiple scenarios e.g. What happen when the automation updates are disabled. Additionally, to ensure the correct functionality of the integration with the operating system API, integration tests should be implemented. By including both unit and integration tests, it ensures that the functionality of the system is tested at both the component and system level.
 	i. What automation framework(s) you would consider utiltizing? 
+	I prefer to use the test runner engine Mocha as I am very familiar with it. To effectively mock the command execution against the operating system, I would use Sinon. Finally, I would use Chai to create clear and readable assertions to ensure that the tests are easily understood and maintainable.
 c. Let's say your program was written to be cross platform, how would you design an infrastructure for deploying your program and executing the test case(s) across multiple Windows, Linux and Mac devices?
+To support multiple operating systems, the code would need to be updated and extended using the "os" module in JavaScript to validate the operating system and execute the proper command and code accordingly. Additionally, to execute the test cases in a multi-platform environment, multiple containers with the required OS could be set up at a pipeline level to validate the correct functionality of the program cross platforms.
 	i. After a reboot, a system may show different patches as installed, would this cause complications with your validation? If so, what alternatives do you see available?
+	The use of hardcoded expected results could result in complications at an integration testing level, although it would not be an issue at the unit testing level due to the use of mocks. To avoid this issue at an integration level, we can validate intrinsic properties of the results instead of hardcoding exact expected values. For example, we can validate the response structure and the format of the values to ensure that the integration is functioning correctly.
